@@ -1,5 +1,5 @@
 ISim log file
-Running: C:\Users\152\Desktop\cs-m152a\lab_0\four_bit_counter\four_bit_counter_old_TB_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb C:/Users/152/Desktop/cs-m152a/lab_0/four_bit_counter/four_bit_counter_old_TB_isim_beh.wdb 
+Running: C:\Users\152\Desktop\cs-m152a\lab_0\four_bit_counter\four_bit_counter_modern_TB_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb C:/Users/152/Desktop/cs-m152a/lab_0/four_bit_counter/four_bit_counter_modern_TB_isim_beh.wdb 
 ISim P.68d (signature 0x8ef4fb42)
 ----------------------------------------------------------------------
 WARNING:Security:42 - Your software subscription period has lapsed. Your current version of Xilinx tools will continue to function, but you no longer qualify for Xilinx software updates or new releases.
@@ -13,9 +13,7 @@ Time resolution is 1 ps
 # run 1000 ns
 Simulator is doing circuit initialization process.
 Finished circuit initialization process.
-# run 50ns
 # restart
-# run 50ns
+# run 150ns
 Simulator is doing circuit initialization process.
 Finished circuit initialization process.
-# run 150ns

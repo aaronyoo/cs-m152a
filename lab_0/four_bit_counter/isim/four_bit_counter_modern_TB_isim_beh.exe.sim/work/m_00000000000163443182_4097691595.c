@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "C:/Users/152/Desktop/cs-m152a/lab_0/four_bit_counter/four_bit_counter_old_TB.v";
+static const char *ng0 = "C:/Users/152/Desktop/cs-m152a/lab_0/four_bit_counter/four_bit_counter_modern_TB.v";
 static int ng1[] = {0, 0};
 static int ng2[] = {1, 0};
 
@@ -169,9 +169,9 @@ LAB11:    t18 = *((unsigned int *)t3);
 }
 
 
-extern void work_m_00000000000163443182_0441679858_init()
+extern void work_m_00000000000163443182_4097691595_init()
 {
 	static char *pe[] = {(void *)Initial_37_0,(void *)Always_51_1};
-	xsi_register_didat("work_m_00000000000163443182_0441679858", "isim/four_bit_counter_old_TB_isim_beh.exe.sim/work/m_00000000000163443182_0441679858.didat");
+	xsi_register_didat("work_m_00000000000163443182_4097691595", "isim/four_bit_counter_modern_TB_isim_beh.exe.sim/work/m_00000000000163443182_4097691595.didat");
 	xsi_register_executes(pe);
 }
