@@ -1,0 +1,29 @@
+Command line:
+   combinational_gates_muxed_tb_isim_beh.exe
+     -simmode  gui
+     -simrunnum  0
+     -socket  46480
+
+Wed Oct  2 19:29:37 2019
+
+
+ Elaboration Time: 0.18 sec
+
+ Current Memory Usage: 215.523 Meg
+
+ Total Signals          : 25
+ Total Nets             : 38
+ Total Signal Drivers   : 17
+ Total Blocks           : 3
+ Total Primitive Blocks : 2
+ Total Processes        : 23
+ Total Traceable Variables  : 20
+ Total Scalar Nets and Variables : 124
+Total Line Count : 37
+
+ Total Simulation Time: 0.24 sec
+
+ Current Memory Usage: 293.122 Meg
+
+Wed Oct  2 19:31:26 2019
+

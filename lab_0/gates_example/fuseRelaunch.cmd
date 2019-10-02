@@ -1,0 +1,1 @@
+-intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -lib "secureip" -o "/mnt/hgfs/Xilinx Share/cs-m152a/lab_0/gates_example/combinational_gates_muxed_tb_isim_beh.exe" -prj "/mnt/hgfs/Xilinx Share/cs-m152a/lab_0/gates_example/combinational_gates_muxed_tb_beh.prj" "work.combinational_gates_muxed_tb" "work.glbl" 

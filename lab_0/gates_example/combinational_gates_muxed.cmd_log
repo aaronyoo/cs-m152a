@@ -1,0 +1,3 @@
+xst -intstyle ise -ifn "/mnt/hgfs/Xilinx Share/cs-m152a/lab_0/gates_example/combinational_gates_muxed.xst" -ofn "/mnt/hgfs/Xilinx Share/cs-m152a/lab_0/gates_example/combinational_gates_muxed.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc "src/combinational_gates/combinational_gates_muxed.ucf" -p xa6slx16-csg324-3 "combinational_gates_muxed.ngc" combinational_gates_muxed.ngd  
+map -intstyle ise -p xa6slx16-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o combinational_gates_muxed_map.ncd combinational_gates_muxed.ngd combinational_gates_muxed.pcf 
