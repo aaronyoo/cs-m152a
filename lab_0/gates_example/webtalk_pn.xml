@@ -3,11 +3,11 @@
 <!--The data in this file is primarily intended for consumption by Xilinx tools.
 The structure and the elements are likely to change over the next few releases.
 This means code written to parse this file will need to be revisited each subsequent release.-->
-<application name="pn" timeStamp="Wed Oct  2 19:32:59 2019">
+<application name="pn" timeStamp="Wed Oct 02 13:19:47 2019">
 <section name="Project Information" visible="false">
 <property name="ProjectID" value="C24A4AECD978492CE7DAE27A94132790" type="project"/>
-<property name="ProjectIteration" value="0" type="project"/>
-<property name="ProjectFile" value="/mnt/hgfs/Xilinx Share/cs-m152a/lab_0/gates_example/gates_example.xise" type="project"/>
+<property name="ProjectIteration" value="1" type="project"/>
+<property name="ProjectFile" value="C:/Users/152/Desktop/cs-m152a/lab_0/gates_example/gates_example.xise" type="project"/>
 <property name="ProjectCreationTimestamp" value="2019-10-02T19:27:19" type="project"/>
 </section>
 <section name="Project Statistics" visible="true">
@@ -25,6 +25,7 @@ This means code written to parse this file will need to be revisited each subseq
 <property name="PROP_UserConstraintEditorPreference" value="Text Editor" type="process"/>
 <property name="PROP_intProjectCreationTimestamp" value="2019-10-02T19:27:19" type="design"/>
 <property name="PROP_intWbtProjectID" value="C24A4AECD978492CE7DAE27A94132790" type="design"/>
+<property name="PROP_intWbtProjectIteration" value="1" type="process"/>
 <property name="PROP_intWorkingDirLocWRTProjDir" value="Same" type="design"/>
 <property name="PROP_intWorkingDirUsed" value="No" type="design"/>
 <property name="PROP_selectedSimRootSourceNode_behav" value="work.combinational_gates_muxed_tb" type="process"/>

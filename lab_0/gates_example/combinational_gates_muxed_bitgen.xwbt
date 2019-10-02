@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=C:\Users\152\Desktop\cs-m152a\lab_0\gates_example\combinational_gates_muxed.ncd
+OUTFILE=C:\Users\152\Desktop\cs-m152a\lab_0\gates_example\combinational_gates_muxed.bit
+FAMILY=Automotive Spartan6
+PART=xa6slx16-3csg324
+WORKINGDIR=C:\Users\152\Desktop\cs-m152a\lab_0\gates_example
+LICENSE=ISE
+USER_INFO=203015155_203016297_210565169_068
