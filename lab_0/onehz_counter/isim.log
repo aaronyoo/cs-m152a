@@ -1,0 +1,33 @@
+ISim log file
+Running: C:\Users\152\Desktop\cs-m152a\lab_0\onehz_counter\counter_TB_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb C:/Users/152/Desktop/cs-m152a/lab_0/onehz_counter/counter_TB_isim_beh.wdb 
+ISim P.68d (signature 0x7708f090)
+----------------------------------------------------------------------
+WARNING:Security:42 - Your software subscription period has lapsed. Your current version of Xilinx tools will continue to function, but you no longer qualify for Xilinx software updates or new releases.
+
+
+----------------------------------------------------------------------
+This is a Full version of ISim.
+Time resolution is 1 ps
+# onerror resume
+# wave add /
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+# run 150ns
+# run 150ns
+# restart
+# run 150ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+# restart
+# run 5000ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+# restart
+# run 50000ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+# restart
+# run 5ms
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.

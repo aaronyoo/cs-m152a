@@ -1,5 +1,5 @@
-Running: C:\Xilinx\14.6\ISE_DS\ISE\bin\nt\unwrapped\fuse.exe -intstyle ise -incremental -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -lib secureip -o C:/Users/152/Desktop/cs-m152a/lab_0/four_bit_counter/four_bit_counter_modern_TB_isim_beh.exe -prj C:/Users/152/Desktop/cs-m152a/lab_0/four_bit_counter/four_bit_counter_modern_TB_beh.prj work.four_bit_counter_modern_TB work.glbl 
-ISim P.68d (signature 0x8ef4fb42)
+Running: C:\Xilinx\14.6\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -lib secureip -o C:/Users/152/Desktop/cs-m152a/lab_0/four_bit_counter/four_bit_counter_modern_TB_isim_beh.exe -prj C:/Users/152/Desktop/cs-m152a/lab_0/four_bit_counter/four_bit_counter_modern_TB_beh.prj work.four_bit_counter_modern_TB work.glbl 
+ISim P.68d (signature 0x7708f090)
 Number of CPUs detected in this system: 2
 Turning on mult-threading, number of parallel sub-compilation jobs: 4 
 Determining compilation order of HDL files
@@ -8,8 +8,6 @@ Analyzing Verilog file "C:/Users/152/Desktop/cs-m152a/lab_0/four_bit_counter/fou
 Analyzing Verilog file "C:/Xilinx/14.6/ISE_DS/ISE//verilog/src/glbl.v" into library work
 Starting static elaboration
 Completed static elaboration
-Fuse Memory Usage: 118036 KB
-Fuse CPU Usage: 296 ms
 Compiling module four_bit_counter_modern
 Compiling module four_bit_counter_modern_TB
 Compiling module glbl
@@ -17,5 +15,5 @@ Time Resolution for simulation is 1ps.
 Waiting for 1 sub-compilation(s) to finish...
 Compiled 3 Verilog Units
 Built simulation executable C:/Users/152/Desktop/cs-m152a/lab_0/four_bit_counter/four_bit_counter_modern_TB_isim_beh.exe
-Fuse Memory Usage: 121604 KB
-Fuse CPU Usage: 374 ms
+Fuse Memory Usage: 26876 KB
+Fuse CPU Usage: 561 ms

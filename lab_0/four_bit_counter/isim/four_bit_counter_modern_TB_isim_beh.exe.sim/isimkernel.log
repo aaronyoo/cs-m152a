@@ -1,15 +1,15 @@
 Command line:
    four_bit_counter_modern_TB_isim_beh.exe
      -simmode  gui
-     -simrunnum  0
-     -socket  53879
+     -simrunnum  1
+     -socket  51374
 
-Wed Oct 02 14:14:56 2019
+Mon Oct 07 13:57:03 2019
 
 
  Elaboration Time: 0.0624 sec
 
- Current Memory Usage: 824.431 Meg
+ Current Memory Usage: 828.269 Meg
 
  Total Signals          : 15
  Total Nets             : 15
@@ -22,7 +22,7 @@ Wed Oct 02 14:14:56 2019
 
  Total Simulation Time: 0.0624 sec
 
- Current Memory Usage: 1139.53 Meg
+ Current Memory Usage: 828.269 Meg
 
-Wed Oct 02 14:15:50 2019
+Mon Oct 07 14:00:52 2019
 

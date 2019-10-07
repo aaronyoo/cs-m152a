@@ -11,5 +11,8 @@
 <msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;C:/Users/152/Desktop/cs-m152a/lab_0/four_bit_counter/four_bit_counter_modern.v&quot; into library work</arg>
 </msg>
 
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;C:/Users/152/Desktop/cs-m152a/lab_0/four_bit_counter/four_bit_counter_old.v&quot; into library work</arg>
+</msg>
+
 </messages>
 

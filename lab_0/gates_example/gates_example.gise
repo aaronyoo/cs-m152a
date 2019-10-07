@@ -229,7 +229,7 @@
       <outfile xil_pn:name="webtalk.log"/>
       <outfile xil_pn:name="webtalk_pn.xml"/>
     </transform>
-    <transform xil_pn:end_ts="1570047696" xil_pn:in_ck="-1733039902733283198" xil_pn:name="TRAN_configureTargetDevice" xil_pn:prop_ck="3013362611380892931" xil_pn:start_ts="1570047691">
+    <transform xil_pn:end_ts="1570481685" xil_pn:in_ck="-1733039902733283198" xil_pn:name="TRAN_configureTargetDevice" xil_pn:prop_ck="3013362611380892931" xil_pn:start_ts="1570481683">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
