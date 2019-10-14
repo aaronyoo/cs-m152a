@@ -31,8 +31,17 @@ output       S;
 output [2:0] E;
 output [3:0] F;
 
-M1(.D(D));
+// M1 -- converts 2's complemented to signed magnitude
+// M2 -- counts leading zeroes
+// M3 -- rounding
 
+wire [10:0] w_z; 	// connects M1 to M2
+wire [2:0] w_exp; 	// connects M2 to M3
+wire [3:0] w_mant; 	// connects M2 to M3
+wire w_fifth 		// connects M2 to M3
 
+M1(.D(D), .S(S), .Z(w_z));
+M2(.Z(w_z), .E(w_exp), .M(w_mant), .T(w_fifth))
+// TODO: call to M3
 
 endmodule
