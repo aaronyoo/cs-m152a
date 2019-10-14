@@ -35,13 +35,13 @@ output [3:0] F;
 // M2 -- counts leading zeroes
 // M3 -- rounding
 
-wire [10:0] w_z; 	// connects M1 to M2
+wire [11:0] w_z; 	// connects M1 to M2
 wire [2:0] w_exp; 	// connects M2 to M3
 wire [3:0] w_mant; 	// connects M2 to M3
-wire w_fifth 		// connects M2 to M3
+wire w_fifth;		// connects M2 to M3
 
-M1(.D(D), .S(S), .Z(w_z));
-M2(.Z(w_z), .E(w_exp), .M(w_mant), .T(w_fifth))
-// TODO: call to M3
+M1 A1(.D(D), .S(S), .Z(w_z));
+M2 A2(.Z(w_z), .E(w_exp), .M(w_mant), .T(w_fifth));
+M3 A3(.exp(w_exp), .mant(w_mant), .fifth(w_fifth), .E(E), .F(F));
 
 endmodule

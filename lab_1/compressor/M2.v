@@ -25,7 +25,7 @@ module M2(
 	T   // fifth bit
     );
 	
-input [10:0] Z;
+input [11:0] Z;
 
 output reg [2:0] E;
 output reg [3:0] M;
@@ -33,23 +33,32 @@ output reg T;
 
 reg [4:0] pos;  // position of the highest one
 reg [4:0] leading_zeroes;
-reg [10:0] TZ;  // temporary Z for shifting
+reg [11:0] TZ;  // temporary Z for shifting
 integer i;
 
 always@* begin
-	for (i=0; i <= 11; i=i+1) begin
+	for (i=0; i <= 12; i=i+1) begin
 		if (Z[i]) pos = i;
 	end
 
-	leading_zeroes = 11 - pos - 1;
+	leading_zeroes = 12 - pos - 1;
 	if (leading_zeroes <= 8)
 		E = 8 - leading_zeroes;
 	else
 		E = 0;
 	
-	TZ = Z << leading_zeroes;
-	M = TZ[10:7];
-	T = TZ[6]; //TODO : edge case
+	if (E == 0) begin
+		// Edge case, exponent is zero
+		TZ = Z;
+		M = TZ[3:0];
+		T = 1'b0;
+	end
+	else begin
+		// Normal case
+		TZ = Z << leading_zeroes;
+		M = TZ[11:8];
+		T = TZ[7];
+	end
 end
 
 

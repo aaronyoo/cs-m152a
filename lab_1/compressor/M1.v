@@ -25,7 +25,7 @@ module M1(
     );
 
 input [11:0] D;
-output reg [10:0] Z;
+output reg [11:0] Z;
 output reg S;
 
 always @*
@@ -35,20 +35,20 @@ begin
 	begin
 		// special case
 		S = 1'b1;
-		Z = 'b11111111111;
+		Z = 'b111111111111;
 	end
 	else
 	begin
 		// X is negative
 		S = D[11];
-		Z = (~D[10:0] + 1'b1);
+		Z = (~D[11:0] + 1'b1);
 	end
 end
 else
 begin
 	// D is positive
 	S = D[11];
-	Z = D[10:0];
+	Z = D[11:0];
 end
 
 endmodule

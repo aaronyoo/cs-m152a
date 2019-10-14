@@ -1,1 +1,1 @@
--intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -lib "secureip" -o "C:/Users/152/Desktop/cs-m152a/lab_1/compressor/M2_TB_isim_beh.exe" -prj "C:/Users/152/Desktop/cs-m152a/lab_1/compressor/M2_TB_beh.prj" "work.M2_TB" "work.glbl" 
+-intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -lib "secureip" -o "C:/Users/152/Desktop/cs-m152a/lab_1/compressor/FPCVT_TB_isim_beh.exe" -prj "C:/Users/152/Desktop/cs-m152a/lab_1/compressor/FPCVT_TB_beh.prj" "work.FPCVT_TB" "work.glbl" 
