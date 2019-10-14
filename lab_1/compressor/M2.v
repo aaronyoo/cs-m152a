@@ -47,6 +47,10 @@ always@* begin
 	else
 		E = 0;
 	
+	if (leading_zeroes == 0) begin
+		E = 3'b111;
+	end
+	
 	if (E == 0) begin
 		// Edge case, exponent is zero
 		TZ = Z;

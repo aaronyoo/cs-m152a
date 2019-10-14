@@ -29,6 +29,7 @@ static unsigned int ng4[] = {47U, 0U};
 static unsigned int ng5[] = {4095U, 0U};
 static unsigned int ng6[] = {125U, 0U};
 static unsigned int ng7[] = {2047U, 0U};
+static unsigned int ng8[] = {2048U, 0U};
 
 
 
@@ -124,7 +125,17 @@ LAB11:    xsi_set_current_line(59, ng0);
     *((char **)t1) = &&LAB12;
     goto LAB1;
 
-LAB12:    xsi_set_current_line(62, ng0);
+LAB12:    xsi_set_current_line(61, ng0);
+    t3 = ((char*)((ng8)));
+    t4 = (t0 + 1012);
+    xsi_vlogvar_assign_value(t4, t3, 0, 0, 12);
+    xsi_set_current_line(62, ng0);
+    t2 = (t0 + 1436);
+    xsi_process_wait(t2, 10000LL);
+    *((char **)t1) = &&LAB13;
+    goto LAB1;
+
+LAB13:    xsi_set_current_line(64, ng0);
     xsi_vlog_finish(1);
     goto LAB1;
 
