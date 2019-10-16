@@ -1,0 +1,3 @@
+verilog work "src/rtl/seq_add.v"
+verilog work "seq_mult.v"
+verilog work "src/rtl/seq_alu.v"
