@@ -1,3 +1,4 @@
+verilog work "src/rtl/seq_mult.v"
 verilog work "src/rtl/seq_add.v"
 verilog work "src/rtl/uart_fifo.v"
 verilog work "src/rtl/uart.v"

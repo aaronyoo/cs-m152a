@@ -2,7 +2,7 @@ module nexys3 (/*AUTOARG*/
    // Outputs
    RsTx, led,
    // Inputs
-   RsRx, sw, btnS, btnR, clk
+   RsRx, sw, btnS, btnR, btnA, clk
    );
 
 `include "seq_definitions.v"
@@ -16,6 +16,7 @@ module nexys3 (/*AUTOARG*/
    output [7:0] led;
    input        btnS;                 // single-step instruction
    input        btnR;                 // arst
+   input		btnA;				  // dedicated send button (pointless, but required)
    
    // Logic
    input        clk;                  // 100MHz
@@ -41,6 +42,10 @@ module nexys3 (/*AUTOARG*/
    reg [7:0]   inst_wd;
    reg         inst_vld;
    reg [2:0]   step_d;
+
+   reg [7:0]   inst_wd_forA;
+   reg		   inst_vld_forA;
+   reg [2:0]   step_d_forA;
 
    reg [7:0]   inst_cnt;
    
@@ -103,7 +108,7 @@ module nexys3 (/*AUTOARG*/
        inst_vld <= is_btnS_posedge;
 	  else
 	    inst_vld <= 0;
-
+		
    always @ (posedge clk)
      if (rst)
        inst_cnt <= 0;
@@ -111,6 +116,33 @@ module nexys3 (/*AUTOARG*/
        inst_cnt <= inst_cnt + 1;
 
    assign led[7:0] = inst_cnt[7:0];
+		
+   // ===========================================================================
+   // Instruction Stepping Control / Debouncing (for btnA)
+   // ===========================================================================
+
+   always @ (posedge clk)
+     if (rst)
+       begin
+          inst_wd_forA[7:0] <= 0;
+          step_d_forA[2:0]  <= 0;
+       end
+     else if (clk_en) // Down sampling
+       begin
+          inst_wd_forA[7:0] <= sw[7:0];
+          step_d_forA[2:0]  <= {btnA, step_d_forA[2:1]};
+       end
+	   
+	// Detecting posedge of btnA
+   wire is_btnA_posedge;
+   assign is_btnA_posedge = ~ step_d_forA[0] & step_d_forA[1];
+   always @ (posedge clk)
+     if (rst)
+       inst_vld_forA <= 1'b0;
+     else if (clk_en_d)
+       inst_vld_forA <= is_btnA_posedge;
+	  else
+	    inst_vld_forA <= 0;
    
    // ===========================================================================
    // Sequencer
@@ -121,8 +153,8 @@ module nexys3 (/*AUTOARG*/
              .o_tx_valid                (seq_tx_valid),
              // Inputs
              .i_tx_busy                 (uart_tx_busy),
-             .i_inst                    (inst_wd[seq_in_width-1:0]),
-             .i_inst_valid              (inst_vld),
+             .i_inst                    (inst_wd_forA[seq_in_width-1:0]), // TODO: change back 2 lines
+             .i_inst_valid              (inst_vld_forA),
              /*AUTOINST*/
              // Inputs
              .clk                       (clk),

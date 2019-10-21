@@ -6,6 +6,7 @@ module tb;
    reg       clk;
    reg       btnS;
    reg       btnR;
+   reg		 btnA;
    
    integer   i;
    
@@ -28,15 +29,23 @@ module tb;
         // #1500000;
 		#1500;
         
-        tskRunPUSH(0,4);
-        tskRunPUSH(2,1);
-        tskRunPUSH(1,3);
-        tskRunMULT(0,1,2);
-        tskRunADD(2,0,3);
+//		Show Logan Later
+//        tskRunPUSH(0,4);
+//        tskRunPUSH(0,0);
+//        tskRunPUSH(1,3);
+//        tskRunADD(0,2,2);
+//		tskRunADD(0,2,2);
+//		tskRunADD(0,2,2);
+//        tskRunADD(2,0,3);
 //        tskRunSEND(0);
 //        tskRunSEND(1);
-        tskRunSEND(2);
-        tskRunSEND(3);
+//        tskRunSEND(2);
+//        tskRunSEND(3);
+
+		tskRunPUSH(0,2);
+		tskRunPUSH(1,3);
+		tskRunMULT(0,1,2);
+		tskRunSEND(2);
 		
 		#100
 		btnR = 1;
@@ -69,6 +78,7 @@ module tb;
                 .sw                     (sw[7:0]),
                 .btnS                   (btnS),
                 .btnR                   (btnR),
+				.btnA					(btnA),
                 .clk                    (clk));
 
    task tskRunInst;

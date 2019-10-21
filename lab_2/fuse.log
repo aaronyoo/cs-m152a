@@ -1,4 +1,4 @@
-Running: C:\Xilinx\14.6\ISE_DS\ISE\bin\nt\unwrapped\fuse.exe -intstyle ise -incremental -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -lib secureip -o C:/Users/152/Desktop/cs-m152a/lab_2/tb_isim_beh.exe -prj C:/Users/152/Desktop/cs-m152a/lab_2/tb_beh.prj work.tb work.glbl 
+Running: fuse.exe -relaunch -intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -lib "secureip" -o "C:/Users/152/Desktop/cs-m152a/lab_2/tb_isim_beh.exe" -prj "C:/Users/152/Desktop/cs-m152a/lab_2/tb_beh.prj" "work.tb" "work.glbl" 
 ISim P.68d (signature 0x8ef4fb42)
 Number of CPUs detected in this system: 2
 Turning on mult-threading, number of parallel sub-compilation jobs: 4 
@@ -17,8 +17,8 @@ Analyzing Verilog file "C:/Users/152/Desktop/cs-m152a/lab_2/src/tb/tb.v" into li
 Analyzing Verilog file "C:/Xilinx/14.6/ISE_DS/ISE//verilog/src/glbl.v" into library work
 Starting static elaboration
 Completed static elaboration
-Fuse Memory Usage: 117716 KB
-Fuse CPU Usage: 343 ms
+Fuse Memory Usage: 118228 KB
+Fuse CPU Usage: 311 ms
 Compiling module model_uart(baud=1000000,name="UA...
 Compiling module seq_rf_default
 Compiling module seq_add_default
@@ -32,8 +32,8 @@ Compiling module nexys3_default
 Compiling module tb
 Compiling module glbl
 Time Resolution for simulation is 1ps.
-Waiting for 5 sub-compilation(s) to finish...
+Waiting for 9 sub-compilation(s) to finish...
 Compiled 12 Verilog Units
 Built simulation executable C:/Users/152/Desktop/cs-m152a/lab_2/tb_isim_beh.exe
-Fuse Memory Usage: 122308 KB
-Fuse CPU Usage: 514 ms
+Fuse Memory Usage: 121796 KB
+Fuse CPU Usage: 529 ms
