@@ -55,8 +55,8 @@ module seq_alu (/*AUTOARG*/
                  .rst                   (rst));
 
    seq_mult mult_ (// Outputs
-                 .o_data                (add_data),
-                 .o_valid               (add_valid),
+                 .o_data                (mult_data),
+                 .o_valid               (mult_valid),
                  /*AUTOINST*/
                  // Inputs
                  .i_data_a              (i_data_a[alu_width-1:0]),

@@ -29,14 +29,14 @@ module tb;
 		#1500;
         
         tskRunPUSH(0,4);
-        tskRunPUSH(2,0);
+        tskRunPUSH(2,1);
         tskRunPUSH(1,3);
         tskRunMULT(0,1,2);
-//        tskRunADD(2,0,3);
+        tskRunADD(2,0,3);
 //        tskRunSEND(0);
 //        tskRunSEND(1);
         tskRunSEND(2);
-//        tskRunSEND(3);
+        tskRunSEND(3);
 		
 		#100
 		btnR = 1;
