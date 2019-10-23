@@ -1,6 +1,6 @@
 module seq (/*AUTOARG*/
    // Outputs
-   o_tx_data, o_tx_valid,
+   o_tx_data, o_tx_valid, o_print_reg,
    // Inputs
    i_tx_busy, i_inst, i_inst_valid, clk, rst,
    i_inst_valid_A // if the A button is being pressed or not
@@ -44,6 +44,8 @@ module seq (/*AUTOARG*/
    wire                    rf_wstb;
 
    wire                    alu_valid_in;
+   
+   output wire [1:0] o_print_reg;
    
    // ===========================================================================
    // Instruction Decoding
@@ -107,6 +109,7 @@ module seq (/*AUTOARG*/
 
    assign o_tx_data  = rf_data_a[seq_dp_width-1:0];
    assign o_tx_valid = i_inst_valid_A & inst_op_send & ~i_tx_busy;
+   assign o_print_reg = inst_ra;
    
 //   original
 //   assign o_tx_valid = i_inst_valid & inst_op_send & ~i_tx_busy;

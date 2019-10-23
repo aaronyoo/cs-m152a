@@ -1,7 +1,7 @@
 Release 14.6 Drc P.68d (nt)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-Wed Oct 23 13:38:02 2019
+Wed Oct 23 14:20:26 2019
 
 drc -z nexys3.ncd nexys3.pcf
 

@@ -2,7 +2,7 @@ module uart_top (/*AUTOARG*/
    // Outputs
    o_tx, o_tx_busy, o_rx_data, o_rx_valid,
    // Inputs
-   i_rx, i_tx_data, i_tx_stb, clk, rst
+   i_rx, i_tx_data, i_tx_stb, clk, rst, i_print_reg
    );
 
 `include "seq_definitions.v"
@@ -17,13 +17,18 @@ module uart_top (/*AUTOARG*/
    input [seq_dp_width-1:0] i_tx_data;
    input                    i_tx_stb;
    
+   input [1:0]				i_print_reg;
+   
    input                    clk;
    input                    rst;
 
    parameter stIdle = 0;
-   parameter stNib1 = 1;
-   parameter stNL   = uart_num_nib+1;
-   parameter stCR   = uart_num_nib+2;
+   parameter stR = 1;
+   parameter stReg = 2;
+   parameter stColon = 3;
+   parameter stNib1 = 4;
+   parameter stNL   = uart_num_nib+3+1;
+   parameter stCR   = uart_num_nib+3+2;
    
    /*AUTOWIRE*/
    // Beginning of automatic wires (for undeclared instantiated-module outputs)
@@ -90,6 +95,17 @@ module uart_top (/*AUTOARG*/
      case (state)
        stNL:    tfifo_in = "\n";
        stCR:    tfifo_in = "\r";
+	   stColon: tfifo_in = ":";
+	   stR:		tfifo_in = "R";
+	   stReg:
+			begin
+				case (i_print_reg)
+				0: tfifo_in = "0";
+				1: tfifo_in = "1";
+				2: tfifo_in = "2";
+				3: tfifo_in = "3";
+				endcase
+			end
        default: tfifo_in = fnNib2ASCII(tx_data[seq_dp_width-1:seq_dp_width-4]);
      endcase // case (state)
    
