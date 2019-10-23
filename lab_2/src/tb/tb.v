@@ -90,6 +90,16 @@ module tb;
          #3000000 btnS = 0;
       end
    endtask //
+   
+  task tskRunInst;
+  input [7:0] inst;
+      begin
+         $display ("%d ... Trying to send %08b", $stime, inst);
+         sw = inst;
+         #1500000 btnS = 1;
+         #3000000 btnS = 0;
+      end
+   endtask //
 
    task tskRunPUSH;
       input [1:0] ra;
@@ -102,6 +112,15 @@ module tb;
    endtask //
 
    task tskRunSEND;
+      input [1:0] ra;
+      reg [7:0]   inst;
+      begin
+         inst = {2'b11, ra[1:0], 4'h0};
+         tskRunInst(inst);
+      end
+   endtask //
+
+   task tskRunNEWSEND;
       input [1:0] ra;
       reg [7:0]   inst;
       begin

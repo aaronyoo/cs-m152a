@@ -120,7 +120,7 @@ module nexys3 (/*AUTOARG*/
    // ===========================================================================
    // Instruction Stepping Control / Debouncing (for btnA)
    // ===========================================================================
-
+//   Don't need this anymore because I don't need to sample the button
    always @ (posedge clk)
      if (rst)
        begin
@@ -153,13 +153,14 @@ module nexys3 (/*AUTOARG*/
              .o_tx_valid                (seq_tx_valid),
              // Inputs
              .i_tx_busy                 (uart_tx_busy),
-             .i_inst                    (inst_wd_forA[seq_in_width-1:0]), // TODO: change back 2 lines
-             .i_inst_valid              (inst_vld_forA),
+             .i_inst                    (inst_wd[seq_in_width-1:0]), // TODO: change back 2 lines
+             .i_inst_valid              (inst_vld),
+			 .i_inst_valid_A			(inst_vld_forA),
              /*AUTOINST*/
              // Inputs
              .clk                       (clk),
              .rst                       (rst));
-   
+
    // ===========================================================================
    // UART controller
    // ===========================================================================

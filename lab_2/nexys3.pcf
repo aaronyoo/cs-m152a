@@ -1,5 +1,5 @@
 //! **************************************************************************
-// Written by: Map P.68d on Mon Oct 21 14:18:08 2019
+// Written by: Map P.68d on Wed Oct 23 13:37:35 2019
 //! **************************************************************************
 
 SCHEMATIC START;
@@ -34,14 +34,13 @@ TIMEGRP sys_clk_pin = BEL "arst_ff_0" BEL "arst_ff_1" BEL "clk_en" BEL
         BEL "clk_dv_5" BEL "clk_dv_6" BEL "clk_dv_7" BEL "clk_dv_8" BEL
         "clk_dv_9" BEL "clk_dv_10" BEL "clk_dv_11" BEL "clk_dv_12" BEL
         "clk_dv_13" BEL "clk_dv_14" BEL "clk_dv_15" BEL "clk_dv_16" BEL
-        "inst_wd_forA_0" BEL "inst_wd_forA_1" BEL "inst_wd_forA_2" BEL
-        "inst_wd_forA_3" BEL "inst_wd_forA_4" BEL "inst_wd_forA_5" BEL
-        "inst_wd_forA_6" BEL "inst_wd_forA_7" BEL "clk_en_d" BEL
-        "step_d_forA_0" BEL "step_d_forA_1" BEL "step_d_forA_2" BEL "step_d_0"
-        BEL "step_d_1" BEL "step_d_2" BEL "inst_vld" BEL "inst_vld_forA" BEL
-        "inst_cnt_0" BEL "inst_cnt_1" BEL "inst_cnt_2" BEL "inst_cnt_3" BEL
-        "inst_cnt_4" BEL "inst_cnt_5" BEL "inst_cnt_6" BEL "inst_cnt_7" BEL
-        "uart_top_/tx_data_15" BEL "uart_top_/tx_data_14" BEL
+        "inst_wd_0" BEL "inst_wd_1" BEL "inst_wd_2" BEL "inst_wd_3" BEL
+        "inst_wd_4" BEL "inst_wd_5" BEL "inst_wd_6" BEL "inst_wd_7" BEL
+        "clk_en_d" BEL "step_d_forA_0" BEL "step_d_forA_1" BEL "step_d_forA_2"
+        BEL "step_d_0" BEL "step_d_1" BEL "step_d_2" BEL "inst_vld" BEL
+        "inst_vld_forA" BEL "inst_cnt_0" BEL "inst_cnt_1" BEL "inst_cnt_2" BEL
+        "inst_cnt_3" BEL "inst_cnt_4" BEL "inst_cnt_5" BEL "inst_cnt_6" BEL
+        "inst_cnt_7" BEL "uart_top_/tx_data_15" BEL "uart_top_/tx_data_14" BEL
         "uart_top_/tx_data_13" BEL "uart_top_/tx_data_12" BEL
         "uart_top_/tx_data_11" BEL "uart_top_/tx_data_10" BEL
         "uart_top_/tx_data_9" BEL "uart_top_/tx_data_8" BEL

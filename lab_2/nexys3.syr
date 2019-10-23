@@ -4,7 +4,7 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.13 secs
+Total CPU time to Xst completion: 0.14 secs
  
 --> Parameter xsthdpdir set to xst
 
@@ -126,7 +126,7 @@ Parsing module <uart_top>.
 Parsing verilog file "C:\Users\152\Desktop\cs-m152a\lab_2\src\rtl\/seq_definitions.v" included at line 8.
 Analyzing Verilog file "C:\Users\152\Desktop\cs-m152a\lab_2\src\rtl\seq.v" into library work
 Parsing module <seq>.
-Parsing verilog file "C:\Users\152\Desktop\cs-m152a\lab_2\src\rtl\/seq_definitions.v" included at line 8.
+Parsing verilog file "C:\Users\152\Desktop\cs-m152a\lab_2\src\rtl\/seq_definitions.v" included at line 9.
 Analyzing Verilog file "C:\Users\152\Desktop\cs-m152a\lab_2\src\rtl\nexys3.v" into library work
 Parsing module <nexys3>.
 Parsing verilog file "C:\Users\152\Desktop\cs-m152a\lab_2\src\rtl\/seq_definitions.v" included at line 8.
@@ -136,8 +136,8 @@ Parsing verilog file "C:\Users\152\Desktop\cs-m152a\lab_2\src\rtl\/seq_definitio
 =========================================================================
 
 Elaborating module <nexys3>.
-WARNING:HDLCompiler:1127 - "C:\Users\152\Desktop\cs-m152a\lab_2\src\rtl\nexys3.v" Line 89: Assignment to inst_wd ignored, since the identifier is never used
 WARNING:HDLCompiler:413 - "C:\Users\152\Desktop\cs-m152a\lab_2\src\rtl\nexys3.v" Line 116: Result of 9-bit expression is truncated to fit in 8-bit target.
+WARNING:HDLCompiler:1127 - "C:\Users\152\Desktop\cs-m152a\lab_2\src\rtl\nexys3.v" Line 124: Assignment to inst_wd_forA ignored, since the identifier is never used
 
 Elaborating module <seq>.
 
@@ -169,8 +169,8 @@ WARNING:HDLCompiler:413 - "C:\Users\152\Desktop\cs-m152a\lab_2\src\rtl\uart.v" L
 WARNING:HDLCompiler:413 - "C:\Users\152\Desktop\cs-m152a\lab_2\src\rtl\uart.v" Line 153: Result of 32-bit expression is truncated to fit in 3-bit target.
 WARNING:HDLCompiler:413 - "C:\Users\152\Desktop\cs-m152a\lab_2\src\rtl\uart.v" Line 192: Result of 32-bit expression is truncated to fit in 4-bit target.
 WARNING:HDLCompiler:413 - "C:\Users\152\Desktop\cs-m152a\lab_2\src\rtl\uart.v" Line 209: Result of 32-bit expression is truncated to fit in 2-bit target.
-WARNING:HDLCompiler:1127 - "C:\Users\152\Desktop\cs-m152a\lab_2\src\rtl\nexys3.v" Line 170: Assignment to uart_rx_data ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "C:\Users\152\Desktop\cs-m152a\lab_2\src\rtl\nexys3.v" Line 171: Assignment to uart_rx_valid ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\152\Desktop\cs-m152a\lab_2\src\rtl\nexys3.v" Line 171: Assignment to uart_rx_data ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\152\Desktop\cs-m152a\lab_2\src\rtl\nexys3.v" Line 172: Assignment to uart_rx_valid ignored, since the identifier is never used
 
 =========================================================================
 *                           HDL Synthesis                               *
@@ -191,16 +191,16 @@ Synthesizing Unit <nexys3>.
         seq_rf_width = 16
         alu_width = 16
         uart_num_nib = 4
-INFO:Xst:3210 - "C:\Users\152\Desktop\cs-m152a\lab_2\src\rtl\nexys3.v" line 167: Output port <o_rx_data> of the instance <uart_top_> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "C:\Users\152\Desktop\cs-m152a\lab_2\src\rtl\nexys3.v" line 167: Output port <o_rx_valid> of the instance <uart_top_> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:\Users\152\Desktop\cs-m152a\lab_2\src\rtl\nexys3.v" line 168: Output port <o_rx_data> of the instance <uart_top_> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:\Users\152\Desktop\cs-m152a\lab_2\src\rtl\nexys3.v" line 168: Output port <o_rx_valid> of the instance <uart_top_> is unconnected or connected to loadless signal.
     Found 2-bit register for signal <arst_ff>.
     Found 17-bit register for signal <clk_dv>.
     Found 1-bit register for signal <clk_en>.
     Found 1-bit register for signal <clk_en_d>.
+    Found 8-bit register for signal <inst_wd>.
     Found 3-bit register for signal <step_d>.
     Found 1-bit register for signal <inst_vld>.
     Found 8-bit register for signal <led>.
-    Found 8-bit register for signal <inst_wd_forA>.
     Found 3-bit register for signal <step_d_forA>.
     Found 1-bit register for signal <inst_vld_forA>.
     Found 18-bit adder for signal <n0059> created at line 69.
@@ -752,16 +752,16 @@ Timing constraint: Default period analysis for Clock 'clk'
   Total number of paths / destination ports: 35459 / 462
 -------------------------------------------------------------------------
 Delay:               6.909ns (Levels of Logic = 3)
-  Source:            inst_wd_forA_5 (FF)
+  Source:            inst_wd_5 (FF)
   Destination:       seq_/rf_/rf_3_63 (FF)
   Source Clock:      clk rising
   Destination Clock: clk rising
 
-  Data Path: inst_wd_forA_5 to seq_/rf_/rf_3_63
+  Data Path: inst_wd_5 to seq_/rf_/rf_3_63
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDRE:C->Q            17   0.447   1.132  inst_wd_forA_5 (inst_wd_forA_5)
+     FDRE:C->Q            17   0.447   1.132  inst_wd_5 (inst_wd_5)
      LUT6:I4->O            7   0.203   0.773  seq_/rf_/Mmux_o_data_a91 (seq_tx_data<2>)
      DSP48A1:B2->M15       4   3.364   0.684  seq_/alu_/mult_/Mmult_n0002 (seq_/alu_/mult_data<15>)
      LUT6:I5->O            1   0.205   0.000  seq_/rf_/Mmux_rf[0][15]_i_wdata[15]_mux_5_OUT71 (seq_/rf_/rf[0][15]_i_wdata[15]_mux_5_OUT<15>)
@@ -824,12 +824,12 @@ clk            |    6.909|         |         |         |
 =========================================================================
 
 
-Total REAL time to Xst completion: 9.00 secs
-Total CPU time to Xst completion: 9.18 secs
+Total REAL time to Xst completion: 8.00 secs
+Total CPU time to Xst completion: 8.64 secs
  
 --> 
 
-Total memory usage is 213584 kilobytes
+Total memory usage is 212048 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :   61 (   0 filtered)
