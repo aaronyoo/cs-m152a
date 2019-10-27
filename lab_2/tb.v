@@ -16,6 +16,7 @@ module tb;
    wire [7:0]           led;                    // From uut_ of nexys3.v
    // End of automatics
 
+   reg [7:0] mem[1023:0];  // File is up to 1024 lines long with up to 8 bit lines
    initial
      begin
         //$shm_open  ("dump", , ,1);
@@ -26,16 +27,27 @@ module tb;
         btnS = 0;
         #1000 btnR = 0;
         #1500000;
+
+        $readmemb("seq.code", mem);
+        for (i = 1; i <= mem[0]; i = i + 1) begin
+            // switch on the opcode
+            case(mem[i][7:6])
+               2'b00: tskRunPUSH(mem[i][5:4], mem[i][3:0]);
+               2'b01: tskRunADD(mem[i][5:4], mem[i][3:2], mem[i][1:0]);
+               2'b10: tskRunMULT(mem[i][5:4], mem[i][3:2], mem[i][1:0]);
+               2'b11: tskRunSEND(mem[i][5:4]);
+            endcase
+        end
         
-        tskRunPUSH(0,4);
-        tskRunPUSH(0,0);
-        tskRunPUSH(1,3);
-        tskRunMULT(0,1,2);
-        tskRunADD(2,0,3);
-        tskRunSEND(0);
-        tskRunSEND(1);
-        tskRunSEND(2);
-        tskRunSEND(3);
+      //   tskRunPUSH(0,4);
+      //   tskRunPUSH(0,0);
+      //   tskRunPUSH(1,3);
+      //   tskRunMULT(0,1,2);
+      //   tskRunADD(2,0,3);
+      //   tskRunSEND(0);
+      //   tskRunSEND(1);
+      //   tskRunSEND(2);
+      //   tskRunSEND(3);
         
         #1000;        
         $finish;
