@@ -28,17 +28,48 @@ module tb;
         #1000 btnR = 0;
         #1500000;
 
-        $readmemb("seq.code", mem);
-        for (i = 1; i <= mem[0]; i = i + 1) begin
-            // switch on the opcode
-            case(mem[i][7:6])
-               2'b00: tskRunPUSH(mem[i][5:4], mem[i][3:0]);
-               2'b01: tskRunADD(mem[i][5:4], mem[i][3:2], mem[i][1:0]);
-               2'b10: tskRunMULT(mem[i][5:4], mem[i][3:2], mem[i][1:0]);
-               2'b11: tskRunSEND(mem[i][5:4]);
-            endcase
-        end
-        
+      //   $readmemb("seq.code", mem);
+      //   for (i = 1; i <= mem[0]; i = i + 1) begin
+      //       // switch on the opcode
+      //       case(mem[i][7:6])
+      //          2'b00: tskRunPUSH(mem[i][5:4], mem[i][3:0]);
+      //          2'b01: tskRunADD(mem[i][5:4], mem[i][3:2], mem[i][1:0]);
+      //          2'b10: tskRunMULT(mem[i][5:4], mem[i][3:2], mem[i][1:0]);
+      //          2'b11: tskRunSEND(mem[i][5:4]);
+      //       endcase
+      //   end
+
+      // Fibonacci Program
+      tskRunPUSH(0, 1);
+      tskRunPUSH(1, 1);
+      tskRunSEND(0);  // 1
+      tskRunSEND(1);  // 1
+
+      tskRunADD(0, 1, 2);
+      tskRunSEND(2);  // 2
+
+      tskRunADD(1, 2, 0);
+      tskRunSEND(0);  // 3
+
+      tskRunADD(2, 0, 1);
+      tskRunSEND(1);  // 5
+
+      tskRunADD(0, 1, 2);
+      tskRunSEND(2);  // 8
+
+      tskRunADD(1, 2, 0);
+      tskRunSEND(0);  // 13
+
+      tskRunADD(2, 0, 1);  // 21
+      tskRunSEND(1);
+
+      tskRunADD(0, 1, 2);  // 34
+      tskRunSEND(2);
+
+      tskRunADD(1, 2, 0);  // 55
+      tskRunSEND(0);
+
+      // Demo Program  
       //   tskRunPUSH(0,4);
       //   tskRunPUSH(0,0);
       //   tskRunPUSH(1,3);
