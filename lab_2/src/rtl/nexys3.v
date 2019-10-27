@@ -48,8 +48,8 @@ module nexys3 (/*AUTOARG*/
    reg [2:0]   step_d_forA;
 
    reg [7:0]   inst_cnt;
-   
-   wire [1:0]	print_reg;
+
+   wire [1:0]   print_reg;
    
    // ===========================================================================
    // Asynchronous Reset
@@ -153,7 +153,7 @@ module nexys3 (/*AUTOARG*/
    seq seq_ (// Outputs
              .o_tx_data                 (seq_tx_data[seq_dp_width-1:0]),
              .o_tx_valid                (seq_tx_valid),
-			 .o_print_reg				(print_reg),
+             .o_print_reg               (print_reg),
              // Inputs
              .i_tx_busy                 (uart_tx_busy),
              .i_inst                    (inst_wd[seq_in_width-1:0]), // TODO: change back 2 lines
@@ -177,6 +177,7 @@ module nexys3 (/*AUTOARG*/
                        .i_rx            (RsRx),
                        .i_tx_data       (seq_tx_data[seq_dp_width-1:0]),
                        .i_tx_stb        (seq_tx_valid),
+                       .i_print_reg     (print_reg),
                        /*AUTOINST*/
                        // Inputs
                        .clk             (clk),

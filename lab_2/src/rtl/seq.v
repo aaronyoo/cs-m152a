@@ -44,8 +44,8 @@ module seq (/*AUTOARG*/
    wire                    rf_wstb;
 
    wire                    alu_valid_in;
-   
-   output wire [1:0] o_print_reg;
+
+   output [1:0]        o_print_reg;
    
    // ===========================================================================
    // Instruction Decoding
@@ -61,6 +61,8 @@ module seq (/*AUTOARG*/
    assign inst_op_add  = (inst_op == seq_op_add);
    assign inst_op_mult = (inst_op == seq_op_mult);
    assign inst_op_send = (inst_op == seq_op_send);
+
+   assign o_print_reg = inst_ra;
 
    // ===========================================================================
    // Register File
@@ -108,8 +110,7 @@ module seq (/*AUTOARG*/
    // ===========================================================================
 
    assign o_tx_data  = rf_data_a[seq_dp_width-1:0];
-   assign o_tx_valid = i_inst_valid_A & inst_op_send & ~i_tx_busy;
-   assign o_print_reg = inst_ra;
+   assign o_tx_valid = i_inst_valid & inst_op_send & ~i_tx_busy;
    
 //   original
 //   assign o_tx_valid = i_inst_valid & inst_op_send & ~i_tx_busy;

@@ -54,7 +54,7 @@ module uart_top (/*AUTOARG*/
          stIdle:
            if (i_tx_stb)
              begin
-                state   <= stNib1;
+                state   <= stR;
                 tx_data <= i_tx_data;
              end
          stCR:
@@ -63,7 +63,9 @@ module uart_top (/*AUTOARG*/
            if (~tfifo_full)
              begin
                 state   <= state + 1;
-                tx_data <= {tx_data,4'b0000};
+                if (state > 3) begin  // We don't want to destroy the data while printing out the prefix
+                  tx_data <= {tx_data,4'b0000};
+                end
              end
        endcase // case (state)
 
@@ -95,9 +97,9 @@ module uart_top (/*AUTOARG*/
      case (state)
        stNL:    tfifo_in = "\n";
        stCR:    tfifo_in = "\r";
-	   stColon: tfifo_in = ":";
-	   stR:		tfifo_in = "R";
-	   stReg:
+	     stColon: tfifo_in = ":";
+	     stR:		tfifo_in = "R";
+	     stReg:
 			begin
 				case (i_print_reg)
 				0: tfifo_in = "0";
