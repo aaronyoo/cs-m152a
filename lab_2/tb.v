@@ -40,45 +40,45 @@ module tb;
       //   end
 
       // Fibonacci Program
-      tskRunPUSH(0, 1);
-      tskRunPUSH(1, 1);
-      tskRunSEND(0);  // 1
-      tskRunSEND(1);  // 1
+      // tskRunPUSH(0, 1);
+      // tskRunPUSH(1, 1);
+      // tskRunSEND(0);  // 1
+      // tskRunSEND(1);  // 1
 
-      tskRunADD(0, 1, 2);
-      tskRunSEND(2);  // 2
+      // tskRunADD(0, 1, 2);
+      // tskRunSEND(2);  // 2
 
-      tskRunADD(1, 2, 0);
-      tskRunSEND(0);  // 3
+      // tskRunADD(1, 2, 0);
+      // tskRunSEND(0);  // 3
 
-      tskRunADD(2, 0, 1);
-      tskRunSEND(1);  // 5
+      // tskRunADD(2, 0, 1);
+      // tskRunSEND(1);  // 5
 
-      tskRunADD(0, 1, 2);
-      tskRunSEND(2);  // 8
+      // tskRunADD(0, 1, 2);
+      // tskRunSEND(2);  // 8
 
-      tskRunADD(1, 2, 0);
-      tskRunSEND(0);  // 13
+      // tskRunADD(1, 2, 0);
+      // tskRunSEND(0);  // 13
 
-      tskRunADD(2, 0, 1);  // 21
-      tskRunSEND(1);
+      // tskRunADD(2, 0, 1);  // 21
+      // tskRunSEND(1);
 
-      tskRunADD(0, 1, 2);  // 34
-      tskRunSEND(2);
+      // tskRunADD(0, 1, 2);  // 34
+      // tskRunSEND(2);
 
-      tskRunADD(1, 2, 0);  // 55
-      tskRunSEND(0);
+      // tskRunADD(1, 2, 0);  // 55
+      // tskRunSEND(0);
 
       // Demo Program  
-      //   tskRunPUSH(0,4);
-      //   tskRunPUSH(0,0);
-      //   tskRunPUSH(1,3);
-      //   tskRunMULT(0,1,2);
-      //   tskRunADD(2,0,3);
-      //   tskRunSEND(0);
-      //   tskRunSEND(1);
-      //   tskRunSEND(2);
-      //   tskRunSEND(3);
+        tskRunPUSH(0,4);
+        tskRunPUSH(0,0);
+        tskRunPUSH(1,3);
+        tskRunMULT(0,1,2);
+        tskRunADD(2,0,3);
+        tskRunSEND(0);
+        tskRunSEND(1);
+        tskRunSEND(2);
+        tskRunSEND(3);
         
         #1000;        
         $finish;

@@ -107,7 +107,8 @@ module nexys3 (/*AUTOARG*/
      if (rst)
        inst_vld <= 1'b0;
      else if (clk_en_d)
-       inst_vld <= is_btnS_posedge;
+       
+       
 	  else
 	    inst_vld <= 0;
 		

@@ -10,6 +10,9 @@ integer blink_idx;
 
 initial begin
     onehz_clk = 0;
+    twohz_clk = 0;
+    fast_clk = 0;
+    blink_clk = 0;
 end
 
 always@ (posedge clk)
@@ -26,12 +29,34 @@ always@ (posedge clk)
             fast_idx = fast_idx + 1;
             blink_idx = blink_idx + 1;
 
+	    // One hertz clock
 	    // Too slow for simulator
             // if (onehz_idx == 50000000) begin
 	    if (onehz_idx == 600000) begin
-		$display("IDX: %d, CLK: %d", onehz_idx, onehz_clk);
+		$display("IDX: %d, OneCLK: %d", onehz_idx, onehz_clk);
 		onehz_idx = 0;
 		onehz_clk = ~onehz_clk;
+            end
+
+	    // Two hertz clock
+	    if (twohz_idx == 1200000) begin
+		$display("IDX: %d, TwoCLK: %d", twohz_idx, twohz_clk);
+		twohz_idx = 0;
+		twohz_clk = ~twohz_clk;
+            end
+
+	    // Fast clock
+	    if (fast_idx == 600000) begin
+		// $display("IDX: %d, FastCLK: %d", fast_idx, fast_clk);
+		fast_idx = 0;
+		fast_clk = ~fast_clk;
+            end
+
+	    // Blink Clock
+	    if (blink_idx == 600000) begin
+		// $display("IDX: %d, SlowCLK: %d", blink_idx, blink_clk);
+		blink_idx = 0;
+		blink_clk = ~blink_clk;
             end
 	end
     end
