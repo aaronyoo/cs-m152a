@@ -16,7 +16,7 @@ module clock_test;
     end
 
     initial begin
-	clk_counter = 0;
+	    clk_counter = 0;
         clk = 0;
         rst = 1;
         #100;
