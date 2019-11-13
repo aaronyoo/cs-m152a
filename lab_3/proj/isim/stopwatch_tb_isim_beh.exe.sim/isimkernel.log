@@ -1,0 +1,10 @@
+Command line:
+   stopwatch_tb_isim_beh.exe
+     -simmode  gui
+     -simrunnum  0
+     -socket  50668
+
+Wed Nov 13 14:17:30 2019
+
+
+ Elaboration Time: 0.046801 sec

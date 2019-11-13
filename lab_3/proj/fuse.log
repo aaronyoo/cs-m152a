@@ -1,0 +1,28 @@
+Running: fuse.exe -relaunch -intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -lib "secureip" -o "C:/Users/152/Desktop/cs-m152a/lab_3/proj/stopwatch_tb_isim_beh.exe" -prj "C:/Users/152/Desktop/cs-m152a/lab_3/proj/stopwatch_tb_beh.prj" "work.stopwatch_tb" "work.glbl" 
+ISim P.68d (signature 0x7708f090)
+Number of CPUs detected in this system: 2
+Turning on mult-threading, number of parallel sub-compilation jobs: 4 
+Determining compilation order of HDL files
+Analyzing Verilog file "C:/Users/152/Desktop/cs-m152a/lab_3/proj/../stopwatch_counter.v" into library work
+Analyzing Verilog file "C:/Users/152/Desktop/cs-m152a/lab_3/proj/../segment_display.v" into library work
+Analyzing Verilog file "C:/Users/152/Desktop/cs-m152a/lab_3/proj/../debouncer.v" into library work
+Analyzing Verilog file "C:/Users/152/Desktop/cs-m152a/lab_3/proj/../clock.v" into library work
+Analyzing Verilog file "C:/Users/152/Desktop/cs-m152a/lab_3/proj/../stopwatch.v" into library work
+Analyzing Verilog file "C:/Users/152/Desktop/cs-m152a/lab_3/proj/../stopwatch-tb.v" into library work
+Analyzing Verilog file "C:/Xilinx/14.6/ISE_DS/ISE//verilog/src/glbl.v" into library work
+Starting static elaboration
+WARNING:HDLCompiler:1016 - "C:/Users/152/Desktop/cs-m152a/lab_3/proj/../stopwatch-tb.v" Line 15: Port an is not connected to this instance
+Completed static elaboration
+Compiling module debouncer
+Compiling module clock
+Compiling module stopwatch_counter
+Compiling module segment_display
+Compiling module stopwatch
+Compiling module stopwatch_tb
+Compiling module glbl
+Time Resolution for simulation is 1ps.
+Waiting for 4 sub-compilation(s) to finish...
+Compiled 7 Verilog Units
+Built simulation executable C:/Users/152/Desktop/cs-m152a/lab_3/proj/stopwatch_tb_isim_beh.exe
+Fuse Memory Usage: 27720 KB
+Fuse CPU Usage: 576 ms

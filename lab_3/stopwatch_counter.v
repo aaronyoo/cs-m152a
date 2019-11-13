@@ -4,7 +4,7 @@ module stopwatch_counter(
     input wire sel,
     input wire norm_clk,
     input wire adj_clk,
-    input wire pause_in,
+    input wire pause,
     
     output wire[3:0] sec_ones_out,
     output wire[3:0] sec_tens_out,
@@ -28,16 +28,6 @@ module stopwatch_counter(
     wire chosen_clock;
     assign chosen_clock = (adj == 0) ? norm_clk : adj_clk;
 
-    // Handle the pause button
-    reg pause = 0;
-    always @* begin
-        if (pause_in)
-            pause <= !pause;
-        else
-            pause <= pause;
-    end
-
-
     always @ (posedge chosen_clock or posedge rst) begin
         if (rst) begin
             // We should reset the counter
@@ -59,7 +49,7 @@ module stopwatch_counter(
                         if (min_tens == 4'd5) begin
                             min_tens <= 4'd0;
                             // pause here (@ 00:00, after 59:59)
-                            pause <= 1;
+                            // TODO: pause = 1;
                         end
                         else begin
                             min_tens <= min_tens + 4'd1;

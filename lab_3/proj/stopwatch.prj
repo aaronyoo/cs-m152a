@@ -1,0 +1,5 @@
+verilog work "../stopwatch_counter.v"
+verilog work "../segment_display.v"
+verilog work "../debouncer.v"
+verilog work "../clock.v"
+verilog work "../stopwatch.v"

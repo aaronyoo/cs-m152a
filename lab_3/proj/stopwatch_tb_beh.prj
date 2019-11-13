@@ -1,0 +1,7 @@
+verilog work "../stopwatch_counter.v"
+verilog work "../segment_display.v"
+verilog work "../debouncer.v"
+verilog work "../clock.v"
+verilog work "../stopwatch.v"
+verilog work "../stopwatch-tb.v"
+verilog work "C:/Xilinx/14.6/ISE_DS/ISE//verilog/src/glbl.v"

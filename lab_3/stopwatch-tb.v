@@ -29,7 +29,11 @@ module stopwatch_tb;
         adj = 0;
         sel = 0;
 
-        #100;
+        #1000
+		rst = 1;
+		#1000
+		rst = 0;
+		#1000
 
         forever #1000 clk = ~clk;
         $monitor($time, "segment = %b", seg);

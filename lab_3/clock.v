@@ -15,6 +15,8 @@ initial begin
     blink_clk = 0;
 end
 
+// This line is for simulation
+//always@ (posedge clk or rst)
 always@ (posedge clk)
     begin
         if (rst) begin
@@ -31,21 +33,21 @@ always@ (posedge clk)
 
 			// One hertz clock
 			// if (onehz_idx == 50000000) begin // Too slow for simulator
-			if (onehz_idx == 600000) begin
+			if (onehz_idx == 50000000) begin
 				$display("IDX: %d, OneCLK: %d", onehz_idx, onehz_clk);
 				onehz_idx = 0;
 				onehz_clk = ~onehz_clk;
 			end
 
 			// Two hertz clock
-			if (twohz_idx == 1200000) begin
+			if (twohz_idx == 25000000) begin
 				$display("IDX: %d, TwoCLK: %d", twohz_idx, twohz_clk);
 				twohz_idx = 0;
 				twohz_clk = ~twohz_clk;
 			end
 
 			// Fast clock
-			if (fast_idx == 600000) begin
+			if (fast_idx == 500000) begin
 				// $display("IDX: %d, FastCLK: %d", fast_idx, fast_clk);
 				fast_idx = 0;
 				fast_clk = ~fast_clk;

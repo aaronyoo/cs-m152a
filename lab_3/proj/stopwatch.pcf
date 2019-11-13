@@ -1,0 +1,78 @@
+//! **************************************************************************
+// Written by: Map P.68d on Wed Nov 13 14:31:05 2019
+//! **************************************************************************
+
+SCHEMATIC START;
+COMP "clk" LOCATE = SITE "V10" LEVEL 1;
+COMP "an<0>" LOCATE = SITE "N16" LEVEL 1;
+COMP "an<1>" LOCATE = SITE "N15" LEVEL 1;
+COMP "an<2>" LOCATE = SITE "P18" LEVEL 1;
+COMP "an<3>" LOCATE = SITE "P17" LEVEL 1;
+COMP "seg<0>" LOCATE = SITE "T17" LEVEL 1;
+COMP "seg<1>" LOCATE = SITE "T18" LEVEL 1;
+COMP "seg<2>" LOCATE = SITE "U17" LEVEL 1;
+COMP "seg<3>" LOCATE = SITE "U18" LEVEL 1;
+COMP "seg<4>" LOCATE = SITE "M14" LEVEL 1;
+COMP "seg<5>" LOCATE = SITE "N14" LEVEL 1;
+COMP "seg<6>" LOCATE = SITE "L14" LEVEL 1;
+COMP "seg<7>" LOCATE = SITE "M13" LEVEL 1;
+TIMEGRP sys_clk_pin = BEL "clock_divider/onehz_idx_25" BEL
+        "clock_divider/onehz_idx_24" BEL "clock_divider/onehz_idx_23" BEL
+        "clock_divider/onehz_idx_22" BEL "clock_divider/onehz_idx_21" BEL
+        "clock_divider/onehz_idx_20" BEL "clock_divider/onehz_idx_19" BEL
+        "clock_divider/onehz_idx_18" BEL "clock_divider/onehz_idx_17" BEL
+        "clock_divider/onehz_idx_16" BEL "clock_divider/onehz_idx_15" BEL
+        "clock_divider/onehz_idx_14" BEL "clock_divider/onehz_idx_13" BEL
+        "clock_divider/onehz_idx_12" BEL "clock_divider/onehz_idx_11" BEL
+        "clock_divider/onehz_idx_10" BEL "clock_divider/onehz_idx_9" BEL
+        "clock_divider/onehz_idx_8" BEL "clock_divider/onehz_idx_7" BEL
+        "clock_divider/onehz_idx_6" BEL "clock_divider/onehz_idx_5" BEL
+        "clock_divider/onehz_idx_4" BEL "clock_divider/onehz_idx_3" BEL
+        "clock_divider/onehz_idx_2" BEL "clock_divider/onehz_idx_1" BEL
+        "clock_divider/onehz_idx_0" BEL "clock_divider/blink_idx_19" BEL
+        "clock_divider/blink_idx_18" BEL "clock_divider/blink_idx_17" BEL
+        "clock_divider/blink_idx_16" BEL "clock_divider/blink_idx_15" BEL
+        "clock_divider/blink_idx_14" BEL "clock_divider/blink_idx_13" BEL
+        "clock_divider/blink_idx_12" BEL "clock_divider/blink_idx_11" BEL
+        "clock_divider/blink_idx_10" BEL "clock_divider/blink_idx_9" BEL
+        "clock_divider/blink_idx_8" BEL "clock_divider/blink_idx_7" BEL
+        "clock_divider/blink_idx_6" BEL "clock_divider/fast_idx_18" BEL
+        "clock_divider/fast_idx_17" BEL "clock_divider/fast_idx_16" BEL
+        "clock_divider/fast_idx_15" BEL "clock_divider/fast_idx_14" BEL
+        "clock_divider/fast_idx_13" BEL "clock_divider/fast_idx_12" BEL
+        "clock_divider/fast_idx_11" BEL "clock_divider/fast_idx_10" BEL
+        "clock_divider/fast_idx_9" BEL "clock_divider/fast_idx_8" BEL
+        "clock_divider/fast_idx_7" BEL "clock_divider/fast_idx_6" BEL
+        "clock_divider/fast_idx_5" BEL "clock_divider/twohz_idx_24" BEL
+        "clock_divider/twohz_idx_23" BEL "clock_divider/twohz_idx_22" BEL
+        "clock_divider/twohz_idx_21" BEL "clock_divider/twohz_idx_20" BEL
+        "clock_divider/twohz_idx_19" BEL "clock_divider/twohz_idx_18" BEL
+        "clock_divider/twohz_idx_17" BEL "clock_divider/twohz_idx_16" BEL
+        "clock_divider/twohz_idx_15" BEL "clock_divider/twohz_idx_14" BEL
+        "clock_divider/twohz_idx_13" BEL "clock_divider/twohz_idx_12" BEL
+        "clock_divider/twohz_idx_11" BEL "clock_divider/twohz_idx_10" BEL
+        "clock_divider/twohz_idx_9" BEL "clock_divider/twohz_idx_8" BEL
+        "clock_divider/twohz_idx_7" BEL "clock_divider/twohz_idx_6" BEL
+        "reset_debouncer/temp_state" BEL "pause_debouncer/temp_state" BEL
+        "clock_divider/onehz_clk" BEL "clock_divider/twohz_clk" BEL
+        "clock_divider/blink_clk" BEL "clock_divider/fast_clk" BEL
+        "reset_debouncer/counter_0" BEL "reset_debouncer/counter_1" BEL
+        "reset_debouncer/counter_2" BEL "reset_debouncer/counter_3" BEL
+        "reset_debouncer/counter_4" BEL "reset_debouncer/counter_5" BEL
+        "reset_debouncer/counter_6" BEL "reset_debouncer/counter_7" BEL
+        "reset_debouncer/counter_8" BEL "reset_debouncer/counter_9" BEL
+        "reset_debouncer/counter_10" BEL "reset_debouncer/counter_11" BEL
+        "reset_debouncer/counter_12" BEL "reset_debouncer/counter_13" BEL
+        "reset_debouncer/counter_14" BEL "reset_debouncer/counter_15" BEL
+        "pause_debouncer/counter_0" BEL "pause_debouncer/counter_1" BEL
+        "pause_debouncer/counter_2" BEL "pause_debouncer/counter_3" BEL
+        "pause_debouncer/counter_4" BEL "pause_debouncer/counter_5" BEL
+        "pause_debouncer/counter_6" BEL "pause_debouncer/counter_7" BEL
+        "pause_debouncer/counter_8" BEL "pause_debouncer/counter_9" BEL
+        "pause_debouncer/counter_10" BEL "pause_debouncer/counter_11" BEL
+        "pause_debouncer/counter_12" BEL "pause_debouncer/counter_13" BEL
+        "pause_debouncer/counter_14" BEL "pause_debouncer/counter_15" BEL
+        "clk_BUFGP/BUFG";
+TS_sys_clk_pin = PERIOD TIMEGRP "sys_clk_pin" 100 MHz HIGH 50%;
+SCHEMATIC END;
+

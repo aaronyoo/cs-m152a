@@ -1,31 +1,25 @@
 module debouncer(
     input clk,
     input btn,
-    output reg state
+    output state
 );
 
     // Code inspired from:
     // https://www.eecs.umich.edu/courses/eecs270/270lab/270_docs/debounce.html
-    reg [15:0] counter;
-
-    reg sync0;
+    reg [15:0] counter = 0;
+	reg temp_state = 0;
+	assign state = temp_state;
+	
     always @ (posedge clk) begin
-        sync0 <= btn;
-    end
-
-    reg sync1;
-    always @ (posedge clk) begin
-        sync1 <= sync0;
-    end
-
-    always @ (posedge clk) begin
-    if (state == sync1) begin
+    if (btn == 0) begin
         counter <= 0;
+		temp_state <= 0;
     end
     else begin
         counter <= counter + 1'b1;
         if (counter == 16'hffff) begin
-                state <= ~state;
+                temp_state <= 1;
+				counter <= 0;
         end
     end
     end

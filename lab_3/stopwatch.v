@@ -4,7 +4,8 @@ module stopwatch (
     input wire pause,
     input wire adj,
     input wire sel,
-    output reg[7:0] seg
+    output reg[7:0] seg,
+	output reg[3:0] an
 );
 
     wire [3:0] sec_ones;
@@ -63,13 +64,23 @@ module stopwatch (
         .sel(sel),
         .norm_clk(onehz_clk),
         .adj_clk(twohz_clk),
-        .pause_in(is_paused),
+        .pause(is_paused),
 
         .sec_ones_out(sec_ones),
         .sec_tens_out(sec_tens),
         .min_ones_out(min_ones),
         .min_tens_out(min_tens)
     );
+
+//	reg [3:0] temp;
+//	assign sec_ones = temp;
+//	always @(onehz_clk) begin
+//		temp = temp + 4'd1;
+//	end
+//	
+//	assign sec_tens = 2;
+//	assign min_ones = 1;
+//	assign min_tens = 0;
 
     segment_display sec_ones_display (
         .digit(sec_ones),
@@ -102,15 +113,19 @@ module stopwatch (
         // stopwatch behaves normally
         if(adj == 0) begin
             if(cnt == 0) begin
+				an <= 4'b0111;
                 seg <= min_tens_segment;
             end
             else if(cnt == 1) begin
+				an <= 4'b1011;
                 seg <= min_ones_segment;
             end
             else if(cnt == 2) begin
+				an <= 4'b1101;
                 seg <= sec_tens_segment;
             end
             else if(cnt == 3) begin
+				an <= 4'b1110;
                 seg <= sec_ones_segment;
             end
             cnt <= cnt + 1;
@@ -120,21 +135,25 @@ module stopwatch (
             // select is 'minutes'
             if(~sel) begin
                 if(cnt == 0) begin // tens place in minutes
+					an <= 4'b0111;
                     if(blink_clk)
                         seg <= min_tens_segment;
                     else
                         seg <= blank_segment;
                 end
                 else if(cnt == 1) begin // ones place in minutes
+					an <= 4'b1011;
                     if(blink_clk)
                         seg <= min_ones_segment;
                     else
                         seg <= blank_segment;
                 end
                 else if(cnt == 2) begin // tens place in seconds
+					an <= 4'b1101;
                     seg <= sec_tens_segment;
                 end
                 else if(cnt == 3) begin // ones place in seconds
+					an <= 4'b1110;
                     seg <= sec_ones_segment;
                 end
                 cnt <= cnt + 1;
@@ -142,18 +161,22 @@ module stopwatch (
             // select is 'seconds'
             else begin
                 if(cnt == 0) begin // tens place in minutes
+					an <= 4'b0111;
                     seg <= min_tens_segment;
                 end
                 else if(cnt == 1) begin // ones place in minutes
+					an <= 4'b1011;
                     seg <= min_ones_segment;
                 end
                 else if(cnt == 2) begin // tens place in seconds
-                    if(blink_clk)
+                    an <= 4'b1101;
+					if(blink_clk)
                         seg <= sec_tens_segment;
                     else
                         seg <= blank_segment;
                 end
                 else if(cnt == 3) begin // ones place in seconds
+					an <= 4'b1110;
                     if(blink_clk)
                         seg <= sec_ones_segment;
                     else
