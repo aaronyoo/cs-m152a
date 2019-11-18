@@ -54,7 +54,7 @@ always@ (posedge clk)
 			end
 
 			// Blink Clock
-			if (blink_idx == 30000000) begin
+			if (blink_idx == 25000000) begin
 				// $display("IDX: %d, SlowCLK: %d", blink_idx, blink_clk);
 				blink_idx = 0;
 				blink_clk = ~blink_clk;

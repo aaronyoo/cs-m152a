@@ -70,7 +70,7 @@ module stopwatch_counter(
         else if (adj && sel == 1 && !pause) begin
             // Adjusting the seconds
             // Same logic as the ripple carry above
-            if (sec_ones == 4'd9) begin
+            if (sec_ones >= 4'd8) begin
                 sec_ones <= 4'd0;
                 if (sec_tens == 4'd5) begin
                     sec_tens <= 4'd0;
@@ -80,12 +80,12 @@ module stopwatch_counter(
                 end
             end
             else begin
-                sec_ones <= sec_ones + 4'd1;
+                sec_ones <= sec_ones + 4'd2;
             end
         end
         else if (adj && sel == 0 && !pause) begin
             // Adjusting the minutes
-            if (min_ones == 4'd9) begin
+            if (min_ones >= 4'd8) begin
                 min_ones <= 4'd0;
                 if (min_tens == 4'd5) begin
                     min_tens <= 4'd0;
@@ -95,7 +95,7 @@ module stopwatch_counter(
                 end
             end
             else begin
-                min_ones <= min_ones + 4'd1;
+                min_ones <= min_ones + 4'd2;
             end
         end
     end

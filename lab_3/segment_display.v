@@ -1,7 +1,8 @@
-module segment_display(digit, seg);
+module segment_display(digit, seg, rst);
 
     input [3:0] digit;
     output [7:0] seg;
+	input rst;
 
 
     reg [7:0] segment_reg;
@@ -9,6 +10,10 @@ module segment_display(digit, seg);
 
     always @(*)
     begin
+		if (rst) begin
+			segment_reg = 8'b11000000;
+		end
+		else begin
         case (digit)
             4'b0000: segment_reg = 8'b11000000;
             4'b0001: segment_reg = 8'b11111001;
@@ -22,6 +27,7 @@ module segment_display(digit, seg);
             4'b1001: segment_reg = 8'b10010000;
             default: segment_reg = 8'b11111111;
         endcase
+		end
     end
 
 endmodule

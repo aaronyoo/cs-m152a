@@ -71,30 +71,29 @@ module stopwatch (
         .min_ones_out(min_ones),
         .min_tens_out(min_tens)
     );
-	
-////	assign sec_ones = 3;
-//	assign sec_tens = 2;
-//	assign min_ones = 1;
-//	assign min_tens = 0;
 
     segment_display sec_ones_display (
         .digit(sec_ones),
-        .seg(sec_ones_segment)
+        .seg(sec_ones_segment),
+		.rst(rst_st)
     );
 
     segment_display sec_tens_display (
         .digit(sec_tens),
-        .seg(sec_tens_segment)
+        .seg(sec_tens_segment),
+		.rst(rst_st)
     );
 
     segment_display min_ones_display (
         .digit(min_ones),
-        .seg(min_ones_segment)
+        .seg(min_ones_segment),
+		.rst(rst_st)
     );
 
     segment_display min_tens_display (
         .digit(min_tens),
-        .seg(min_tens_segment)
+        .seg(min_tens_segment),
+		.rst(rst_st)
     );
 
     segment_display blank (
@@ -105,6 +104,9 @@ module stopwatch (
     reg [1:0] cnt = 2'b00;
 
     always @ (posedge fast_clk) begin
+		if (rst_st) begin
+			an <= 4'b0000;
+		end
         // stopwatch behaves normally
         if(adj == 0) begin
             if(cnt == 0) begin

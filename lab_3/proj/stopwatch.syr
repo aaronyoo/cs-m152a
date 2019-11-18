@@ -119,6 +119,7 @@ Parsing module <stopwatch>.
 =========================================================================
 *                            HDL Elaboration                            *
 =========================================================================
+WARNING:HDLCompiler:1016 - "C:\Users\152\Desktop\cs-m152a\lab_3\stopwatch.v" Line 99: Port rst is not connected to this instance
 
 Elaborating module <stopwatch>.
 WARNING:HDLCompiler:817 - "C:\Users\152\Desktop\cs-m152a\lab_3\stopwatch.v" Line 50: System task monitor ignored for synthesis
@@ -132,9 +133,10 @@ Elaborating module <clock>.
 Elaborating module <stopwatch_counter>.
 
 Elaborating module <segment_display>.
-WARNING:HDLCompiler:413 - "C:\Users\152\Desktop\cs-m152a\lab_3\stopwatch.v" Line 126: Result of 3-bit expression is truncated to fit in 2-bit target.
-WARNING:HDLCompiler:413 - "C:\Users\152\Desktop\cs-m152a\lab_3\stopwatch.v" Line 154: Result of 3-bit expression is truncated to fit in 2-bit target.
-WARNING:HDLCompiler:413 - "C:\Users\152\Desktop\cs-m152a\lab_3\stopwatch.v" Line 180: Result of 3-bit expression is truncated to fit in 2-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\152\Desktop\cs-m152a\lab_3\stopwatch.v" Line 128: Result of 3-bit expression is truncated to fit in 2-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\152\Desktop\cs-m152a\lab_3\stopwatch.v" Line 156: Result of 3-bit expression is truncated to fit in 2-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\152\Desktop\cs-m152a\lab_3\stopwatch.v" Line 182: Result of 3-bit expression is truncated to fit in 2-bit target.
+WARNING:HDLCompiler:552 - "C:\Users\152\Desktop\cs-m152a\lab_3\stopwatch.v" Line 99: Input port rst is not connected on this instance
 
 =========================================================================
 *                           HDL Synthesis                               *
@@ -142,13 +144,14 @@ WARNING:HDLCompiler:413 - "C:\Users\152\Desktop\cs-m152a\lab_3\stopwatch.v" Line
 
 Synthesizing Unit <stopwatch>.
     Related source file is "C:\Users\152\Desktop\cs-m152a\lab_3\stopwatch.v".
+WARNING:Xst:2898 - Port 'rst', unconnected in block instance 'blank', is tied to GND.
     Found 4-bit register for signal <an>.
     Found 8-bit register for signal <seg>.
     Found 2-bit register for signal <cnt>.
     Found 1-bit register for signal <is_paused>.
-    Found 2-bit adder for signal <cnt[1]_GND_1_o_add_45_OUT> created at line 180.
-    Found 4x4-bit Read Only RAM for signal <an[3]_GND_1_o_mux_43_OUT>
-    Found 8-bit 4-to-1 multiplexer for signal <seg[7]_min_tens_segment[7]_mux_44_OUT> created at line 162.
+    Found 2-bit adder for signal <cnt[1]_GND_1_o_add_46_OUT> created at line 182.
+    Found 4x4-bit Read Only RAM for signal <an[3]_GND_1_o_mux_44_OUT>
+    Found 8-bit 4-to-1 multiplexer for signal <seg[7]_min_tens_segment[7]_mux_45_OUT> created at line 164.
     Summary:
 	inferred   1 RAM(s).
 	inferred   1 Adder/Subtractor(s).
@@ -193,29 +196,32 @@ Synthesizing Unit <stopwatch_counter>.
     Found 4-bit register for signal <min_ones>.
     Found 4-bit register for signal <min_tens>.
     Found 4-bit register for signal <sec_ones>.
+    Found 4-bit adder for signal <min_ones[3]_GND_4_o_add_11_OUT> created at line 59.
+    Found 4-bit adder for signal <sec_ones[3]_GND_4_o_add_18_OUT> created at line 67.
     Found 4-bit adder for signal <sec_tens[3]_GND_4_o_add_26_OUT> created at line 79.
     Found 4-bit adder for signal <sec_ones[3]_GND_4_o_add_28_OUT> created at line 83.
     Found 4-bit adder for signal <min_tens[3]_GND_4_o_add_34_OUT> created at line 94.
     Found 4-bit adder for signal <min_ones[3]_GND_4_o_add_36_OUT> created at line 98.
+    Found 4-bit comparator greater for signal <n0024> created at line 73
+    Found 4-bit comparator greater for signal <n0035> created at line 88
     Summary:
 	inferred   4 Adder/Subtractor(s).
 	inferred  16 D-type flip-flop(s).
-	inferred   5 Multiplexer(s).
+	inferred   2 Comparator(s).
+	inferred  15 Multiplexer(s).
 Unit <stopwatch_counter> synthesized.
 
 Synthesizing Unit <segment_display>.
     Related source file is "C:\Users\152\Desktop\cs-m152a\lab_3\segment_display.v".
-    Found 16x8-bit Read Only RAM for signal <segment_reg>
     Summary:
-	inferred   1 RAM(s).
+	inferred   1 Multiplexer(s).
 Unit <segment_display> synthesized.
 
 =========================================================================
 HDL Synthesis Report
 
 Macro Statistics
-# RAMs                                                 : 6
- 16x8-bit single-port Read Only RAM                    : 5
+# RAMs                                                 : 1
  4x4-bit single-port Read Only RAM                     : 1
 # Adders/Subtractors                                   : 11
  16-bit adder                                          : 2
@@ -229,15 +235,18 @@ Macro Statistics
  32-bit register                                       : 4
  4-bit register                                        : 5
  8-bit register                                        : 1
-# Multiplexers                                         : 20
+# Comparators                                          : 2
+ 4-bit comparator greater                              : 2
+# Multiplexers                                         : 35
  1-bit 2-to-1 multiplexer                              : 1
  16-bit 2-to-1 multiplexer                             : 2
  32-bit 2-to-1 multiplexer                             : 4
- 4-bit 2-to-1 multiplexer                              : 4
- 8-bit 2-to-1 multiplexer                              : 8
+ 4-bit 2-to-1 multiplexer                              : 14
+ 8-bit 2-to-1 multiplexer                              : 13
  8-bit 4-to-1 multiplexer                              : 1
 
 =========================================================================
+INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
 
 =========================================================================
 *                       Advanced HDL Synthesis                          *
@@ -248,23 +257,9 @@ Synthesizing (advanced) Unit <debouncer>.
 The following registers are absorbed into counter <counter>: 1 register on signal <counter>.
 Unit <debouncer> synthesized (advanced).
 
-Synthesizing (advanced) Unit <segment_display>.
-INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram_segment_reg> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
-    -----------------------------------------------------------------------
-    | ram_type           | Distributed                         |          |
-    -----------------------------------------------------------------------
-    | Port A                                                              |
-    |     aspect ratio   | 16-word x 8-bit                     |          |
-    |     weA            | connected to signal <GND>           | high     |
-    |     addrA          | connected to signal <digit>         |          |
-    |     diA            | connected to signal <GND>           |          |
-    |     doA            | connected to signal <segment_reg>   |          |
-    -----------------------------------------------------------------------
-Unit <segment_display> synthesized (advanced).
-
 Synthesizing (advanced) Unit <stopwatch>.
 The following registers are absorbed into counter <cnt>: 1 register on signal <cnt>.
-INFO:Xst:3231 - The small RAM <Mram_an[3]_GND_1_o_mux_43_OUT> will be implemented on LUTs in order to maximize performance and save block RAM resources. If you want to force its implementation on block, use option/constraint ram_style.
+INFO:Xst:3231 - The small RAM <Mram_an[3]_GND_1_o_mux_44_OUT> will be implemented on LUTs in order to maximize performance and save block RAM resources. If you want to force its implementation on block, use option/constraint ram_style.
     -----------------------------------------------------------------------
     | ram_type           | Distributed                         |          |
     -----------------------------------------------------------------------
@@ -279,8 +274,6 @@ Unit <stopwatch> synthesized (advanced).
 
 Synthesizing (advanced) Unit <stopwatch_counter>.
 The following registers are absorbed into counter <sec_tens>: 1 register on signal <sec_tens>.
-The following registers are absorbed into counter <min_ones>: 1 register on signal <min_ones>.
-The following registers are absorbed into counter <sec_ones>: 1 register on signal <sec_ones>.
 The following registers are absorbed into counter <min_tens>: 1 register on signal <min_tens>.
 Unit <stopwatch_counter> synthesized (advanced).
 
@@ -288,21 +281,24 @@ Unit <stopwatch_counter> synthesized (advanced).
 Advanced HDL Synthesis Report
 
 Macro Statistics
-# RAMs                                                 : 6
- 16x8-bit single-port distributed Read Only RAM        : 5
+# RAMs                                                 : 1
  4x4-bit single-port distributed Read Only RAM         : 1
-# Adders/Subtractors                                   : 4
+# Adders/Subtractors                                   : 6
  32-bit adder                                          : 4
-# Counters                                             : 7
+ 4-bit adder                                           : 2
+# Counters                                             : 5
  16-bit up counter                                     : 2
  2-bit up counter                                      : 1
- 4-bit up counter                                      : 4
-# Registers                                            : 147
- Flip-Flops                                            : 147
-# Multiplexers                                         : 14
+ 4-bit up counter                                      : 2
+# Registers                                            : 155
+ Flip-Flops                                            : 155
+# Comparators                                          : 2
+ 4-bit comparator greater                              : 2
+# Multiplexers                                         : 31
  1-bit 2-to-1 multiplexer                              : 1
  32-bit 2-to-1 multiplexer                             : 4
- 8-bit 2-to-1 multiplexer                              : 8
+ 4-bit 2-to-1 multiplexer                              : 12
+ 8-bit 2-to-1 multiplexer                              : 13
  8-bit 4-to-1 multiplexer                              : 1
 
 =========================================================================
@@ -310,9 +306,10 @@ Macro Statistics
 =========================================================================
 *                         Low Level Synthesis                           *
 =========================================================================
-WARNING:Xst:1710 - FF/Latch <seg_7> (without init value) has a constant value of 1 in block <stopwatch>. This FF/Latch will be trimmed during the optimization process.
 
 Optimizing unit <stopwatch> ...
+WARNING:Xst:1710 - FF/Latch <seg_7> (without init value) has a constant value of 1 in block <stopwatch>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <seg_7> (without init value) has a constant value of 1 in block <stopwatch>. This FF/Latch will be trimmed during the optimization process.
 
 Optimizing unit <clock> ...
 
@@ -353,13 +350,32 @@ WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <clock_divider/fast_
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <clock_divider/fast_idx_29> (without init value) has a constant value of 0 in block <stopwatch>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <clock_divider/fast_idx_28> (without init value) has a constant value of 0 in block <stopwatch>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <clock_divider/fast_idx_27> (without init value) has a constant value of 0 in block <stopwatch>. This FF/Latch will be trimmed during the optimization process.
+INFO:Xst:2261 - The FF/Latch <clock_divider/blink_idx_10> in Unit <stopwatch> is equivalent to the following FF/Latch, which will be removed : <clock_divider/twohz_idx_10> 
+INFO:Xst:2261 - The FF/Latch <clock_divider/blink_idx_11> in Unit <stopwatch> is equivalent to the following FF/Latch, which will be removed : <clock_divider/twohz_idx_11> 
+INFO:Xst:2261 - The FF/Latch <clock_divider/blink_idx_12> in Unit <stopwatch> is equivalent to the following FF/Latch, which will be removed : <clock_divider/twohz_idx_12> 
+INFO:Xst:2261 - The FF/Latch <clock_divider/blink_idx_13> in Unit <stopwatch> is equivalent to the following FF/Latch, which will be removed : <clock_divider/twohz_idx_13> 
+INFO:Xst:2261 - The FF/Latch <clock_divider/blink_idx_14> in Unit <stopwatch> is equivalent to the following FF/Latch, which will be removed : <clock_divider/twohz_idx_14> 
+INFO:Xst:2261 - The FF/Latch <clock_divider/blink_idx_20> in Unit <stopwatch> is equivalent to the following FF/Latch, which will be removed : <clock_divider/twohz_idx_20> 
+INFO:Xst:2261 - The FF/Latch <clock_divider/blink_idx_15> in Unit <stopwatch> is equivalent to the following FF/Latch, which will be removed : <clock_divider/twohz_idx_15> 
+INFO:Xst:2261 - The FF/Latch <clock_divider/blink_idx_21> in Unit <stopwatch> is equivalent to the following FF/Latch, which will be removed : <clock_divider/twohz_idx_21> 
+INFO:Xst:2261 - The FF/Latch <clock_divider/blink_idx_16> in Unit <stopwatch> is equivalent to the following FF/Latch, which will be removed : <clock_divider/twohz_idx_16> 
+INFO:Xst:2261 - The FF/Latch <clock_divider/blink_idx_22> in Unit <stopwatch> is equivalent to the following FF/Latch, which will be removed : <clock_divider/twohz_idx_22> 
+INFO:Xst:2261 - The FF/Latch <clock_divider/blink_idx_17> in Unit <stopwatch> is equivalent to the following FF/Latch, which will be removed : <clock_divider/twohz_idx_17> 
+INFO:Xst:2261 - The FF/Latch <clock_divider/blink_idx_23> in Unit <stopwatch> is equivalent to the following FF/Latch, which will be removed : <clock_divider/twohz_idx_23> 
+INFO:Xst:2261 - The FF/Latch <clock_divider/blink_idx_18> in Unit <stopwatch> is equivalent to the following FF/Latch, which will be removed : <clock_divider/twohz_idx_18> 
+INFO:Xst:2261 - The FF/Latch <clock_divider/blink_idx_24> in Unit <stopwatch> is equivalent to the following FF/Latch, which will be removed : <clock_divider/twohz_idx_24> 
+INFO:Xst:2261 - The FF/Latch <clock_divider/blink_idx_19> in Unit <stopwatch> is equivalent to the following FF/Latch, which will be removed : <clock_divider/twohz_idx_19> 
 INFO:Xst:2261 - The FF/Latch <clock_divider/onehz_idx_0> in Unit <stopwatch> is equivalent to the following 3 FFs/Latches, which will be removed : <clock_divider/blink_idx_0> <clock_divider/fast_idx_0> <clock_divider/twohz_idx_0> 
 INFO:Xst:2261 - The FF/Latch <clock_divider/onehz_idx_1> in Unit <stopwatch> is equivalent to the following 3 FFs/Latches, which will be removed : <clock_divider/blink_idx_1> <clock_divider/fast_idx_1> <clock_divider/twohz_idx_1> 
 INFO:Xst:2261 - The FF/Latch <clock_divider/onehz_idx_2> in Unit <stopwatch> is equivalent to the following 3 FFs/Latches, which will be removed : <clock_divider/blink_idx_2> <clock_divider/fast_idx_2> <clock_divider/twohz_idx_2> 
 INFO:Xst:2261 - The FF/Latch <clock_divider/onehz_idx_3> in Unit <stopwatch> is equivalent to the following 3 FFs/Latches, which will be removed : <clock_divider/blink_idx_3> <clock_divider/fast_idx_3> <clock_divider/twohz_idx_3> 
 INFO:Xst:2261 - The FF/Latch <clock_divider/onehz_idx_4> in Unit <stopwatch> is equivalent to the following 2 FFs/Latches, which will be removed : <clock_divider/blink_idx_4> <clock_divider/twohz_idx_4> 
 INFO:Xst:2261 - The FF/Latch <clock_divider/onehz_idx_5> in Unit <stopwatch> is equivalent to the following 2 FFs/Latches, which will be removed : <clock_divider/blink_idx_5> <clock_divider/twohz_idx_5> 
-INFO:Xst:2261 - The FF/Latch <clock_divider/onehz_idx_6> in Unit <stopwatch> is equivalent to the following FF/Latch, which will be removed : <clock_divider/blink_idx_6> 
+INFO:Xst:2261 - The FF/Latch <clock_divider/blink_idx_6> in Unit <stopwatch> is equivalent to the following FF/Latch, which will be removed : <clock_divider/twohz_idx_6> 
+INFO:Xst:2261 - The FF/Latch <clock_divider/blink_idx_7> in Unit <stopwatch> is equivalent to the following FF/Latch, which will be removed : <clock_divider/twohz_idx_7> 
+INFO:Xst:2261 - The FF/Latch <clock_divider/blink_idx_8> in Unit <stopwatch> is equivalent to the following FF/Latch, which will be removed : <clock_divider/twohz_idx_8> 
+INFO:Xst:2261 - The FF/Latch <clock_divider/blink_idx_9> in Unit <stopwatch> is equivalent to the following FF/Latch, which will be removed : <clock_divider/twohz_idx_9> 
+INFO:Xst:2261 - The FF/Latch <clock_divider/blink_clk> in Unit <stopwatch> is equivalent to the following FF/Latch, which will be removed : <clock_divider/twohz_clk> 
 
 Mapping all equations...
 Building and optimizing final netlist ...
@@ -371,8 +387,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 143
- Flip-Flops                                            : 143
+# Registers                                            : 124
+ Flip-Flops                                            : 124
 
 =========================================================================
 
@@ -395,23 +411,22 @@ Top Level Output File Name         : stopwatch.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 585
+# BELS                             : 478
 #      GND                         : 1
-#      INV                         : 13
-#      LUT1                        : 118
-#      LUT2                        : 11
-#      LUT3                        : 56
-#      LUT4                        : 33
-#      LUT5                        : 5
-#      LUT6                        : 95
-#      MUXCY                       : 122
-#      MUXF7                       : 2
+#      INV                         : 9
+#      LUT1                        : 94
+#      LUT2                        : 8
+#      LUT3                        : 45
+#      LUT4                        : 20
+#      LUT5                        : 10
+#      LUT6                        : 91
+#      MUXCY                       : 97
 #      VCC                         : 1
-#      XORCY                       : 128
-# FlipFlops/Latches                : 143
-#      FD                          : 52
+#      XORCY                       : 102
+# FlipFlops/Latches                : 124
+#      FD                          : 51
 #      FDCE                        : 16
-#      FDR                         : 75
+#      FDR                         : 57
 # Clock Buffers                    : 1
 #      BUFGP                       : 1
 # IO Buffers                       : 16
@@ -425,16 +440,16 @@ Selected Device : 6slx16csg324-3
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:             143  out of  18224     0%  
- Number of Slice LUTs:                  331  out of   9112     3%  
-    Number used as Logic:               331  out of   9112     3%  
+ Number of Slice Registers:             124  out of  18224     0%  
+ Number of Slice LUTs:                  277  out of   9112     3%  
+    Number used as Logic:               277  out of   9112     3%  
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:    331
-   Number with an unused Flip Flop:     188  out of    331    56%  
-   Number with an unused LUT:             0  out of    331     0%  
-   Number of fully used LUT-FF pairs:   143  out of    331    43%  
-   Number of unique control sets:         7
+ Number of LUT Flip Flop pairs used:    277
+   Number with an unused Flip Flop:     153  out of    277    55%  
+   Number with an unused LUT:             0  out of    277     0%  
+   Number of fully used LUT-FF pairs:   124  out of    277    44%  
+   Number of unique control sets:         8
 
 IO Utilization: 
  Number of IOs:                          17
@@ -466,7 +481,7 @@ Clock Signal                                       | Clock buffer(FF name)      
 ---------------------------------------------------+----------------------------+-------+
 pause_debouncer/temp_state                         | NONE(is_paused)            | 1     |
 clock_divider/fast_clk                             | NONE(an_0)                 | 13    |
-clk                                                | BUFGP                      | 113   |
+clk                                                | BUFGP                      | 94    |
 counter/chosen_clock(counter/Mmux_chosen_clock11:O)| NONE(*)(counter/min_tens_3)| 16    |
 ---------------------------------------------------+----------------------------+-------+
 (*) This 1 clock signal(s) are generated by combinatorial logic,
@@ -482,8 +497,8 @@ Timing Summary:
 ---------------
 Speed Grade: -3
 
-   Minimum period: 4.801ns (Maximum Frequency: 208.286MHz)
-   Minimum input arrival time before clock: 5.280ns
+   Minimum period: 4.769ns (Maximum Frequency: 209.696MHz)
+   Minimum input arrival time before clock: 5.155ns
    Maximum output required time after clock: 3.597ns
    Maximum combinational path delay: No path found
 
@@ -493,10 +508,10 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'pause_debouncer/temp_state'
-  Clock period: 2.048ns (frequency: 488.317MHz)
+  Clock period: 2.190ns (frequency: 456.663MHz)
   Total number of paths / destination ports: 1 / 1
 -------------------------------------------------------------------------
-Delay:               2.048ns (Levels of Logic = 1)
+Delay:               2.190ns (Levels of Logic = 1)
   Source:            is_paused (FF)
   Destination:       is_paused (FF)
   Source Clock:      pause_debouncer/temp_state rising
@@ -506,43 +521,43 @@ Delay:               2.048ns (Levels of Logic = 1)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FD:C->Q               5   0.447   0.714  is_paused (is_paused)
+     FD:C->Q              10   0.447   0.856  is_paused (is_paused)
      INV:I->O              1   0.206   0.579  is_paused_INV_7_o1_INV_0 (is_paused_INV_7_o)
      FD:D                      0.102          is_paused
     ----------------------------------------
-    Total                      2.048ns (0.755ns logic, 1.293ns route)
-                                       (36.9% logic, 63.1% route)
+    Total                      2.190ns (0.755ns logic, 1.435ns route)
+                                       (34.5% logic, 65.5% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clock_divider/fast_clk'
-  Clock period: 2.929ns (frequency: 341.373MHz)
-  Total number of paths / destination ports: 40 / 13
+  Clock period: 3.389ns (frequency: 295.081MHz)
+  Total number of paths / destination ports: 42 / 13
 -------------------------------------------------------------------------
-Delay:               2.929ns (Levels of Logic = 3)
-  Source:            cnt_1 (FF)
+Delay:               3.389ns (Levels of Logic = 3)
+  Source:            cnt_0 (FF)
   Destination:       seg_3 (FF)
   Source Clock:      clock_divider/fast_clk rising
   Destination Clock: clock_divider/fast_clk rising
 
-  Data Path: cnt_1 to seg_3
+  Data Path: cnt_0 to seg_3
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FD:C->Q              17   0.447   1.028  cnt_1 (cnt_1)
-     LUT4:I3->O            8   0.205   0.803  Mmux_seg[7]_seg[7]_mux_50_OUT1021 (Mmux_seg[7]_seg[7]_mux_50_OUT102)
-     LUT6:I5->O            1   0.205   0.000  Mmux_seg[7]_seg[7]_mux_50_OUT83_G (N164)
-     MUXF7:I1->O           1   0.140   0.000  Mmux_seg[7]_seg[7]_mux_50_OUT83 (seg[7]_seg[7]_mux_50_OUT<3>)
+     FD:C->Q              17   0.447   1.028  cnt_0 (cnt_0)
+     LUT6:I5->O            2   0.205   0.617  Mmux__n009511 (Mmux__n009511)
+     LUT6:I5->O            1   0.205   0.580  Mmux_seg[7]_seg[7]_mux_51_OUT82 (Mmux_seg[7]_seg[7]_mux_51_OUT81)
+     LUT6:I5->O            1   0.205   0.000  Mmux_seg[7]_seg[7]_mux_51_OUT83 (seg[7]_seg[7]_mux_51_OUT<3>)
      FD:D                      0.102          seg_3
     ----------------------------------------
-    Total                      2.929ns (1.099ns logic, 1.830ns route)
-                                       (37.5% logic, 62.5% route)
+    Total                      3.389ns (1.164ns logic, 2.225ns route)
+                                       (34.3% logic, 65.7% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk'
-  Clock period: 4.801ns (frequency: 208.286MHz)
-  Total number of paths / destination ports: 15938 / 113
+  Clock period: 4.769ns (frequency: 209.696MHz)
+  Total number of paths / destination ports: 11807 / 94
 -------------------------------------------------------------------------
-Delay:               4.801ns (Levels of Logic = 8)
+Delay:               4.769ns (Levels of Logic = 8)
   Source:            clock_divider/onehz_idx_0 (FF)
   Destination:       clock_divider/onehz_idx_25 (FF)
   Source Clock:      clk rising
@@ -552,7 +567,7 @@ Delay:               4.801ns (Levels of Logic = 8)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDR:C->Q              4   0.447   0.683  clock_divider/onehz_idx_0 (clock_divider/onehz_idx_0)
+     FDR:C->Q              3   0.447   0.650  clock_divider/onehz_idx_0 (clock_divider/onehz_idx_0)
      INV:I->O              1   0.206   0.000  clock_divider/Madd_onehz_idx[31]_GND_3_o_add_1_OUT_lut<0>_INV_0 (clock_divider/Madd_onehz_idx[31]_GND_3_o_add_1_OUT_lut<0>)
      MUXCY:S->O            1   0.172   0.000  clock_divider/Madd_onehz_idx[31]_GND_3_o_add_1_OUT_cy<0> (clock_divider/Madd_onehz_idx[31]_GND_3_o_add_1_OUT_cy<0>)
      MUXCY:CI->O           1   0.019   0.000  clock_divider/Madd_onehz_idx[31]_GND_3_o_add_1_OUT_cy<1> (clock_divider/Madd_onehz_idx[31]_GND_3_o_add_1_OUT_cy<1>)
@@ -563,37 +578,37 @@ Delay:               4.801ns (Levels of Logic = 8)
      LUT6:I5->O            1   0.205   0.000  clock_divider/onehz_clk_rstpot (clock_divider/onehz_clk_rstpot)
      FD:D                      0.102          clock_divider/onehz_clk
     ----------------------------------------
-    Total                      4.801ns (1.760ns logic, 3.041ns route)
-                                       (36.7% logic, 63.3% route)
+    Total                      4.769ns (1.760ns logic, 3.009ns route)
+                                       (36.9% logic, 63.1% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'counter/chosen_clock'
-  Clock period: 3.759ns (frequency: 266.003MHz)
-  Total number of paths / destination ports: 154 / 28
+  Clock period: 3.794ns (frequency: 263.560MHz)
+  Total number of paths / destination ports: 182 / 28
 -------------------------------------------------------------------------
-Delay:               3.759ns (Levels of Logic = 2)
-  Source:            counter/sec_tens_3 (FF)
+Delay:               3.794ns (Levels of Logic = 2)
+  Source:            counter/sec_tens_0 (FF)
   Destination:       counter/min_tens_3 (FF)
   Source Clock:      counter/chosen_clock rising
   Destination Clock: counter/chosen_clock rising
 
-  Data Path: counter/sec_tens_3 to counter/min_tens_3
+  Data Path: counter/sec_tens_0 to counter/min_tens_3
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDCE:C->Q            10   0.447   1.201  counter/sec_tens_3 (counter/sec_tens_3)
-     LUT5:I0->O            1   0.203   0.580  counter/_n0138_inv1_SW0 (N9)
-     LUT6:I5->O            8   0.205   0.802  counter/_n0138_inv1 (counter/_n0138_inv1)
-     FDCE:CE                   0.322          counter/min_ones_0
+     FDCE:C->Q            12   0.447   1.253  counter/sec_tens_0 (counter/sec_tens_0)
+     LUT5:I0->O            1   0.203   0.684  counter/_n0155_inv_SW0 (N11)
+     LUT6:I4->O            4   0.203   0.683  counter/_n0155_inv (counter/_n0155_inv)
+     FDCE:CE                   0.322          counter/min_tens_0
     ----------------------------------------
-    Total                      3.759ns (1.177ns logic, 2.582ns route)
-                                       (31.3% logic, 68.7% route)
+    Total                      3.794ns (1.175ns logic, 2.619ns route)
+                                       (31.0% logic, 69.0% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clock_divider/fast_clk'
-  Total number of paths / destination ports: 16 / 7
+  Total number of paths / destination ports: 14 / 7
 -------------------------------------------------------------------------
-Offset:              3.637ns (Levels of Logic = 4)
+Offset:              3.881ns (Levels of Logic = 3)
   Source:            adj (PAD)
   Destination:       seg_3 (FF)
   Destination Clock: clock_divider/fast_clk rising
@@ -602,20 +617,19 @@ Offset:              3.637ns (Levels of Logic = 4)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O             5   1.222   0.962  adj_IBUF (adj_IBUF)
-     LUT4:I0->O            8   0.203   0.803  Mmux_seg[7]_seg[7]_mux_50_OUT1021 (Mmux_seg[7]_seg[7]_mux_50_OUT102)
-     LUT6:I5->O            1   0.205   0.000  Mmux_seg[7]_seg[7]_mux_50_OUT83_G (N164)
-     MUXF7:I1->O           1   0.140   0.000  Mmux_seg[7]_seg[7]_mux_50_OUT83 (seg[7]_seg[7]_mux_50_OUT<3>)
+     IBUF:I->O            11   1.222   1.130  adj_IBUF (adj_IBUF)
+     LUT4:I0->O            7   0.203   1.021  Mmux_seg[7]_seg[7]_mux_51_OUT1021 (Mmux_seg[7]_seg[7]_mux_51_OUT102)
+     LUT6:I2->O            1   0.203   0.000  Mmux_seg[7]_seg[7]_mux_51_OUT83 (seg[7]_seg[7]_mux_51_OUT<3>)
      FD:D                      0.102          seg_3
     ----------------------------------------
-    Total                      3.637ns (1.872ns logic, 1.765ns route)
-                                       (51.5% logic, 48.5% route)
+    Total                      3.881ns (1.730ns logic, 2.151ns route)
+                                       (44.6% logic, 55.4% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
-  Total number of paths / destination ports: 113 / 113
+  Total number of paths / destination ports: 94 / 94
 -------------------------------------------------------------------------
-Offset:              5.280ns (Levels of Logic = 4)
+Offset:              5.155ns (Levels of Logic = 4)
   Source:            rst (PAD)
   Destination:       clock_divider/onehz_clk (FF)
   Destination Clock: clk rising
@@ -624,35 +638,35 @@ Offset:              5.280ns (Levels of Logic = 4)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            96   1.222   2.079  rst_IBUF (rst_IBUF)
-     LUT3:I0->O            1   0.205   0.580  clock_divider/_n0063_inv1_SW0_SW0 (N91)
-     LUT6:I5->O            1   0.205   0.684  clock_divider/_n0063_inv1_SW0 (N39)
+     IBUF:I->O            77   1.222   1.954  rst_IBUF (rst_IBUF)
+     LUT3:I0->O            1   0.205   0.580  clock_divider/_n0063_inv1_SW0_SW0 (N77)
+     LUT6:I5->O            1   0.205   0.684  clock_divider/_n0063_inv1_SW0 (N27)
      LUT6:I4->O            1   0.203   0.000  clock_divider/onehz_clk_rstpot (clock_divider/onehz_clk_rstpot)
      FD:D                      0.102          clock_divider/onehz_clk
     ----------------------------------------
-    Total                      5.280ns (1.937ns logic, 3.343ns route)
-                                       (36.7% logic, 63.3% route)
+    Total                      5.155ns (1.937ns logic, 3.218ns route)
+                                       (37.6% logic, 62.4% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'counter/chosen_clock'
-  Total number of paths / destination ports: 32 / 16
+  Total number of paths / destination ports: 58 / 24
 -------------------------------------------------------------------------
-Offset:              4.230ns (Levels of Logic = 3)
-  Source:            sel (PAD)
-  Destination:       counter/sec_tens_3 (FF)
+Offset:              4.727ns (Levels of Logic = 3)
+  Source:            adj (PAD)
+  Destination:       counter/min_tens_3 (FF)
   Destination Clock: counter/chosen_clock rising
 
-  Data Path: sel to counter/sec_tens_3
+  Data Path: adj to counter/min_tens_3
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O             4   1.222   0.788  sel_IBUF (sel_IBUF)
-     LUT2:I0->O            1   0.203   0.808  counter/_n0107_inv_SW0 (N7)
-     LUT6:I3->O            4   0.205   0.683  counter/_n0107_inv (counter/_n0107_inv)
-     FDCE:CE                   0.322          counter/sec_tens_0
+     IBUF:I->O            11   1.222   1.111  adj_IBUF (adj_IBUF)
+     LUT3:I0->O            2   0.205   0.981  counter/_n0155_inv221 (counter/_n0155_inv22)
+     LUT6:I0->O            4   0.203   0.683  counter/_n0138_inv1 (counter/_n0138_inv)
+     FDCE:CE                   0.322          counter/min_ones_0
     ----------------------------------------
-    Total                      4.230ns (1.952ns logic, 2.278ns route)
-                                       (46.1% logic, 53.9% route)
+    Total                      4.727ns (1.952ns logic, 2.775ns route)
+                                       (41.3% logic, 58.7% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clock_divider/fast_clk'
@@ -683,7 +697,7 @@ Clock to Setup on destination clock clk
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-clk            |    4.801|         |         |         |
+clk            |    4.769|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 Clock to Setup on destination clock clock_divider/fast_clk
@@ -691,9 +705,9 @@ Clock to Setup on destination clock clock_divider/fast_clk
                       | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock          |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ----------------------+---------+---------+---------+---------+
-clk                   |    2.747|         |         |         |
-clock_divider/fast_clk|    2.929|         |         |         |
-counter/chosen_clock  |    3.654|         |         |         |
+clk                   |    2.857|         |         |         |
+clock_divider/fast_clk|    3.389|         |         |         |
+counter/chosen_clock  |    4.610|         |         |         |
 ----------------------+---------+---------+---------+---------+
 
 Clock to Setup on destination clock counter/chosen_clock
@@ -701,9 +715,9 @@ Clock to Setup on destination clock counter/chosen_clock
                           | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock              |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 --------------------------+---------+---------+---------+---------+
-clk                       |    1.904|         |         |         |
-counter/chosen_clock      |    3.759|         |         |         |
-pause_debouncer/temp_state|    2.617|         |         |         |
+clk                       |    2.049|         |         |         |
+counter/chosen_clock      |    3.794|         |         |         |
+pause_debouncer/temp_state|    3.800|         |         |         |
 --------------------------+---------+---------+---------+---------+
 
 Clock to Setup on destination clock pause_debouncer/temp_state
@@ -711,20 +725,20 @@ Clock to Setup on destination clock pause_debouncer/temp_state
                           | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock              |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 --------------------------+---------+---------+---------+---------+
-pause_debouncer/temp_state|    2.048|         |         |         |
+pause_debouncer/temp_state|    2.190|         |         |         |
 --------------------------+---------+---------+---------+---------+
 
 =========================================================================
 
 
 Total REAL time to Xst completion: 9.00 secs
-Total CPU time to Xst completion: 9.22 secs
+Total CPU time to Xst completion: 9.46 secs
  
 --> 
 
-Total memory usage is 258528 kilobytes
+Total memory usage is 259104 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   41 (   0 filtered)
-Number of infos    :   10 (   0 filtered)
+Number of warnings :   45 (   0 filtered)
+Number of infos    :   29 (   0 filtered)
 
