@@ -47,14 +47,14 @@ always@ (posedge clk)
 			end
 
 			// Fast clock
-			if (fast_idx == 500000) begin
+			if (fast_idx == 50000) begin
 				// $display("IDX: %d, FastCLK: %d", fast_idx, fast_clk);
 				fast_idx = 0;
 				fast_clk = ~fast_clk;
 			end
 
 			// Blink Clock
-			if (blink_idx == 600000) begin
+			if (blink_idx == 30000000) begin
 				// $display("IDX: %d, SlowCLK: %d", blink_idx, blink_clk);
 				blink_idx = 0;
 				blink_clk = ~blink_clk;

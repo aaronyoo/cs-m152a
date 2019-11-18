@@ -71,13 +71,8 @@ module stopwatch (
         .min_ones_out(min_ones),
         .min_tens_out(min_tens)
     );
-
-//	reg [3:0] temp;
-//	assign sec_ones = temp;
-//	always @(onehz_clk) begin
-//		temp = temp + 4'd1;
-//	end
-//	
+	
+////	assign sec_ones = 3;
 //	assign sec_tens = 2;
 //	assign min_ones = 1;
 //	assign min_tens = 0;

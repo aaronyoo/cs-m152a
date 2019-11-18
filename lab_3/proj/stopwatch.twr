@@ -29,101 +29,19 @@ Timing constraint: TS_sys_clk_pin = PERIOD TIMEGRP "sys_clk_pin" 100 MHz HIGH
 50%;
 For more information, see Period Analysis in the Timing Closure User Guide (UG612).
 
- 14606 paths analyzed, 444 endpoints analyzed, 0 failing endpoints
+ 15938 paths analyzed, 448 endpoints analyzed, 0 failing endpoints
  0 timing errors detected. (0 setup errors, 0 hold errors, 0 component switching limit errors)
- Minimum period is   4.615ns.
+ Minimum period is   4.947ns.
 --------------------------------------------------------------------------------
 
-Paths for end point clock_divider/fast_clk (SLICE_X15Y11.A1), 61 paths
+Paths for end point clock_divider/blink_clk (SLICE_X22Y29.C2), 42 paths
 --------------------------------------------------------------------------------
-Slack (setup path):     5.385ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               clock_divider/onehz_idx_2 (FF)
-  Destination:          clock_divider/fast_clk (FF)
-  Requirement:          10.000ns
-  Data Path Delay:      4.564ns (Levels of Logic = 4)
-  Clock Path Skew:      -0.016ns (0.247 - 0.263)
-  Source Clock:         clk_BUFGP rising at 0.000ns
-  Destination Clock:    clk_BUFGP rising at 10.000ns
-  Clock Uncertainty:    0.035ns
-
-  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
-    Total System Jitter (TSJ):  0.070ns
-    Total Input Jitter (TIJ):   0.000ns
-    Discrete Jitter (DJ):       0.000ns
-    Phase Error (PE):           0.000ns
-
-  Maximum Data Path at Slow Process Corner: clock_divider/onehz_idx_2 to clock_divider/fast_clk
-    Location             Delay type         Delay(ns)  Physical Resource
-                                                       Logical Resource(s)
-    -------------------------------------------------  -------------------
-    SLICE_X12Y10.CQ      Tcko                  0.408   clock_divider/onehz_idx<3>
-                                                       clock_divider/onehz_idx_2
-    SLICE_X16Y9.C2       net (fanout=4)        0.858   clock_divider/onehz_idx<2>
-    SLICE_X16Y9.COUT     Topcyc                0.295   clock_divider/Madd_fast_idx[31]_GND_3_o_add_3_OUT_cy<3>
-                                                       clock_divider/onehz_idx<2>_rt
-                                                       clock_divider/Madd_fast_idx[31]_GND_3_o_add_3_OUT_cy<3>
-    SLICE_X16Y10.CIN     net (fanout=1)        0.003   clock_divider/Madd_fast_idx[31]_GND_3_o_add_3_OUT_cy<3>
-    SLICE_X16Y10.BMUX    Tcinb                 0.260   clock_divider/fast_idx<7>
-                                                       clock_divider/Madd_fast_idx[31]_GND_3_o_add_3_OUT_cy<7>
-    SLICE_X17Y11.D3      net (fanout=2)        1.181   clock_divider/fast_idx[31]_GND_3_o_add_3_OUT<5>
-    SLICE_X17Y11.D       Tilo                  0.259   clock_divider/fast_idx<18>
-                                                       clock_divider/fast_idx[31]_GND_3_o_equal_10_o<31>1
-    SLICE_X15Y11.A1      net (fanout=8)        0.978   clock_divider/fast_idx[31]_GND_3_o_equal_10_o<31>
-    SLICE_X15Y11.CLK     Tas                   0.322   clock_divider/fast_clk
-                                                       clock_divider/fast_clk_rstpot
-                                                       clock_divider/fast_clk
-    -------------------------------------------------  ---------------------------
-    Total                                      4.564ns (1.544ns logic, 3.020ns route)
-                                                       (33.8% logic, 66.2% route)
-
---------------------------------------------------------------------------------
-Slack (setup path):     5.435ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               clock_divider/onehz_idx_1 (FF)
-  Destination:          clock_divider/fast_clk (FF)
-  Requirement:          10.000ns
-  Data Path Delay:      4.514ns (Levels of Logic = 4)
-  Clock Path Skew:      -0.016ns (0.247 - 0.263)
-  Source Clock:         clk_BUFGP rising at 0.000ns
-  Destination Clock:    clk_BUFGP rising at 10.000ns
-  Clock Uncertainty:    0.035ns
-
-  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
-    Total System Jitter (TSJ):  0.070ns
-    Total Input Jitter (TIJ):   0.000ns
-    Discrete Jitter (DJ):       0.000ns
-    Phase Error (PE):           0.000ns
-
-  Maximum Data Path at Slow Process Corner: clock_divider/onehz_idx_1 to clock_divider/fast_clk
-    Location             Delay type         Delay(ns)  Physical Resource
-                                                       Logical Resource(s)
-    -------------------------------------------------  -------------------
-    SLICE_X12Y10.BQ      Tcko                  0.408   clock_divider/onehz_idx<3>
-                                                       clock_divider/onehz_idx_1
-    SLICE_X16Y9.B4       net (fanout=4)        0.728   clock_divider/onehz_idx<1>
-    SLICE_X16Y9.COUT     Topcyb                0.375   clock_divider/Madd_fast_idx[31]_GND_3_o_add_3_OUT_cy<3>
-                                                       clock_divider/onehz_idx<1>_rt
-                                                       clock_divider/Madd_fast_idx[31]_GND_3_o_add_3_OUT_cy<3>
-    SLICE_X16Y10.CIN     net (fanout=1)        0.003   clock_divider/Madd_fast_idx[31]_GND_3_o_add_3_OUT_cy<3>
-    SLICE_X16Y10.BMUX    Tcinb                 0.260   clock_divider/fast_idx<7>
-                                                       clock_divider/Madd_fast_idx[31]_GND_3_o_add_3_OUT_cy<7>
-    SLICE_X17Y11.D3      net (fanout=2)        1.181   clock_divider/fast_idx[31]_GND_3_o_add_3_OUT<5>
-    SLICE_X17Y11.D       Tilo                  0.259   clock_divider/fast_idx<18>
-                                                       clock_divider/fast_idx[31]_GND_3_o_equal_10_o<31>1
-    SLICE_X15Y11.A1      net (fanout=8)        0.978   clock_divider/fast_idx[31]_GND_3_o_equal_10_o<31>
-    SLICE_X15Y11.CLK     Tas                   0.322   clock_divider/fast_clk
-                                                       clock_divider/fast_clk_rstpot
-                                                       clock_divider/fast_clk
-    -------------------------------------------------  ---------------------------
-    Total                                      4.514ns (1.624ns logic, 2.890ns route)
-                                                       (36.0% logic, 64.0% route)
-
---------------------------------------------------------------------------------
-Slack (setup path):     5.524ns (requirement - (data path - clock path skew + uncertainty))
+Slack (setup path):     5.053ns (requirement - (data path - clock path skew + uncertainty))
   Source:               clock_divider/onehz_idx_0 (FF)
-  Destination:          clock_divider/fast_clk (FF)
+  Destination:          clock_divider/blink_clk (FF)
   Requirement:          10.000ns
-  Data Path Delay:      4.425ns (Levels of Logic = 4)
-  Clock Path Skew:      -0.016ns (0.247 - 0.263)
+  Data Path Delay:      4.907ns (Levels of Logic = 5)
+  Clock Path Skew:      -0.005ns (0.253 - 0.258)
   Source Clock:         clk_BUFGP rising at 0.000ns
   Destination Clock:    clk_BUFGP rising at 10.000ns
   Clock Uncertainty:    0.035ns
@@ -134,40 +52,40 @@ Slack (setup path):     5.524ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.000ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: clock_divider/onehz_idx_0 to clock_divider/fast_clk
+  Maximum Data Path at Slow Process Corner: clock_divider/onehz_idx_0 to clock_divider/blink_clk
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X12Y10.AQ      Tcko                  0.408   clock_divider/onehz_idx<3>
+    SLICE_X18Y30.AQ      Tcko                  0.447   clock_divider/onehz_idx<3>
                                                        clock_divider/onehz_idx_0
-    SLICE_X16Y9.A5       net (fanout=4)        0.619   clock_divider/onehz_idx<0>
-    SLICE_X16Y9.COUT     Topcya                0.395   clock_divider/Madd_fast_idx[31]_GND_3_o_add_3_OUT_cy<3>
-                                                       clock_divider/Madd_fast_idx[31]_GND_3_o_add_3_OUT_lut<0>_INV_0
-                                                       clock_divider/Madd_fast_idx[31]_GND_3_o_add_3_OUT_cy<3>
-    SLICE_X16Y10.CIN     net (fanout=1)        0.003   clock_divider/Madd_fast_idx[31]_GND_3_o_add_3_OUT_cy<3>
-    SLICE_X16Y10.BMUX    Tcinb                 0.260   clock_divider/fast_idx<7>
-                                                       clock_divider/Madd_fast_idx[31]_GND_3_o_add_3_OUT_cy<7>
-    SLICE_X17Y11.D3      net (fanout=2)        1.181   clock_divider/fast_idx[31]_GND_3_o_add_3_OUT<5>
-    SLICE_X17Y11.D       Tilo                  0.259   clock_divider/fast_idx<18>
-                                                       clock_divider/fast_idx[31]_GND_3_o_equal_10_o<31>1
-    SLICE_X15Y11.A1      net (fanout=8)        0.978   clock_divider/fast_idx[31]_GND_3_o_equal_10_o<31>
-    SLICE_X15Y11.CLK     Tas                   0.322   clock_divider/fast_clk
-                                                       clock_divider/fast_clk_rstpot
-                                                       clock_divider/fast_clk
+    SLICE_X20Y27.A2      net (fanout=4)        0.854   clock_divider/onehz_idx<0>
+    SLICE_X20Y27.COUT    Topcya                0.395   clock_divider/Madd_blink_idx[31]_GND_3_o_add_4_OUT_cy<3>
+                                                       clock_divider/Madd_blink_idx[31]_GND_3_o_add_4_OUT_lut<0>_INV_0
+                                                       clock_divider/Madd_blink_idx[31]_GND_3_o_add_4_OUT_cy<3>
+    SLICE_X20Y28.CIN     net (fanout=1)        0.003   clock_divider/Madd_blink_idx[31]_GND_3_o_add_4_OUT_cy<3>
+    SLICE_X20Y28.COUT    Tbyp                  0.076   clock_divider/Madd_blink_idx[31]_GND_3_o_add_4_OUT_cy<7>
+                                                       clock_divider/Madd_blink_idx[31]_GND_3_o_add_4_OUT_cy<7>
+    SLICE_X20Y29.CIN     net (fanout=1)        0.003   clock_divider/Madd_blink_idx[31]_GND_3_o_add_4_OUT_cy<7>
+    SLICE_X20Y29.AMUX    Tcina                 0.177   clock_divider/blink_idx<11>
+                                                       clock_divider/Madd_blink_idx[31]_GND_3_o_add_4_OUT_cy<11>
+    SLICE_X21Y30.B3      net (fanout=3)        1.163   clock_divider/blink_idx[31]_GND_3_o_add_4_OUT<8>
+    SLICE_X21Y30.B       Tilo                  0.259   clock_divider/blink_idx<16>
+                                                       clock_divider/blink_idx[31]_GND_3_o_equal_12_o<31>5
+    SLICE_X22Y29.C2      net (fanout=9)        1.241   clock_divider/blink_idx[31]_GND_3_o_equal_12_o<31>4
+    SLICE_X22Y29.CLK     Tas                   0.289   clock_divider/blink_clk
+                                                       clock_divider/blink_clk_rstpot
+                                                       clock_divider/blink_clk
     -------------------------------------------------  ---------------------------
-    Total                                      4.425ns (1.644ns logic, 2.781ns route)
-                                                       (37.2% logic, 62.8% route)
+    Total                                      4.907ns (1.643ns logic, 3.264ns route)
+                                                       (33.5% logic, 66.5% route)
 
 --------------------------------------------------------------------------------
-
-Paths for end point clock_divider/fast_idx_5 (SLICE_X15Y10.A2), 61 paths
---------------------------------------------------------------------------------
-Slack (setup path):     5.541ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               clock_divider/onehz_idx_2 (FF)
-  Destination:          clock_divider/fast_idx_5 (FF)
+Slack (setup path):     5.119ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               clock_divider/onehz_idx_0 (FF)
+  Destination:          clock_divider/blink_clk (FF)
   Requirement:          10.000ns
-  Data Path Delay:      4.405ns (Levels of Logic = 4)
-  Clock Path Skew:      -0.019ns (0.244 - 0.263)
+  Data Path Delay:      4.841ns (Levels of Logic = 4)
+  Clock Path Skew:      -0.005ns (0.253 - 0.258)
   Source Clock:         clk_BUFGP rising at 0.000ns
   Destination Clock:    clk_BUFGP rising at 10.000ns
   Clock Uncertainty:    0.035ns
@@ -178,78 +96,37 @@ Slack (setup path):     5.541ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.000ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: clock_divider/onehz_idx_2 to clock_divider/fast_idx_5
+  Maximum Data Path at Slow Process Corner: clock_divider/onehz_idx_0 to clock_divider/blink_clk
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X12Y10.CQ      Tcko                  0.408   clock_divider/onehz_idx<3>
-                                                       clock_divider/onehz_idx_2
-    SLICE_X16Y9.C2       net (fanout=4)        0.858   clock_divider/onehz_idx<2>
-    SLICE_X16Y9.COUT     Topcyc                0.295   clock_divider/Madd_fast_idx[31]_GND_3_o_add_3_OUT_cy<3>
-                                                       clock_divider/onehz_idx<2>_rt
-                                                       clock_divider/Madd_fast_idx[31]_GND_3_o_add_3_OUT_cy<3>
-    SLICE_X16Y10.CIN     net (fanout=1)        0.003   clock_divider/Madd_fast_idx[31]_GND_3_o_add_3_OUT_cy<3>
-    SLICE_X16Y10.BMUX    Tcinb                 0.260   clock_divider/fast_idx<7>
-                                                       clock_divider/Madd_fast_idx[31]_GND_3_o_add_3_OUT_cy<7>
-    SLICE_X17Y11.D3      net (fanout=2)        1.181   clock_divider/fast_idx[31]_GND_3_o_add_3_OUT<5>
-    SLICE_X17Y11.D       Tilo                  0.259   clock_divider/fast_idx<18>
-                                                       clock_divider/fast_idx[31]_GND_3_o_equal_10_o<31>1
-    SLICE_X15Y10.A2      net (fanout=8)        0.819   clock_divider/fast_idx[31]_GND_3_o_equal_10_o<31>
-    SLICE_X15Y10.CLK     Tas                   0.322   clock_divider/fast_idx<5>
-                                                       clock_divider/Mmux_fast_idx[31]_GND_3_o_mux_10_OUT281
-                                                       clock_divider/fast_idx_5
+    SLICE_X18Y30.AQ      Tcko                  0.447   clock_divider/onehz_idx<3>
+                                                       clock_divider/onehz_idx_0
+    SLICE_X20Y27.A2      net (fanout=4)        0.854   clock_divider/onehz_idx<0>
+    SLICE_X20Y27.DMUX    Topad                 0.550   clock_divider/Madd_blink_idx[31]_GND_3_o_add_4_OUT_cy<3>
+                                                       clock_divider/Madd_blink_idx[31]_GND_3_o_add_4_OUT_lut<0>_INV_0
+                                                       clock_divider/Madd_blink_idx[31]_GND_3_o_add_4_OUT_cy<3>
+    SLICE_X21Y27.A1      net (fanout=1)        0.463   clock_divider/blink_idx[31]_GND_3_o_add_4_OUT<3>
+    SLICE_X21Y27.A       Tilo                  0.259   clock_divider/blink_idx[31]_GND_3_o_equal_12_o<31>3
+                                                       clock_divider/blink_idx[31]_GND_3_o_equal_12_o<31>4
+    SLICE_X21Y30.B6      net (fanout=3)        0.479   clock_divider/blink_idx[31]_GND_3_o_equal_12_o<31>3
+    SLICE_X21Y30.B       Tilo                  0.259   clock_divider/blink_idx<16>
+                                                       clock_divider/blink_idx[31]_GND_3_o_equal_12_o<31>5
+    SLICE_X22Y29.C2      net (fanout=9)        1.241   clock_divider/blink_idx[31]_GND_3_o_equal_12_o<31>4
+    SLICE_X22Y29.CLK     Tas                   0.289   clock_divider/blink_clk
+                                                       clock_divider/blink_clk_rstpot
+                                                       clock_divider/blink_clk
     -------------------------------------------------  ---------------------------
-    Total                                      4.405ns (1.544ns logic, 2.861ns route)
-                                                       (35.1% logic, 64.9% route)
-
---------------------------------------------------------------------------------
-Slack (setup path):     5.591ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               clock_divider/onehz_idx_1 (FF)
-  Destination:          clock_divider/fast_idx_5 (FF)
-  Requirement:          10.000ns
-  Data Path Delay:      4.355ns (Levels of Logic = 4)
-  Clock Path Skew:      -0.019ns (0.244 - 0.263)
-  Source Clock:         clk_BUFGP rising at 0.000ns
-  Destination Clock:    clk_BUFGP rising at 10.000ns
-  Clock Uncertainty:    0.035ns
-
-  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
-    Total System Jitter (TSJ):  0.070ns
-    Total Input Jitter (TIJ):   0.000ns
-    Discrete Jitter (DJ):       0.000ns
-    Phase Error (PE):           0.000ns
-
-  Maximum Data Path at Slow Process Corner: clock_divider/onehz_idx_1 to clock_divider/fast_idx_5
-    Location             Delay type         Delay(ns)  Physical Resource
-                                                       Logical Resource(s)
-    -------------------------------------------------  -------------------
-    SLICE_X12Y10.BQ      Tcko                  0.408   clock_divider/onehz_idx<3>
-                                                       clock_divider/onehz_idx_1
-    SLICE_X16Y9.B4       net (fanout=4)        0.728   clock_divider/onehz_idx<1>
-    SLICE_X16Y9.COUT     Topcyb                0.375   clock_divider/Madd_fast_idx[31]_GND_3_o_add_3_OUT_cy<3>
-                                                       clock_divider/onehz_idx<1>_rt
-                                                       clock_divider/Madd_fast_idx[31]_GND_3_o_add_3_OUT_cy<3>
-    SLICE_X16Y10.CIN     net (fanout=1)        0.003   clock_divider/Madd_fast_idx[31]_GND_3_o_add_3_OUT_cy<3>
-    SLICE_X16Y10.BMUX    Tcinb                 0.260   clock_divider/fast_idx<7>
-                                                       clock_divider/Madd_fast_idx[31]_GND_3_o_add_3_OUT_cy<7>
-    SLICE_X17Y11.D3      net (fanout=2)        1.181   clock_divider/fast_idx[31]_GND_3_o_add_3_OUT<5>
-    SLICE_X17Y11.D       Tilo                  0.259   clock_divider/fast_idx<18>
-                                                       clock_divider/fast_idx[31]_GND_3_o_equal_10_o<31>1
-    SLICE_X15Y10.A2      net (fanout=8)        0.819   clock_divider/fast_idx[31]_GND_3_o_equal_10_o<31>
-    SLICE_X15Y10.CLK     Tas                   0.322   clock_divider/fast_idx<5>
-                                                       clock_divider/Mmux_fast_idx[31]_GND_3_o_mux_10_OUT281
-                                                       clock_divider/fast_idx_5
-    -------------------------------------------------  ---------------------------
-    Total                                      4.355ns (1.624ns logic, 2.731ns route)
+    Total                                      4.841ns (1.804ns logic, 3.037ns route)
                                                        (37.3% logic, 62.7% route)
 
 --------------------------------------------------------------------------------
-Slack (setup path):     5.680ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               clock_divider/onehz_idx_0 (FF)
-  Destination:          clock_divider/fast_idx_5 (FF)
+Slack (setup path):     5.140ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               clock_divider/onehz_idx_4 (FF)
+  Destination:          clock_divider/blink_clk (FF)
   Requirement:          10.000ns
-  Data Path Delay:      4.266ns (Levels of Logic = 4)
-  Clock Path Skew:      -0.019ns (0.244 - 0.263)
+  Data Path Delay:      4.820ns (Levels of Logic = 4)
+  Clock Path Skew:      -0.005ns (0.253 - 0.258)
   Source Clock:         clk_BUFGP rising at 0.000ns
   Destination Clock:    clk_BUFGP rising at 10.000ns
   Clock Uncertainty:    0.035ns
@@ -260,40 +137,40 @@ Slack (setup path):     5.680ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.000ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: clock_divider/onehz_idx_0 to clock_divider/fast_idx_5
+  Maximum Data Path at Slow Process Corner: clock_divider/onehz_idx_4 to clock_divider/blink_clk
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X12Y10.AQ      Tcko                  0.408   clock_divider/onehz_idx<3>
-                                                       clock_divider/onehz_idx_0
-    SLICE_X16Y9.A5       net (fanout=4)        0.619   clock_divider/onehz_idx<0>
-    SLICE_X16Y9.COUT     Topcya                0.395   clock_divider/Madd_fast_idx[31]_GND_3_o_add_3_OUT_cy<3>
-                                                       clock_divider/Madd_fast_idx[31]_GND_3_o_add_3_OUT_lut<0>_INV_0
-                                                       clock_divider/Madd_fast_idx[31]_GND_3_o_add_3_OUT_cy<3>
-    SLICE_X16Y10.CIN     net (fanout=1)        0.003   clock_divider/Madd_fast_idx[31]_GND_3_o_add_3_OUT_cy<3>
-    SLICE_X16Y10.BMUX    Tcinb                 0.260   clock_divider/fast_idx<7>
-                                                       clock_divider/Madd_fast_idx[31]_GND_3_o_add_3_OUT_cy<7>
-    SLICE_X17Y11.D3      net (fanout=2)        1.181   clock_divider/fast_idx[31]_GND_3_o_add_3_OUT<5>
-    SLICE_X17Y11.D       Tilo                  0.259   clock_divider/fast_idx<18>
-                                                       clock_divider/fast_idx[31]_GND_3_o_equal_10_o<31>1
-    SLICE_X15Y10.A2      net (fanout=8)        0.819   clock_divider/fast_idx[31]_GND_3_o_equal_10_o<31>
-    SLICE_X15Y10.CLK     Tas                   0.322   clock_divider/fast_idx<5>
-                                                       clock_divider/Mmux_fast_idx[31]_GND_3_o_mux_10_OUT281
-                                                       clock_divider/fast_idx_5
+    SLICE_X18Y31.AQ      Tcko                  0.447   clock_divider/onehz_idx<6>
+                                                       clock_divider/onehz_idx_4
+    SLICE_X20Y28.A2      net (fanout=3)        0.846   clock_divider/onehz_idx<4>
+    SLICE_X20Y28.COUT    Topcya                0.395   clock_divider/Madd_blink_idx[31]_GND_3_o_add_4_OUT_cy<7>
+                                                       clock_divider/onehz_idx<4>_rt
+                                                       clock_divider/Madd_blink_idx[31]_GND_3_o_add_4_OUT_cy<7>
+    SLICE_X20Y29.CIN     net (fanout=1)        0.003   clock_divider/Madd_blink_idx[31]_GND_3_o_add_4_OUT_cy<7>
+    SLICE_X20Y29.AMUX    Tcina                 0.177   clock_divider/blink_idx<11>
+                                                       clock_divider/Madd_blink_idx[31]_GND_3_o_add_4_OUT_cy<11>
+    SLICE_X21Y30.B3      net (fanout=3)        1.163   clock_divider/blink_idx[31]_GND_3_o_add_4_OUT<8>
+    SLICE_X21Y30.B       Tilo                  0.259   clock_divider/blink_idx<16>
+                                                       clock_divider/blink_idx[31]_GND_3_o_equal_12_o<31>5
+    SLICE_X22Y29.C2      net (fanout=9)        1.241   clock_divider/blink_idx[31]_GND_3_o_equal_12_o<31>4
+    SLICE_X22Y29.CLK     Tas                   0.289   clock_divider/blink_clk
+                                                       clock_divider/blink_clk_rstpot
+                                                       clock_divider/blink_clk
     -------------------------------------------------  ---------------------------
-    Total                                      4.266ns (1.644ns logic, 2.622ns route)
-                                                       (38.5% logic, 61.5% route)
+    Total                                      4.820ns (1.567ns logic, 3.253ns route)
+                                                       (32.5% logic, 67.5% route)
 
 --------------------------------------------------------------------------------
 
-Paths for end point clock_divider/twohz_idx_14 (SLICE_X11Y14.D2), 96 paths
+Paths for end point clock_divider/twohz_idx_18 (SLICE_X23Y38.B2), 92 paths
 --------------------------------------------------------------------------------
-Slack (setup path):     5.570ns (requirement - (data path - clock path skew + uncertainty))
+Slack (setup path):     5.305ns (requirement - (data path - clock path skew + uncertainty))
   Source:               clock_divider/onehz_idx_0 (FF)
-  Destination:          clock_divider/twohz_idx_14 (FF)
+  Destination:          clock_divider/twohz_idx_18 (FF)
   Requirement:          10.000ns
-  Data Path Delay:      4.393ns (Levels of Logic = 9)
-  Clock Path Skew:      -0.002ns (0.261 - 0.263)
+  Data Path Delay:      4.637ns (Levels of Logic = 9)
+  Clock Path Skew:      -0.023ns (0.422 - 0.445)
   Source Clock:         clk_BUFGP rising at 0.000ns
   Destination Clock:    clk_BUFGP rising at 10.000ns
   Clock Uncertainty:    0.035ns
@@ -304,52 +181,52 @@ Slack (setup path):     5.570ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.000ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: clock_divider/onehz_idx_0 to clock_divider/twohz_idx_14
+  Maximum Data Path at Slow Process Corner: clock_divider/onehz_idx_0 to clock_divider/twohz_idx_18
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X12Y10.AQ      Tcko                  0.408   clock_divider/onehz_idx<3>
+    SLICE_X18Y30.AQ      Tcko                  0.447   clock_divider/onehz_idx<3>
                                                        clock_divider/onehz_idx_0
-    SLICE_X10Y12.A4      net (fanout=4)        0.710   clock_divider/onehz_idx<0>
-    SLICE_X10Y12.COUT    Topcya                0.379   clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<3>
+    SLICE_X22Y34.A2      net (fanout=4)        1.068   clock_divider/onehz_idx<0>
+    SLICE_X22Y34.COUT    Topcya                0.379   clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<3>
                                                        clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_lut<0>_INV_0
                                                        clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<3>
-    SLICE_X10Y13.CIN     net (fanout=1)        0.003   clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<3>
-    SLICE_X10Y13.COUT    Tbyp                  0.076   clock_divider/twohz_idx<7>
+    SLICE_X22Y35.CIN     net (fanout=1)        0.003   clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<3>
+    SLICE_X22Y35.COUT    Tbyp                  0.076   clock_divider/twohz_idx<7>
                                                        clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<7>
-    SLICE_X10Y14.CIN     net (fanout=1)        0.003   clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<7>
-    SLICE_X10Y14.COUT    Tbyp                  0.076   clock_divider/twohz_idx<10>
+    SLICE_X22Y36.CIN     net (fanout=1)        0.003   clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<7>
+    SLICE_X22Y36.COUT    Tbyp                  0.076   clock_divider/twohz_idx<10>
                                                        clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<11>
-    SLICE_X10Y15.CIN     net (fanout=1)        0.003   clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<11>
-    SLICE_X10Y15.COUT    Tbyp                  0.076   clock_divider/twohz_idx<15>
+    SLICE_X22Y37.CIN     net (fanout=1)        0.003   clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<11>
+    SLICE_X22Y37.COUT    Tbyp                  0.076   clock_divider/twohz_idx<15>
                                                        clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<15>
-    SLICE_X10Y16.CIN     net (fanout=1)        0.003   clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<15>
-    SLICE_X10Y16.COUT    Tbyp                  0.076   clock_divider/twohz_idx<17>
+    SLICE_X22Y38.CIN     net (fanout=1)        0.003   clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<15>
+    SLICE_X22Y38.COUT    Tbyp                  0.076   clock_divider/twohz_idx<17>
                                                        clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<19>
-    SLICE_X10Y17.CIN     net (fanout=1)        0.003   clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<19>
-    SLICE_X10Y17.COUT    Tbyp                  0.076   clock_divider/twohz_idx<23>
+    SLICE_X22Y39.CIN     net (fanout=1)        0.003   clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<19>
+    SLICE_X22Y39.COUT    Tbyp                  0.076   clock_divider/twohz_idx<23>
                                                        clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<23>
-    SLICE_X10Y18.CIN     net (fanout=1)        0.003   clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<23>
-    SLICE_X10Y18.AMUX    Tcina                 0.202   clock_divider/twohz_idx[31]_GND_3_o_add_2_OUT<25>
+    SLICE_X22Y40.CIN     net (fanout=1)        0.082   clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<23>
+    SLICE_X22Y40.AMUX    Tcina                 0.202   clock_divider/twohz_idx[31]_GND_3_o_add_2_OUT<25>
                                                        clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_xor<25>
-    SLICE_X14Y15.D2      net (fanout=13)       0.914   clock_divider/twohz_idx[31]_GND_3_o_add_2_OUT<24>
-    SLICE_X14Y15.D       Tilo                  0.203   N135
-                                                       clock_divider/Mmux_twohz_idx[31]_GND_3_o_mux_8_OUT61_SW0
-    SLICE_X11Y14.D2      net (fanout=1)        0.857   N135
-    SLICE_X11Y14.CLK     Tas                   0.322   clock_divider/twohz_idx<14>
-                                                       clock_divider/Mmux_twohz_idx[31]_GND_3_o_mux_8_OUT61
-                                                       clock_divider/twohz_idx_14
+    SLICE_X20Y38.B1      net (fanout=13)       0.913   clock_divider/twohz_idx[31]_GND_3_o_add_2_OUT<24>
+    SLICE_X20Y38.B       Tilo                  0.205   N151
+                                                       clock_divider/Mmux_twohz_idx[31]_GND_3_o_mux_8_OUT101_SW0
+    SLICE_X23Y38.B2      net (fanout=1)        0.624   N151
+    SLICE_X23Y38.CLK     Tas                   0.322   clock_divider/twohz_idx<19>
+                                                       clock_divider/Mmux_twohz_idx[31]_GND_3_o_mux_8_OUT101
+                                                       clock_divider/twohz_idx_18
     -------------------------------------------------  ---------------------------
-    Total                                      4.393ns (1.894ns logic, 2.499ns route)
-                                                       (43.1% logic, 56.9% route)
+    Total                                      4.637ns (1.935ns logic, 2.702ns route)
+                                                       (41.7% logic, 58.3% route)
 
 --------------------------------------------------------------------------------
-Slack (setup path):     5.614ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               clock_divider/onehz_idx_1 (FF)
-  Destination:          clock_divider/twohz_idx_14 (FF)
+Slack (setup path):     5.384ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               clock_divider/onehz_idx_4 (FF)
+  Destination:          clock_divider/twohz_idx_18 (FF)
   Requirement:          10.000ns
-  Data Path Delay:      4.349ns (Levels of Logic = 9)
-  Clock Path Skew:      -0.002ns (0.261 - 0.263)
+  Data Path Delay:      4.558ns (Levels of Logic = 8)
+  Clock Path Skew:      -0.023ns (0.422 - 0.445)
   Source Clock:         clk_BUFGP rising at 0.000ns
   Destination Clock:    clk_BUFGP rising at 10.000ns
   Clock Uncertainty:    0.035ns
@@ -360,52 +237,49 @@ Slack (setup path):     5.614ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.000ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: clock_divider/onehz_idx_1 to clock_divider/twohz_idx_14
+  Maximum Data Path at Slow Process Corner: clock_divider/onehz_idx_4 to clock_divider/twohz_idx_18
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X12Y10.BQ      Tcko                  0.408   clock_divider/onehz_idx<3>
-                                                       clock_divider/onehz_idx_1
-    SLICE_X10Y12.B4      net (fanout=4)        0.665   clock_divider/onehz_idx<1>
-    SLICE_X10Y12.COUT    Topcyb                0.380   clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<3>
-                                                       clock_divider/onehz_idx<1>_rt.3
-                                                       clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<3>
-    SLICE_X10Y13.CIN     net (fanout=1)        0.003   clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<3>
-    SLICE_X10Y13.COUT    Tbyp                  0.076   clock_divider/twohz_idx<7>
+    SLICE_X18Y31.AQ      Tcko                  0.447   clock_divider/onehz_idx<6>
+                                                       clock_divider/onehz_idx_4
+    SLICE_X22Y35.A2      net (fanout=3)        1.068   clock_divider/onehz_idx<4>
+    SLICE_X22Y35.COUT    Topcya                0.379   clock_divider/twohz_idx<7>
+                                                       clock_divider/onehz_idx<4>_rt.2
                                                        clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<7>
-    SLICE_X10Y14.CIN     net (fanout=1)        0.003   clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<7>
-    SLICE_X10Y14.COUT    Tbyp                  0.076   clock_divider/twohz_idx<10>
+    SLICE_X22Y36.CIN     net (fanout=1)        0.003   clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<7>
+    SLICE_X22Y36.COUT    Tbyp                  0.076   clock_divider/twohz_idx<10>
                                                        clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<11>
-    SLICE_X10Y15.CIN     net (fanout=1)        0.003   clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<11>
-    SLICE_X10Y15.COUT    Tbyp                  0.076   clock_divider/twohz_idx<15>
+    SLICE_X22Y37.CIN     net (fanout=1)        0.003   clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<11>
+    SLICE_X22Y37.COUT    Tbyp                  0.076   clock_divider/twohz_idx<15>
                                                        clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<15>
-    SLICE_X10Y16.CIN     net (fanout=1)        0.003   clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<15>
-    SLICE_X10Y16.COUT    Tbyp                  0.076   clock_divider/twohz_idx<17>
+    SLICE_X22Y38.CIN     net (fanout=1)        0.003   clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<15>
+    SLICE_X22Y38.COUT    Tbyp                  0.076   clock_divider/twohz_idx<17>
                                                        clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<19>
-    SLICE_X10Y17.CIN     net (fanout=1)        0.003   clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<19>
-    SLICE_X10Y17.COUT    Tbyp                  0.076   clock_divider/twohz_idx<23>
+    SLICE_X22Y39.CIN     net (fanout=1)        0.003   clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<19>
+    SLICE_X22Y39.COUT    Tbyp                  0.076   clock_divider/twohz_idx<23>
                                                        clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<23>
-    SLICE_X10Y18.CIN     net (fanout=1)        0.003   clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<23>
-    SLICE_X10Y18.AMUX    Tcina                 0.202   clock_divider/twohz_idx[31]_GND_3_o_add_2_OUT<25>
+    SLICE_X22Y40.CIN     net (fanout=1)        0.082   clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<23>
+    SLICE_X22Y40.AMUX    Tcina                 0.202   clock_divider/twohz_idx[31]_GND_3_o_add_2_OUT<25>
                                                        clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_xor<25>
-    SLICE_X14Y15.D2      net (fanout=13)       0.914   clock_divider/twohz_idx[31]_GND_3_o_add_2_OUT<24>
-    SLICE_X14Y15.D       Tilo                  0.203   N135
-                                                       clock_divider/Mmux_twohz_idx[31]_GND_3_o_mux_8_OUT61_SW0
-    SLICE_X11Y14.D2      net (fanout=1)        0.857   N135
-    SLICE_X11Y14.CLK     Tas                   0.322   clock_divider/twohz_idx<14>
-                                                       clock_divider/Mmux_twohz_idx[31]_GND_3_o_mux_8_OUT61
-                                                       clock_divider/twohz_idx_14
+    SLICE_X20Y38.B1      net (fanout=13)       0.913   clock_divider/twohz_idx[31]_GND_3_o_add_2_OUT<24>
+    SLICE_X20Y38.B       Tilo                  0.205   N151
+                                                       clock_divider/Mmux_twohz_idx[31]_GND_3_o_mux_8_OUT101_SW0
+    SLICE_X23Y38.B2      net (fanout=1)        0.624   N151
+    SLICE_X23Y38.CLK     Tas                   0.322   clock_divider/twohz_idx<19>
+                                                       clock_divider/Mmux_twohz_idx[31]_GND_3_o_mux_8_OUT101
+                                                       clock_divider/twohz_idx_18
     -------------------------------------------------  ---------------------------
-    Total                                      4.349ns (1.895ns logic, 2.454ns route)
-                                                       (43.6% logic, 56.4% route)
+    Total                                      4.558ns (1.859ns logic, 2.699ns route)
+                                                       (40.8% logic, 59.2% route)
 
 --------------------------------------------------------------------------------
-Slack (setup path):     5.641ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               clock_divider/onehz_idx_2 (FF)
-  Destination:          clock_divider/twohz_idx_14 (FF)
+Slack (setup path):     5.518ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               clock_divider/onehz_idx_0 (FF)
+  Destination:          clock_divider/twohz_idx_18 (FF)
   Requirement:          10.000ns
-  Data Path Delay:      4.322ns (Levels of Logic = 9)
-  Clock Path Skew:      -0.002ns (0.261 - 0.263)
+  Data Path Delay:      4.424ns (Levels of Logic = 7)
+  Clock Path Skew:      -0.023ns (0.422 - 0.445)
   Source Clock:         clk_BUFGP rising at 0.000ns
   Destination Clock:    clk_BUFGP rising at 10.000ns
   Clock Uncertainty:    0.035ns
@@ -416,85 +290,254 @@ Slack (setup path):     5.641ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.000ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: clock_divider/onehz_idx_2 to clock_divider/twohz_idx_14
+  Maximum Data Path at Slow Process Corner: clock_divider/onehz_idx_0 to clock_divider/twohz_idx_18
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X12Y10.CQ      Tcko                  0.408   clock_divider/onehz_idx<3>
-                                                       clock_divider/onehz_idx_2
-    SLICE_X10Y12.C3      net (fanout=4)        0.741   clock_divider/onehz_idx<2>
-    SLICE_X10Y12.COUT    Topcyc                0.277   clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<3>
-                                                       clock_divider/onehz_idx<2>_rt.3
+    SLICE_X18Y30.AQ      Tcko                  0.447   clock_divider/onehz_idx<3>
+                                                       clock_divider/onehz_idx_0
+    SLICE_X22Y34.A2      net (fanout=4)        1.068   clock_divider/onehz_idx<0>
+    SLICE_X22Y34.COUT    Topcya                0.379   clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<3>
+                                                       clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_lut<0>_INV_0
                                                        clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<3>
-    SLICE_X10Y13.CIN     net (fanout=1)        0.003   clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<3>
-    SLICE_X10Y13.COUT    Tbyp                  0.076   clock_divider/twohz_idx<7>
+    SLICE_X22Y35.CIN     net (fanout=1)        0.003   clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<3>
+    SLICE_X22Y35.COUT    Tbyp                  0.076   clock_divider/twohz_idx<7>
                                                        clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<7>
-    SLICE_X10Y14.CIN     net (fanout=1)        0.003   clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<7>
-    SLICE_X10Y14.COUT    Tbyp                  0.076   clock_divider/twohz_idx<10>
+    SLICE_X22Y36.CIN     net (fanout=1)        0.003   clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<7>
+    SLICE_X22Y36.COUT    Tbyp                  0.076   clock_divider/twohz_idx<10>
                                                        clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<11>
-    SLICE_X10Y15.CIN     net (fanout=1)        0.003   clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<11>
-    SLICE_X10Y15.COUT    Tbyp                  0.076   clock_divider/twohz_idx<15>
+    SLICE_X22Y37.CIN     net (fanout=1)        0.003   clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<11>
+    SLICE_X22Y37.COUT    Tbyp                  0.076   clock_divider/twohz_idx<15>
                                                        clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<15>
-    SLICE_X10Y16.CIN     net (fanout=1)        0.003   clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<15>
-    SLICE_X10Y16.COUT    Tbyp                  0.076   clock_divider/twohz_idx<17>
+    SLICE_X22Y38.CIN     net (fanout=1)        0.003   clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<15>
+    SLICE_X22Y38.BMUX    Tcinb                 0.292   clock_divider/twohz_idx<17>
                                                        clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<19>
-    SLICE_X10Y17.CIN     net (fanout=1)        0.003   clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<19>
-    SLICE_X10Y17.COUT    Tbyp                  0.076   clock_divider/twohz_idx<23>
-                                                       clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<23>
-    SLICE_X10Y18.CIN     net (fanout=1)        0.003   clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_cy<23>
-    SLICE_X10Y18.AMUX    Tcina                 0.202   clock_divider/twohz_idx[31]_GND_3_o_add_2_OUT<25>
-                                                       clock_divider/Madd_twohz_idx[31]_GND_3_o_add_2_OUT_xor<25>
-    SLICE_X14Y15.D2      net (fanout=13)       0.914   clock_divider/twohz_idx[31]_GND_3_o_add_2_OUT<24>
-    SLICE_X14Y15.D       Tilo                  0.203   N135
-                                                       clock_divider/Mmux_twohz_idx[31]_GND_3_o_mux_8_OUT61_SW0
-    SLICE_X11Y14.D2      net (fanout=1)        0.857   N135
-    SLICE_X11Y14.CLK     Tas                   0.322   clock_divider/twohz_idx<14>
-                                                       clock_divider/Mmux_twohz_idx[31]_GND_3_o_mux_8_OUT61
-                                                       clock_divider/twohz_idx_14
+    SLICE_X20Y38.B2      net (fanout=4)        0.847   clock_divider/twohz_idx[31]_GND_3_o_add_2_OUT<17>
+    SLICE_X20Y38.B       Tilo                  0.205   N151
+                                                       clock_divider/Mmux_twohz_idx[31]_GND_3_o_mux_8_OUT101_SW0
+    SLICE_X23Y38.B2      net (fanout=1)        0.624   N151
+    SLICE_X23Y38.CLK     Tas                   0.322   clock_divider/twohz_idx<19>
+                                                       clock_divider/Mmux_twohz_idx[31]_GND_3_o_mux_8_OUT101
+                                                       clock_divider/twohz_idx_18
     -------------------------------------------------  ---------------------------
-    Total                                      4.322ns (1.792ns logic, 2.530ns route)
-                                                       (41.5% logic, 58.5% route)
+    Total                                      4.424ns (1.873ns logic, 2.551ns route)
+                                                       (42.3% logic, 57.7% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point clock_divider/onehz_idx_21 (SLICE_X19Y35.A3), 105 paths
+--------------------------------------------------------------------------------
+Slack (setup path):     5.344ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               clock_divider/onehz_idx_0 (FF)
+  Destination:          clock_divider/onehz_idx_21 (FF)
+  Requirement:          10.000ns
+  Data Path Delay:      4.595ns (Levels of Logic = 7)
+  Clock Path Skew:      -0.026ns (0.419 - 0.445)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: clock_divider/onehz_idx_0 to clock_divider/onehz_idx_21
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X18Y30.AQ      Tcko                  0.447   clock_divider/onehz_idx<3>
+                                                       clock_divider/onehz_idx_0
+    SLICE_X18Y30.A5      net (fanout=4)        0.407   clock_divider/onehz_idx<0>
+    SLICE_X18Y30.COUT    Topcya                0.379   clock_divider/onehz_idx<3>
+                                                       clock_divider/Madd_onehz_idx[31]_GND_3_o_add_1_OUT_lut<0>_INV_0
+                                                       clock_divider/Madd_onehz_idx[31]_GND_3_o_add_1_OUT_cy<3>
+    SLICE_X18Y31.CIN     net (fanout=1)        0.003   clock_divider/Madd_onehz_idx[31]_GND_3_o_add_1_OUT_cy<3>
+    SLICE_X18Y31.COUT    Tbyp                  0.076   clock_divider/onehz_idx<6>
+                                                       clock_divider/Madd_onehz_idx[31]_GND_3_o_add_1_OUT_cy<7>
+    SLICE_X18Y32.CIN     net (fanout=1)        0.108   clock_divider/Madd_onehz_idx[31]_GND_3_o_add_1_OUT_cy<7>
+    SLICE_X18Y32.COUT    Tbyp                  0.076   clock_divider/onehz_idx<11>
+                                                       clock_divider/Madd_onehz_idx[31]_GND_3_o_add_1_OUT_cy<11>
+    SLICE_X18Y33.CIN     net (fanout=1)        0.003   clock_divider/Madd_onehz_idx[31]_GND_3_o_add_1_OUT_cy<11>
+    SLICE_X18Y33.COUT    Tbyp                  0.076   clock_divider/Madd_onehz_idx[31]_GND_3_o_add_1_OUT_cy<15>
+                                                       clock_divider/Madd_onehz_idx[31]_GND_3_o_add_1_OUT_cy<15>
+    SLICE_X18Y34.CIN     net (fanout=1)        0.003   clock_divider/Madd_onehz_idx[31]_GND_3_o_add_1_OUT_cy<15>
+    SLICE_X18Y34.BMUX    Tcinb                 0.292   clock_divider/onehz_idx<18>
+                                                       clock_divider/Madd_onehz_idx[31]_GND_3_o_add_1_OUT_cy<19>
+    SLICE_X21Y34.A2      net (fanout=2)        0.657   clock_divider/onehz_idx[31]_GND_3_o_add_1_OUT<17>
+    SLICE_X21Y34.A       Tilo                  0.259   clock_divider/onehz_idx[31]_GND_3_o_equal_6_o<31>2
+                                                       clock_divider/onehz_idx[31]_GND_3_o_equal_6_o<31>3
+    SLICE_X19Y35.A3      net (fanout=13)       1.487   clock_divider/onehz_idx[31]_GND_3_o_equal_6_o<31>2
+    SLICE_X19Y35.CLK     Tas                   0.322   clock_divider/onehz_idx<25>
+                                                       clock_divider/Mmux_onehz_idx[31]_GND_3_o_mux_6_OUT141
+                                                       clock_divider/onehz_idx_21
+    -------------------------------------------------  ---------------------------
+    Total                                      4.595ns (1.927ns logic, 2.668ns route)
+                                                       (41.9% logic, 58.1% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     5.391ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               clock_divider/onehz_idx_0 (FF)
+  Destination:          clock_divider/onehz_idx_21 (FF)
+  Requirement:          10.000ns
+  Data Path Delay:      4.548ns (Levels of Logic = 6)
+  Clock Path Skew:      -0.026ns (0.419 - 0.445)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: clock_divider/onehz_idx_0 to clock_divider/onehz_idx_21
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X18Y30.AQ      Tcko                  0.447   clock_divider/onehz_idx<3>
+                                                       clock_divider/onehz_idx_0
+    SLICE_X18Y30.A5      net (fanout=4)        0.407   clock_divider/onehz_idx<0>
+    SLICE_X18Y30.COUT    Topcya                0.379   clock_divider/onehz_idx<3>
+                                                       clock_divider/Madd_onehz_idx[31]_GND_3_o_add_1_OUT_lut<0>_INV_0
+                                                       clock_divider/Madd_onehz_idx[31]_GND_3_o_add_1_OUT_cy<3>
+    SLICE_X18Y31.CIN     net (fanout=1)        0.003   clock_divider/Madd_onehz_idx[31]_GND_3_o_add_1_OUT_cy<3>
+    SLICE_X18Y31.COUT    Tbyp                  0.076   clock_divider/onehz_idx<6>
+                                                       clock_divider/Madd_onehz_idx[31]_GND_3_o_add_1_OUT_cy<7>
+    SLICE_X18Y32.CIN     net (fanout=1)        0.108   clock_divider/Madd_onehz_idx[31]_GND_3_o_add_1_OUT_cy<7>
+    SLICE_X18Y32.COUT    Tbyp                  0.076   clock_divider/onehz_idx<11>
+                                                       clock_divider/Madd_onehz_idx[31]_GND_3_o_add_1_OUT_cy<11>
+    SLICE_X18Y33.CIN     net (fanout=1)        0.003   clock_divider/Madd_onehz_idx[31]_GND_3_o_add_1_OUT_cy<11>
+    SLICE_X18Y33.DMUX    Tcind                 0.302   clock_divider/Madd_onehz_idx[31]_GND_3_o_add_1_OUT_cy<15>
+                                                       clock_divider/Madd_onehz_idx[31]_GND_3_o_add_1_OUT_cy<15>
+    SLICE_X21Y34.A1      net (fanout=2)        0.679   clock_divider/onehz_idx[31]_GND_3_o_add_1_OUT<15>
+    SLICE_X21Y34.A       Tilo                  0.259   clock_divider/onehz_idx[31]_GND_3_o_equal_6_o<31>2
+                                                       clock_divider/onehz_idx[31]_GND_3_o_equal_6_o<31>3
+    SLICE_X19Y35.A3      net (fanout=13)       1.487   clock_divider/onehz_idx[31]_GND_3_o_equal_6_o<31>2
+    SLICE_X19Y35.CLK     Tas                   0.322   clock_divider/onehz_idx<25>
+                                                       clock_divider/Mmux_onehz_idx[31]_GND_3_o_mux_6_OUT141
+                                                       clock_divider/onehz_idx_21
+    -------------------------------------------------  ---------------------------
+    Total                                      4.548ns (1.861ns logic, 2.687ns route)
+                                                       (40.9% logic, 59.1% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     5.423ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               clock_divider/onehz_idx_4 (FF)
+  Destination:          clock_divider/onehz_idx_21 (FF)
+  Requirement:          10.000ns
+  Data Path Delay:      4.516ns (Levels of Logic = 6)
+  Clock Path Skew:      -0.026ns (0.419 - 0.445)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: clock_divider/onehz_idx_4 to clock_divider/onehz_idx_21
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X18Y31.AQ      Tcko                  0.447   clock_divider/onehz_idx<6>
+                                                       clock_divider/onehz_idx_4
+    SLICE_X18Y31.A5      net (fanout=3)        0.407   clock_divider/onehz_idx<4>
+    SLICE_X18Y31.COUT    Topcya                0.379   clock_divider/onehz_idx<6>
+                                                       clock_divider/onehz_idx<4>_rt.1
+                                                       clock_divider/Madd_onehz_idx[31]_GND_3_o_add_1_OUT_cy<7>
+    SLICE_X18Y32.CIN     net (fanout=1)        0.108   clock_divider/Madd_onehz_idx[31]_GND_3_o_add_1_OUT_cy<7>
+    SLICE_X18Y32.COUT    Tbyp                  0.076   clock_divider/onehz_idx<11>
+                                                       clock_divider/Madd_onehz_idx[31]_GND_3_o_add_1_OUT_cy<11>
+    SLICE_X18Y33.CIN     net (fanout=1)        0.003   clock_divider/Madd_onehz_idx[31]_GND_3_o_add_1_OUT_cy<11>
+    SLICE_X18Y33.COUT    Tbyp                  0.076   clock_divider/Madd_onehz_idx[31]_GND_3_o_add_1_OUT_cy<15>
+                                                       clock_divider/Madd_onehz_idx[31]_GND_3_o_add_1_OUT_cy<15>
+    SLICE_X18Y34.CIN     net (fanout=1)        0.003   clock_divider/Madd_onehz_idx[31]_GND_3_o_add_1_OUT_cy<15>
+    SLICE_X18Y34.BMUX    Tcinb                 0.292   clock_divider/onehz_idx<18>
+                                                       clock_divider/Madd_onehz_idx[31]_GND_3_o_add_1_OUT_cy<19>
+    SLICE_X21Y34.A2      net (fanout=2)        0.657   clock_divider/onehz_idx[31]_GND_3_o_add_1_OUT<17>
+    SLICE_X21Y34.A       Tilo                  0.259   clock_divider/onehz_idx[31]_GND_3_o_equal_6_o<31>2
+                                                       clock_divider/onehz_idx[31]_GND_3_o_equal_6_o<31>3
+    SLICE_X19Y35.A3      net (fanout=13)       1.487   clock_divider/onehz_idx[31]_GND_3_o_equal_6_o<31>2
+    SLICE_X19Y35.CLK     Tas                   0.322   clock_divider/onehz_idx<25>
+                                                       clock_divider/Mmux_onehz_idx[31]_GND_3_o_mux_6_OUT141
+                                                       clock_divider/onehz_idx_21
+    -------------------------------------------------  ---------------------------
+    Total                                      4.516ns (1.851ns logic, 2.665ns route)
+                                                       (41.0% logic, 59.0% route)
 
 --------------------------------------------------------------------------------
 
 Hold Paths: TS_sys_clk_pin = PERIOD TIMEGRP "sys_clk_pin" 100 MHz HIGH 50%;
 --------------------------------------------------------------------------------
 
-Paths for end point reset_debouncer/temp_state (SLICE_X20Y8.A6), 1 path
+Paths for end point clock_divider/onehz_clk (SLICE_X21Y33.A6), 1 path
 --------------------------------------------------------------------------------
-Slack (hold path):      0.412ns (requirement - (clock path skew + uncertainty - data path))
-  Source:               reset_debouncer/temp_state (FF)
-  Destination:          reset_debouncer/temp_state (FF)
+Slack (hold path):      0.438ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               clock_divider/onehz_clk (FF)
+  Destination:          clock_divider/onehz_clk (FF)
   Requirement:          0.000ns
-  Data Path Delay:      0.412ns (Levels of Logic = 1)
+  Data Path Delay:      0.438ns (Levels of Logic = 1)
   Clock Path Skew:      0.000ns
   Source Clock:         clk_BUFGP rising at 10.000ns
   Destination Clock:    clk_BUFGP rising at 10.000ns
   Clock Uncertainty:    0.000ns
 
-  Minimum Data Path at Fast Process Corner: reset_debouncer/temp_state to reset_debouncer/temp_state
+  Minimum Data Path at Fast Process Corner: clock_divider/onehz_clk to clock_divider/onehz_clk
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X20Y8.AQ       Tcko                  0.200   reset_debouncer/temp_state
-                                                       reset_debouncer/temp_state
-    SLICE_X20Y8.A6       net (fanout=5)        0.022   reset_debouncer/temp_state
-    SLICE_X20Y8.CLK      Tah         (-Th)    -0.190   reset_debouncer/temp_state
-                                                       reset_debouncer/temp_state_rstpot
-                                                       reset_debouncer/temp_state
+    SLICE_X21Y33.AQ      Tcko                  0.198   clock_divider/onehz_clk
+                                                       clock_divider/onehz_clk
+    SLICE_X21Y33.A6      net (fanout=2)        0.025   clock_divider/onehz_clk
+    SLICE_X21Y33.CLK     Tah         (-Th)    -0.215   clock_divider/onehz_clk
+                                                       clock_divider/onehz_clk_rstpot
+                                                       clock_divider/onehz_clk
     -------------------------------------------------  ---------------------------
-    Total                                      0.412ns (0.390ns logic, 0.022ns route)
-                                                       (94.7% logic, 5.3% route)
+    Total                                      0.438ns (0.413ns logic, 0.025ns route)
+                                                       (94.3% logic, 5.7% route)
 
 --------------------------------------------------------------------------------
 
-Paths for end point clock_divider/fast_clk (SLICE_X15Y11.A6), 1 path
+Paths for end point clock_divider/twohz_clk (SLICE_X23Y36.A6), 1 path
 --------------------------------------------------------------------------------
-Slack (hold path):      0.440ns (requirement - (clock path skew + uncertainty - data path))
+Slack (hold path):      0.438ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               clock_divider/twohz_clk (FF)
+  Destination:          clock_divider/twohz_clk (FF)
+  Requirement:          0.000ns
+  Data Path Delay:      0.438ns (Levels of Logic = 1)
+  Clock Path Skew:      0.000ns
+  Source Clock:         clk_BUFGP rising at 10.000ns
+  Destination Clock:    clk_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path at Fast Process Corner: clock_divider/twohz_clk to clock_divider/twohz_clk
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X23Y36.AQ      Tcko                  0.198   clock_divider/twohz_clk
+                                                       clock_divider/twohz_clk
+    SLICE_X23Y36.A6      net (fanout=2)        0.025   clock_divider/twohz_clk
+    SLICE_X23Y36.CLK     Tah         (-Th)    -0.215   clock_divider/twohz_clk
+                                                       clock_divider/twohz_clk_rstpot
+                                                       clock_divider/twohz_clk
+    -------------------------------------------------  ---------------------------
+    Total                                      0.438ns (0.413ns logic, 0.025ns route)
+                                                       (94.3% logic, 5.7% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point clock_divider/fast_clk (SLICE_X25Y25.D6), 1 path
+--------------------------------------------------------------------------------
+Slack (hold path):      0.438ns (requirement - (clock path skew + uncertainty - data path))
   Source:               clock_divider/fast_clk (FF)
   Destination:          clock_divider/fast_clk (FF)
   Requirement:          0.000ns
-  Data Path Delay:      0.440ns (Levels of Logic = 1)
+  Data Path Delay:      0.438ns (Levels of Logic = 1)
   Clock Path Skew:      0.000ns
   Source Clock:         clk_BUFGP rising at 10.000ns
   Destination Clock:    clk_BUFGP rising at 10.000ns
@@ -504,43 +547,15 @@ Slack (hold path):      0.440ns (requirement - (clock path skew + uncertainty - 
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X15Y11.AQ      Tcko                  0.198   clock_divider/fast_clk
+    SLICE_X25Y25.DQ      Tcko                  0.198   clock_divider/fast_clk
                                                        clock_divider/fast_clk
-    SLICE_X15Y11.A6      net (fanout=7)        0.027   clock_divider/fast_clk
-    SLICE_X15Y11.CLK     Tah         (-Th)    -0.215   clock_divider/fast_clk
+    SLICE_X25Y25.D6      net (fanout=7)        0.025   clock_divider/fast_clk
+    SLICE_X25Y25.CLK     Tah         (-Th)    -0.215   clock_divider/fast_clk
                                                        clock_divider/fast_clk_rstpot
                                                        clock_divider/fast_clk
     -------------------------------------------------  ---------------------------
-    Total                                      0.440ns (0.413ns logic, 0.027ns route)
-                                                       (93.9% logic, 6.1% route)
-
---------------------------------------------------------------------------------
-
-Paths for end point clock_divider/blink_clk (SLICE_X17Y12.A6), 1 path
---------------------------------------------------------------------------------
-Slack (hold path):      0.440ns (requirement - (clock path skew + uncertainty - data path))
-  Source:               clock_divider/blink_clk (FF)
-  Destination:          clock_divider/blink_clk (FF)
-  Requirement:          0.000ns
-  Data Path Delay:      0.440ns (Levels of Logic = 1)
-  Clock Path Skew:      0.000ns
-  Source Clock:         clk_BUFGP rising at 10.000ns
-  Destination Clock:    clk_BUFGP rising at 10.000ns
-  Clock Uncertainty:    0.000ns
-
-  Minimum Data Path at Fast Process Corner: clock_divider/blink_clk to clock_divider/blink_clk
-    Location             Delay type         Delay(ns)  Physical Resource
-                                                       Logical Resource(s)
-    -------------------------------------------------  -------------------
-    SLICE_X17Y12.AQ      Tcko                  0.198   clock_divider/blink_clk
-                                                       clock_divider/blink_clk
-    SLICE_X17Y12.A6      net (fanout=2)        0.027   clock_divider/blink_clk
-    SLICE_X17Y12.CLK     Tah         (-Th)    -0.215   clock_divider/blink_clk
-                                                       clock_divider/blink_clk_rstpot
-                                                       clock_divider/blink_clk
-    -------------------------------------------------  ---------------------------
-    Total                                      0.440ns (0.413ns logic, 0.027ns route)
-                                                       (93.9% logic, 6.1% route)
+    Total                                      0.438ns (0.413ns logic, 0.025ns route)
+                                                       (94.3% logic, 5.7% route)
 
 --------------------------------------------------------------------------------
 
@@ -557,17 +572,17 @@ Slack: 8.270ns (period - min period limit)
 Slack: 9.570ns (period - min period limit)
   Period: 10.000ns
   Min period limit: 0.430ns (2325.581MHz) (Tcp)
-  Physical resource: clock_divider/fast_idx<7>/CLK
-  Logical resource: clock_divider/fast_idx_6/CK
-  Location pin: SLICE_X16Y10.CLK
+  Physical resource: clock_divider/blink_idx<11>/CLK
+  Logical resource: clock_divider/blink_idx_10/CK
+  Location pin: SLICE_X20Y29.CLK
   Clock network: clk_BUFGP
 --------------------------------------------------------------------------------
 Slack: 9.570ns (period - min period limit)
   Period: 10.000ns
   Min period limit: 0.430ns (2325.581MHz) (Tcp)
-  Physical resource: clock_divider/fast_idx<7>/CLK
-  Logical resource: clock_divider/fast_idx_7/CK
-  Location pin: SLICE_X16Y10.CLK
+  Physical resource: clock_divider/blink_idx<11>/CLK
+  Logical resource: clock_divider/blink_idx_11/CK
+  Location pin: SLICE_X20Y29.CLK
   Clock network: clk_BUFGP
 --------------------------------------------------------------------------------
 
@@ -584,7 +599,7 @@ Clock to Setup on destination clock clk
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-clk            |    4.615|         |         |         |
+clk            |    4.947|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 
@@ -593,23 +608,23 @@ Timing summary:
 
 Timing errors: 0  Score: 0  (Setup/Max: 0, Hold: 0)
 
-Constraints cover 14606 paths, 0 nets, and 778 connections
+Constraints cover 15938 paths, 0 nets, and 773 connections
 
 Design statistics:
-   Minimum period:   4.615ns{1}   (Maximum frequency: 216.685MHz)
+   Minimum period:   4.947ns{1}   (Maximum frequency: 202.143MHz)
 
 
 ------------------------------------Footnotes-----------------------------------
 1)  The minimum period statistic assumes all single cycle delays.
 
-Analysis completed Wed Nov 13 14:31:23 2019 
+Analysis completed Mon Nov 18 13:20:44 2019 
 --------------------------------------------------------------------------------
 
 Trace Settings:
 -------------------------
 Trace Settings 
 
-Peak Memory Usage: 221 MB
+Peak Memory Usage: 220 MB
 
 
 
