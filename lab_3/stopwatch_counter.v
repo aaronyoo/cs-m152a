@@ -5,7 +5,7 @@ module stopwatch_counter(
     input wire norm_clk,
     input wire adj_clk,
     input wire pause,
-    
+
     output wire[3:0] sec_ones_out,
     output wire[3:0] sec_tens_out,
     output wire[3:0] min_ones_out,
@@ -48,8 +48,6 @@ module stopwatch_counter(
                         min_ones <= 4'd0;
                         if (min_tens == 4'd5) begin
                             min_tens <= 4'd0;
-                            // pause here (@ 00:00, after 59:59)
-                            // TODO: pause = 1;
                         end
                         else begin
                             min_tens <= min_tens + 4'd1;
