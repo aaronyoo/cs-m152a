@@ -1,30 +1,28 @@
 module comparison (
     input clk,
     input [2:0] first,
-    input up_st,
-    input down_st,
-    input left_st,
-    input right_st,
+    input up,
+    input down,
+    input left,
+    input right,
     output reg success
 );
     always @(posedge clk) begin
-        if(first == 3'b000 && up_st == 1) begin
+        success = 0;
+        if(first == 3'b000 && up) begin
             success = 1;
         end
-        else if(first == 3'b001 && right_st == 1) begin
+        else if(first == 3'b001 && right) begin
             success = 1;
         end
-        else if(first == 3'b010 && down_st == 1) begin
+        else if(first == 3'b010 && down) begin
             success = 1;
         end
-        else if(first == 3'b011 && left_st == 1) begin
+        else if(first == 3'b011 && left) begin
             success = 1;
         end
-        else if(
-                first == 3'b100 && up_st == 0 && right_st == 0
-                && down_st == 0 && left_st == 0
-        ) begin
-            success = 1;
+        else if(first == 3'b100 && !right && !left && !up && !down) begin
+                success = 1;
         end
         else begin
             success = 0;
