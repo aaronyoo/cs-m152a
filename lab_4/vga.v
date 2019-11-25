@@ -1,57 +1,73 @@
-module vga(pix_clk, rst, hsync, vsync, pixel_x, pixel_y, vidon);
-  input pix_clk, rst;
-  output hsync, vsync, pixel_x, pixel_y, vidon;
-  
-  reg vidon;
-  wire hsync, vsync;
-  reg [10:0] pixel_x, pixel_y;
-  
-  // parameters calculated from information here:
-  // http://tinyvga.com/vga-timing/800x600@72Hz
-  parameter tot_h_pixels = 11'd800;
-  parameter tot_v_lines = 11'd521;
-  parameter h_pulse = 11'd96;
-  parameter v_pulse = 11'd2;
-  parameter hbp = 11'd144;
-  parameter hfp= 11'd784;
-  parameter vbp = 11'd31;
-  parameter vfp = 11'd511;
-  
-  reg [10:0] v_counter;
-  reg [10:0] h_counter;
-  
-  always @ (posedge pix_clk or posedge rst) begin
-    if (rst == 1) begin
-      v_counter <= 0;
-      h_counter <= 0;
+module vga(
+    input wire i_pixclk,        // pixel clock (25 MHz)
+    input wire i_rst,           // reset/clear
+
+    output wire o_hsync,        // horizontal sync
+    output wire o_vsync,        // vertical sync
+    output reg [2:0] o_red,     // red vga output
+    output reg [2:0] o_green,   // green vga output
+    output reg [1:0] o_blue     // blue vga output
+
+    // TODO: need to add the games state to this interface
+);
+
+localparam HPIXELS = 800;  // horizontal pixels per line
+localparam VLINES  = 521;  // vertical lines per frame
+localparam HPULSE  = 96;   // hsync pulse length
+localparam VPULSE  = 2;    // vsync pulse length
+localparam HBP     = 144;  // end of horizontal back porch
+localparam HFP     = 784;  // beginning of horizontal front porch
+localparam VBP     = 31;   // end of vertical back porch
+localparam VFP     = 511;  // beginning of vertical front porch
+
+parameter HBP_REAL = 144 + ((640 - 240) >> 1);
+parameter HFP_REAL = 784 - ((640 - 240) >> 1);
+
+reg [9:0] h_count = 0;  // horizontal counter
+reg [9:0] v_count = 0;  // vertical counter
+
+always @(posedge i_pixclk or posedge i_rst) begin
+    // If its a reset then we should zero the counters
+    if (i_rst) begin
+        h_count <= 0;
+        v_count <= 0;
     end
     else begin
-      if (h_counter < tot_h_pixels - 1)
-        h_counter <= h_counter + 1;
-      else begin
-        h_counter <= 0;
-        if (v_counter < tot_v_lines - 1) 
-          v_counter <= v_counter + 1;
-        else
-          v_counter <= 0;
-      end
+        // Count until the end of a horizontal line
+        if (h_count < HPIXELS - 1) begin
+            h_count <= h_count + 1;
+        end
+        else begin
+            // Go to the next vertical line
+            h_count <= 0;
+            if (v_count < VLINES - 1) begin
+                v_count <= v_count + 1;
+            end
+            else begin
+                v_count <= 0;
+                // TODO: This means we are on the next frame, idk if that
+                // matters that much or not
+            end
+        end
     end
-  end
-  
-  assign hsync = (h_counter < h_pulse) ? 0:1;
-  assign vsync = (v_counter < v_pulse) ? 0:1;
-  
-  always @ (posedge pix_clk) begin
-    if (v_counter >= vbp && v_counter < vfp && h_counter >= hbp && h_counter < hfp) begin
-      vidon <= 1;
-      pixel_x <= h_counter - hbp;
-      pixel_y <= v_counter - vbp;
+end
+
+// Generate sync pulses
+assign o_hsync = (h_count < HPULSE) ? 0 : 1;
+assign o_vsync = (v_count < VPULSE) ? 0 : 1;
+
+assign on_screen = (v_count >= VBP && v_count < VFP) &&
+                    (h_count >= HBP && h_count < HFP);
+
+always @ (posedge i_pixclk) begin
+    if (on_screen) begin
+        {o_red[2:0], o_green[2:0], o_blue[1:0]} = 8'b11101100;
     end
     else begin
-      vidon <= 0;
-      pixel_x <= 0;
-      pixel_y <= 0;
+        o_red = 0;
+        o_green = 0;
+        o_blue = 0;
     end
-  end
+end
 
 endmodule
