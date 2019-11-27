@@ -1,10 +1,10 @@
-Release 14.6 - xst P.68d (nt)
+Release 14.6 - xst P.68d (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 --> Parameter TMPDIR set to xst/projnav.tmp
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.13 secs
+Total CPU time to Xst completion: 0.12 secs
  
 --> Parameter xsthdpdir set to xst
 
@@ -121,10 +121,10 @@ Elaborating module <top>.
 Elaborating module <clockdiv>.
 
 Elaborating module <vga>.
-WARNING:HDLCompiler:413 - "C:\Users\152\Desktop\cs-m152a\lab_4\DDR\vga.v" Line 38: Result of 11-bit expression is truncated to fit in 10-bit target.
-WARNING:HDLCompiler:413 - "C:\Users\152\Desktop\cs-m152a\lab_4\DDR\vga.v" Line 44: Result of 11-bit expression is truncated to fit in 10-bit target.
-WARNING:HDLCompiler:413 - "C:\Users\152\Desktop\cs-m152a\lab_4\DDR\vga.v" Line 56: Result of 32-bit expression is truncated to fit in 1-bit target.
-WARNING:HDLCompiler:413 - "C:\Users\152\Desktop\cs-m152a\lab_4\DDR\vga.v" Line 57: Result of 32-bit expression is truncated to fit in 1-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\152\Desktop\cs-m152a\lab_4\DDR\vga.v" Line 35: Result of 11-bit expression is truncated to fit in 10-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\152\Desktop\cs-m152a\lab_4\DDR\vga.v" Line 41: Result of 11-bit expression is truncated to fit in 10-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\152\Desktop\cs-m152a\lab_4\DDR\vga.v" Line 53: Result of 32-bit expression is truncated to fit in 1-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\152\Desktop\cs-m152a\lab_4\DDR\vga.v" Line 54: Result of 32-bit expression is truncated to fit in 1-bit target.
 
 =========================================================================
 *                           HDL Synthesis                               *
@@ -150,22 +150,20 @@ Unit <clockdiv> synthesized.
 
 Synthesizing Unit <vga>.
     Related source file is "C:\Users\152\Desktop\cs-m152a\lab_4\DDR\vga.v".
-        HBP_REAL = 344
-        HFP_REAL = 584
     Found 10-bit register for signal <v_count>.
     Found 10-bit register for signal <h_count>.
     Found 3-bit register for signal <o_green>.
     Found 3-bit register for signal <o_red>.
-    Found 10-bit adder for signal <h_count[9]_GND_3_o_add_1_OUT> created at line 38.
-    Found 10-bit adder for signal <v_count[9]_GND_3_o_add_3_OUT> created at line 44.
-    Found 10-bit comparator greater for signal <h_count[9]_PWR_3_o_LessThan_1_o> created at line 37
-    Found 10-bit comparator greater for signal <v_count[9]_PWR_3_o_LessThan_3_o> created at line 43
-    Found 10-bit comparator greater for signal <h_count[9]_GND_3_o_LessThan_10_o> created at line 56
-    Found 10-bit comparator greater for signal <v_count[9]_GND_3_o_LessThan_12_o> created at line 57
-    Found 10-bit comparator lessequal for signal <n0013> created at line 59
-    Found 10-bit comparator greater for signal <v_count[9]_GND_3_o_LessThan_15_o> created at line 59
-    Found 10-bit comparator lessequal for signal <n0017> created at line 60
-    Found 10-bit comparator greater for signal <h_count[9]_PWR_3_o_LessThan_17_o> created at line 60
+    Found 10-bit adder for signal <h_count[9]_GND_3_o_add_1_OUT> created at line 35.
+    Found 10-bit adder for signal <v_count[9]_GND_3_o_add_3_OUT> created at line 41.
+    Found 10-bit comparator greater for signal <h_count[9]_PWR_3_o_LessThan_1_o> created at line 34
+    Found 10-bit comparator greater for signal <v_count[9]_PWR_3_o_LessThan_3_o> created at line 40
+    Found 10-bit comparator greater for signal <h_count[9]_GND_3_o_LessThan_10_o> created at line 53
+    Found 10-bit comparator greater for signal <v_count[9]_GND_3_o_LessThan_12_o> created at line 54
+    Found 10-bit comparator lessequal for signal <n0013> created at line 56
+    Found 10-bit comparator greater for signal <v_count[9]_GND_3_o_LessThan_15_o> created at line 56
+    Found 10-bit comparator lessequal for signal <n0017> created at line 57
+    Found 10-bit comparator greater for signal <h_count[9]_PWR_3_o_LessThan_17_o> created at line 57
     WARNING:Xst:2404 -  FFs/Latches <o_blue<1:2>> (without init value) have a constant value of 0 in block <vga>.
     Summary:
 	inferred   2 Adder/Subtractor(s).
@@ -278,8 +276,8 @@ Primitive and Black Box Usage:
 #      LUT2                        : 37
 #      LUT3                        : 2
 #      LUT4                        : 5
-#      LUT5                        : 25
-#      LUT6                        : 13
+#      LUT5                        : 26
+#      LUT6                        : 12
 #      MUXCY                       : 56
 #      VCC                         : 1
 #      XORCY                       : 52
@@ -364,19 +362,19 @@ All values displayed in nanoseconds (ns)
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clock_controller/clk_25mhz'
   Clock period: 3.870ns (frequency: 258.378MHz)
-  Total number of paths / destination ports: 1242 / 31
+  Total number of paths / destination ports: 1241 / 31
 -------------------------------------------------------------------------
 Delay:               3.870ns (Levels of Logic = 2)
-  Source:            vga_controller/h_count_0 (FF)
+  Source:            vga_controller/h_count_3 (FF)
   Destination:       vga_controller/v_count_9 (FF)
   Source Clock:      clock_controller/clk_25mhz rising
   Destination Clock: clock_controller/clk_25mhz rising
 
-  Data Path: vga_controller/h_count_0 to vga_controller/v_count_9
+  Data Path: vga_controller/h_count_3 to vga_controller/v_count_9
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDC:C->Q              2   0.447   0.981  vga_controller/h_count_0 (vga_controller/h_count_0)
+     FDC:C->Q              2   0.447   0.981  vga_controller/h_count_3 (vga_controller/h_count_3)
      LUT6:I0->O           11   0.203   0.883  vga_controller/h_count[9]_PWR_3_o_LessThan_1_o_inv_inv11 (vga_controller/h_count[9]_PWR_3_o_LessThan_1_o_inv_inv1)
      LUT5:I4->O            9   0.205   0.829  vga_controller/h_count[9]_PWR_3_o_LessThan_1_o_inv1 (vga_controller/h_count[9]_PWR_3_o_LessThan_1_o_inv)
      FDCE:CE                   0.322          vga_controller/v_count_1
@@ -386,7 +384,7 @@ Delay:               3.870ns (Levels of Logic = 2)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk'
-  Clock period: 3.739ns (frequency: 267.476MHz)
+  Clock period: 3.739ns (frequency: 267.477MHz)
   Total number of paths / destination ports: 2608 / 33
 -------------------------------------------------------------------------
 Delay:               3.739ns (Levels of Logic = 9)
@@ -478,12 +476,12 @@ clock_controller/clk_25mhz|    3.870|         |         |         |
 =========================================================================
 
 
-Total REAL time to Xst completion: 6.00 secs
-Total CPU time to Xst completion: 5.89 secs
+Total REAL time to Xst completion: 8.00 secs
+Total CPU time to Xst completion: 8.65 secs
  
 --> 
 
-Total memory usage is 214468 kilobytes
+Total memory usage is 257376 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    7 (   0 filtered)

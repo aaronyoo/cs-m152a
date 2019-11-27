@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
-<document OS="nt" product="ISE" version="14.6">
+<document OS="nt64" product="ISE" version="14.6">
 
   <!--The data in this file is primarily intended for consumption by Xilinx tools.
     The structure and the elements are likely to change over the next few releases.
     This means code written to parse this file will need to be revisited each subsequent release.-->
 
-  <application stringID="NgdBuild" timeStamp="Mon Nov 25 13:19:43 2019">
+  <application stringID="NgdBuild" timeStamp="Tue Nov 26 17:23:25 2019">
     <section stringID="User_Env">
       <table stringID="User_EnvVar">
         <column stringID="variable"/>
         <column stringID="value"/>
         <row stringID="row" value="0">
           <item stringID="variable" value="Path"/>
-          <item stringID="value" value="C:\Xilinx\14.6\ISE_DS\ISE\\lib\nt;C:\Xilinx\14.6\ISE_DS\ISE\\bin\nt;C:\Xilinx\14.6\ISE_DS\ISE\bin\nt;C:\Xilinx\14.6\ISE_DS\ISE\lib\nt;C:\Xilinx\14.6\ISE_DS\ISE\..\..\..\DocNav;C:\Xilinx\14.6\ISE_DS\PlanAhead\bin;C:\Xilinx\14.6\ISE_DS\EDK\bin\nt;C:\Xilinx\14.6\ISE_DS\EDK\lib\nt;C:\Xilinx\14.6\ISE_DS\EDK\gnu\microblaze\nt\bin;C:\Xilinx\14.6\ISE_DS\EDK\gnu\powerpc-eabi\nt\bin;C:\Xilinx\14.6\ISE_DS\EDK\gnuwin\bin;C:\Xilinx\14.6\ISE_DS\EDK\gnu\arm\nt\bin;C:\Xilinx\14.6\ISE_DS\EDK\gnu\microblaze\linux_toolchain\nt_be\bin;C:\Xilinx\14.6\ISE_DS\EDK\gnu\microblaze\linux_toolchain\nt_le\bin;C:\Xilinx\14.6\ISE_DS\common\bin\nt;C:\Xilinx\14.6\ISE_DS\common\lib\nt;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\PuTTY\;C:\Users\152\AppData\Local\Programs\Python\Python37-32\Scripts\;C:\Users\152\AppData\Local\Programs\Python\Python37-32\;C:\Users\152\AppData\Local\Programs\Python\Launcher\;C:\Users\152\AppData\Local\GitHubDesktop\bin;C:\Users\152\AppData\Local\Programs\Git\cmd"/>
+          <item stringID="value" value="C:\Xilinx\14.6\ISE_DS\ISE\\lib\nt64;C:\Xilinx\14.6\ISE_DS\ISE\\bin\nt64;C:\Xilinx\14.6\ISE_DS\ISE\bin\nt64;C:\Xilinx\14.6\ISE_DS\ISE\lib\nt64;C:\Xilinx\14.6\ISE_DS\ISE\..\..\..\DocNav;C:\Xilinx\14.6\ISE_DS\PlanAhead\bin;C:\Xilinx\14.6\ISE_DS\EDK\bin\nt64;C:\Xilinx\14.6\ISE_DS\EDK\lib\nt64;C:\Xilinx\14.6\ISE_DS\EDK\gnu\microblaze\nt\bin;C:\Xilinx\14.6\ISE_DS\EDK\gnu\powerpc-eabi\nt\bin;C:\Xilinx\14.6\ISE_DS\EDK\gnuwin\bin;C:\Xilinx\14.6\ISE_DS\EDK\gnu\arm\nt\bin;C:\Xilinx\14.6\ISE_DS\EDK\gnu\microblaze\linux_toolchain\nt64_be\bin;C:\Xilinx\14.6\ISE_DS\EDK\gnu\microblaze\linux_toolchain\nt64_le\bin;C:\Xilinx\14.6\ISE_DS\common\bin\nt64;C:\Xilinx\14.6\ISE_DS\common\lib\nt64;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\PuTTY\;C:\Users\152\AppData\Local\Programs\Python\Python37-32\Scripts\;C:\Users\152\AppData\Local\Programs\Python\Python37-32\;C:\Users\152\AppData\Local\Programs\Python\Launcher\;C:\Users\152\AppData\Local\GitHubDesktop\bin;C:\Users\152\AppData\Local\Programs\Git\cmd"/>
         </row>
         <row stringID="row" value="1">
           <item stringID="variable" value="PATHEXT"/>
@@ -78,8 +78,8 @@
         <item dataType="int" stringID="NGDBUILD_NUM_LUT2" value="37"/>
         <item dataType="int" stringID="NGDBUILD_NUM_LUT3" value="2"/>
         <item dataType="int" stringID="NGDBUILD_NUM_LUT4" value="5"/>
-        <item dataType="int" stringID="NGDBUILD_NUM_LUT5" value="25"/>
-        <item dataType="int" stringID="NGDBUILD_NUM_LUT6" value="13"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_LUT5" value="26"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_LUT6" value="12"/>
         <item dataType="int" stringID="NGDBUILD_NUM_MUXCY" value="56"/>
         <item dataType="int" stringID="NGDBUILD_NUM_OBUF" value="10"/>
         <item dataType="int" stringID="NGDBUILD_NUM_VCC" value="1"/>
@@ -98,8 +98,8 @@
         <item dataType="int" stringID="NGDBUILD_NUM_LUT2" value="37"/>
         <item dataType="int" stringID="NGDBUILD_NUM_LUT3" value="2"/>
         <item dataType="int" stringID="NGDBUILD_NUM_LUT4" value="5"/>
-        <item dataType="int" stringID="NGDBUILD_NUM_LUT5" value="25"/>
-        <item dataType="int" stringID="NGDBUILD_NUM_LUT6" value="13"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_LUT5" value="26"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_LUT6" value="12"/>
         <item dataType="int" stringID="NGDBUILD_NUM_MUXCY" value="56"/>
         <item dataType="int" stringID="NGDBUILD_NUM_OBUF" value="10"/>
         <item dataType="int" stringID="NGDBUILD_NUM_TS_TIMESPEC" value="1"/>

@@ -20,9 +20,6 @@ localparam HFP     = 784;  // beginning of horizontal front porch
 localparam VBP     = 31;   // end of vertical back porch
 localparam VFP     = 511;  // beginning of vertical front porch
 
-parameter HBP_REAL = 144 + ((640 - 240) >> 1);
-parameter HFP_REAL = 784 - ((640 - 240) >> 1);
-
 reg [9:0] h_count = 0;  // horizontal counter
 reg [9:0] v_count = 0;  // vertical counter
 
@@ -57,7 +54,7 @@ assign o_hsync = (h_count < HPULSE) ? 0 : 1;
 assign o_vsync = (v_count < VPULSE) ? 0 : 1;
 
 assign on_screen = (v_count >= VBP && v_count < VFP) &&
-                    (h_count >= HBP_REAL && h_count < HFP_REAL);
+                    (h_count >= HBP && h_count < HFP);
 
 integer x = 0;
 
