@@ -8,9 +8,10 @@ module vga(
     output wire o_vsync,        // vertical sync
     output reg [2:0] o_red,     // red vga output
     output reg [2:0] o_green,   // green vga output
-    output reg [1:0] o_blue     // blue vga output
+    output reg [1:0] o_blue,    // blue vga output
 
     // TODO: need to add the games state to this interface
+    output reg o_point          // high when player scores a point
 );
 
 localparam HPIXELS = 800;  // horizontal pixels per line
@@ -59,6 +60,7 @@ assign on_screen = (v_count >= VBP && v_count < VFP) &&
                     (h_count >= HBP && h_count < HFP);
 
 assign center = (464 - 40 < h_count && h_count < 464 + 40);
+reg [7:0] BLACK = 8'b00000000;
 
 // These positions refer to the vertical positions of the containers.
 // They denote the center of the container and each container is 80 pixels.
@@ -68,6 +70,14 @@ integer c3 = VBP + 40 + 80 + 80;
 integer c2 = VBP + 40 + 80 + 80 + 80;
 integer c1 = VBP + 40 + 80 + 80 + 80 + 80;
 integer c0 = VBP + 40 + 80 + 80 + 80 + 80 + 80;
+
+// Define the 'types' of the arrows (which symbol they should contain)
+integer c5_type = 0;
+integer c4_type = 5;
+integer c3_type = 5;
+integer c2_type = 5;
+integer c1_type = 5;
+integer c0_type = 5;
 
 // Increment the positions of the containers on the move clock.
 always @(posedge i_movclk) begin
@@ -95,26 +105,61 @@ always @ (posedge i_pixclk) begin
         // background color
         {o_red[2:0], o_green[2:0], o_blue[1:0]} = 8'b11101100;
 
+        // draw target square
+        if (
+            ((464 - 50 < h_count && h_count < 464 - 40) || (464 + 40 < h_count && h_count < 464 + 50)) &&
+            ((VFP - 120 < v_count && v_count < VFP - 110) || (VFP - 30 < v_count && v_count < VFP - 20))
+        ) begin
+            {o_red[2:0], o_green[2:0], o_blue[1:0]} = 8'b11111111;
+        end
+
 		// draw block c5
         if (center && c5 - 40 < v_count && v_count < c5 + 40) begin
-           {o_red[2:0], o_green[2:0], o_blue[1:0]} = 8'b00000000; 
+            if (c5_type == 0) begin
+                {o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK; 
+            end
+            else begin
+                {o_red[2:0], o_green[2:0], o_blue[1:0]} = 8'b11111111;
+            end
         end
+
+        // // draw block c4
+        // if (center && c4 - 40 < v_count && v_count < c4 + 40) begin
+        //    {o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK; 
+        // end
 		
 		// draw block c3
 		if (center && c3 - 40 < v_count && v_count < c3 + 40) begin
-           {o_red[2:0], o_green[2:0], o_blue[1:0]} = 8'b00000000; 
+           {o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK; 
+        end
+
+        // draw block c2
+        if (center && c2 - 40 < v_count && v_count < c2 + 40) begin
+           {o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK; 
         end
 		
 		// draw block c1
 		if (center && c1 - 40 < v_count && v_count < c1 + 40) begin
-           {o_red[2:0], o_green[2:0], o_blue[1:0]} = 8'b00000000; 
+           {o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK; 
         end
 		
+        // draw block c0
+        if (center && c0 - 40 < v_count && v_count < c0 + 40) begin
+           {o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK; 
+        end
+
 		// draw the push_range indicator
-         if (push_range && HBP < h_count && h_count < HBP + 25 &&
-             VFP - 25 < v_count && v_count < VFP) begin
-             {o_red[2:0], o_green[2:0], o_blue[1:0]} = 8'b11111111;
-         end
+        if (push_range && 
+           HBP < h_count && h_count < HBP + 25 &&
+           VFP - 25 < v_count && v_count < VFP)
+        begin
+            if (i_btnpress) begin
+                {o_red[2:0], o_green[2:0], o_blue[1:0]} = 8'b11111111;
+            end
+            else begin
+                {o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK;
+            end
+        end
 
         // if (464 - 50 < h_count && h_count < 464 + 50 &&
         //     271 - 50 < v_count && v_count < 271 + 50) begin
