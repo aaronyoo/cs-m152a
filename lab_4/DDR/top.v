@@ -1,6 +1,7 @@
 module top(
     input wire clk,
     input wire rst,
+	input wire btn_up,
     output wire o_vga_hsync,
     output wire o_vga_vsync,
     output wire [2:0] o_vga_r,
@@ -15,7 +16,7 @@ module top(
     );
 
     vga vga_controller(
-        pixclk, rst, o_vga_hsync, o_vga_vsync, o_vga_r, o_vga_g, o_vga_b
+        pixclk, rst, btn_up, o_vga_hsync, o_vga_vsync, o_vga_r, o_vga_g, o_vga_b
     );
 
 endmodule

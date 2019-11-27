@@ -1,6 +1,7 @@
 module vga(
     input wire i_pixclk,        // pixel clock (25 MHz)
     input wire i_rst,           // reset/clear
+	input wire i_btnpress,		// indicated button press
 
     output wire o_hsync,        // horizontal sync
     output wire o_vsync,        // vertical sync
@@ -56,11 +57,25 @@ assign o_vsync = (v_count < VPULSE) ? 0 : 1;
 assign on_screen = (v_count >= VBP && v_count < VFP) &&
                     (h_count >= HBP && h_count < HFP);
 
-integer x = 0;
-
 always @ (posedge i_pixclk) begin
     if (on_screen) begin
-        {o_red[2:0], o_green[2:0], o_blue[1:0]} = 8'b11101100;
+		if (464 - 50 < h_count && h_count < 464 + 50 &&
+			271 - 50 < v_count && v_count < 271 + 50) begin
+			{o_red[2:0], o_green[2:0], o_blue[1:0]} = 8'b00000000;
+		end
+		else begin
+			{o_red[2:0], o_green[2:0], o_blue[1:0]} = 8'b11101100;
+		end
+		
+		if (HBP + 50 < h_count && h_count < HFP - 50 && VFP - 50 < v_count) begin
+			{o_red[2:0], o_green[2:0], o_blue[1:0]} = 8'b00000000;
+		end
+		
+		if (i_btnpress && 
+			464 - 30 < h_count && h_count < 464 + 30 &&
+			271 - 30 < v_count && v_count < 271 + 30) begin
+			{o_red[2:0], o_green[2:0], o_blue[1:0]} = 8'b11111111;
+		end
     end
     else begin
         o_red = 0;

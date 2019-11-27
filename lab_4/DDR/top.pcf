@@ -1,5 +1,5 @@
 //! **************************************************************************
-// Written by: Map P.68d on Tue Nov 26 17:23:37 2019
+// Written by: Map P.68d on Tue Nov 26 18:20:23 2019
 //! **************************************************************************
 
 SCHEMATIC START;
@@ -10,28 +10,32 @@ COMP "clk" LOCATE = SITE "V10" LEVEL 1;
 COMP "o_vga_g<0>" LOCATE = SITE "P8" LEVEL 1;
 COMP "o_vga_g<1>" LOCATE = SITE "T6" LEVEL 1;
 COMP "o_vga_g<2>" LOCATE = SITE "V6" LEVEL 1;
+COMP "btn_up" LOCATE = SITE "A8" LEVEL 1;
 COMP "o_vga_hsync" LOCATE = SITE "N6" LEVEL 1;
 COMP "o_vga_b<0>" LOCATE = SITE "R7" LEVEL 1;
 COMP "o_vga_b<1>" LOCATE = SITE "T7" LEVEL 1;
 COMP "o_vga_vsync" LOCATE = SITE "P7" LEVEL 1;
-TIMEGRP sys_clk_pin = BEL "clock_controller/clk_25mhz" BEL
-        "clock_controller/cnt_0" BEL "clock_controller/cnt_1" BEL
-        "clock_controller/cnt_2" BEL "clock_controller/cnt_3" BEL
-        "clock_controller/cnt_4" BEL "clock_controller/cnt_5" BEL
-        "clock_controller/cnt_6" BEL "clock_controller/cnt_7" BEL
-        "clock_controller/cnt_8" BEL "clock_controller/cnt_9" BEL
-        "clock_controller/cnt_10" BEL "clock_controller/cnt_11" BEL
-        "clock_controller/cnt_12" BEL "clock_controller/cnt_13" BEL
-        "clock_controller/cnt_14" BEL "clock_controller/cnt_15" BEL
-        "clock_controller/cnt_16" BEL "clock_controller/cnt_17" BEL
-        "clock_controller/cnt_18" BEL "clock_controller/cnt_19" BEL
-        "clock_controller/cnt_20" BEL "clock_controller/cnt_21" BEL
-        "clock_controller/cnt_22" BEL "clock_controller/cnt_23" BEL
-        "clock_controller/cnt_24" BEL "clock_controller/cnt_25" BEL
-        "clock_controller/cnt_26" BEL "clock_controller/cnt_27" BEL
-        "clock_controller/cnt_28" BEL "clock_controller/cnt_29" BEL
-        "clock_controller/cnt_30" BEL "clock_controller/cnt_31" BEL
-        "clk_BUFGP/BUFG";
+TIMEGRP sys_clk_pin = BEL "clock_controller/cnt_25mhz_31" BEL
+        "clock_controller/cnt_25mhz_30" BEL "clock_controller/cnt_25mhz_29"
+        BEL "clock_controller/cnt_25mhz_28" BEL
+        "clock_controller/cnt_25mhz_27" BEL "clock_controller/cnt_25mhz_26"
+        BEL "clock_controller/cnt_25mhz_25" BEL
+        "clock_controller/cnt_25mhz_24" BEL "clock_controller/cnt_25mhz_23"
+        BEL "clock_controller/cnt_25mhz_22" BEL
+        "clock_controller/cnt_25mhz_21" BEL "clock_controller/cnt_25mhz_20"
+        BEL "clock_controller/cnt_25mhz_19" BEL
+        "clock_controller/cnt_25mhz_18" BEL "clock_controller/cnt_25mhz_17"
+        BEL "clock_controller/cnt_25mhz_16" BEL
+        "clock_controller/cnt_25mhz_15" BEL "clock_controller/cnt_25mhz_14"
+        BEL "clock_controller/cnt_25mhz_13" BEL
+        "clock_controller/cnt_25mhz_12" BEL "clock_controller/cnt_25mhz_11"
+        BEL "clock_controller/cnt_25mhz_10" BEL "clock_controller/cnt_25mhz_9"
+        BEL "clock_controller/cnt_25mhz_8" BEL "clock_controller/cnt_25mhz_7"
+        BEL "clock_controller/cnt_25mhz_6" BEL "clock_controller/cnt_25mhz_5"
+        BEL "clock_controller/cnt_25mhz_4" BEL "clock_controller/cnt_25mhz_3"
+        BEL "clock_controller/cnt_25mhz_2" BEL "clock_controller/cnt_25mhz_1"
+        BEL "clock_controller/cnt_25mhz_0" BEL "clock_controller/clk_25mhz"
+        BEL "clk_BUFGP/BUFG";
 TS_sys_clk_pin = PERIOD TIMEGRP "sys_clk_pin" 100 MHz HIGH 50%;
 SCHEMATIC END;
 
