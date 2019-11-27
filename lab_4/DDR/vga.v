@@ -72,12 +72,21 @@ integer c0 = VBP + 40 + 80 + 80 + 80 + 80 + 80;
 // Increment the positions of the containers on the move clock.
 always @(posedge i_movclk) begin
     c5 = (c5 < VFP - 40) ? c5 + 1 : VBP + 40;
+	c4 = (c4 < VFP - 40) ? c4 + 1 : VBP + 40;
 	c3 = (c3 < VFP - 40) ? c3 + 1 : VBP + 40;
-//    c4 = c4 + 1;
-//    c3 = c3 + 1;
-//    c2 = c2 + 1;
-//    c1 = c1 + 1;
-//    c0 = c0 + 1;
+	c2 = (c2 < VFP - 40) ? c2 + 1 : VBP + 40;
+	c1 = (c1 < VFP - 40) ? c1 + 1 : VBP + 40;
+	c0 = (c0 < VFP - 40) ? c0 + 1 : VBP + 40;
+end
+
+reg push_range = 0;
+always @(*) begin
+	if (VFP - 40 - 20 < c5) begin
+		push_range = 1;
+	end
+	else begin
+		push_range = 0;
+	end
 end
 
 always @ (posedge i_pixclk) begin
@@ -91,10 +100,21 @@ always @ (posedge i_pixclk) begin
            {o_red[2:0], o_green[2:0], o_blue[1:0]} = 8'b00000000; 
         end
 		
-		// draw block c4
+		// draw block c3
 		if (center && c3 - 40 < v_count && v_count < c3 + 40) begin
            {o_red[2:0], o_green[2:0], o_blue[1:0]} = 8'b00000000; 
         end
+		
+		// draw block c1
+		if (center && c1 - 40 < v_count && v_count < c1 + 40) begin
+           {o_red[2:0], o_green[2:0], o_blue[1:0]} = 8'b00000000; 
+        end
+		
+		// draw the push_range indicator
+         if (push_range && HBP < h_count && h_count < HBP + 25 &&
+             VFP - 25 < v_count && v_count < VFP) begin
+             {o_red[2:0], o_green[2:0], o_blue[1:0]} = 8'b11111111;
+         end
 
         // if (464 - 50 < h_count && h_count < 464 + 50 &&
         //     271 - 50 < v_count && v_count < 271 + 50) begin
