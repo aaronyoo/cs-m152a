@@ -1,9 +1,12 @@
 module vga(
     input wire i_pixclk,        // pixel clock (25 MHz)
     input wire i_rst,           // reset/clear
-	input wire i_btnpress,		// indicated button press
+	input wire i_btn_up,
+	input wire i_btn_right,
+	input wire i_btn_down,
+	input wire i_btn_left,
+	input wire i_btn_rst,
     input wire i_movclk,
-
     output wire o_hsync,        // horizontal sync
     output wire o_vsync,        // vertical sync
     output reg [2:0] o_red,     // red vga output
@@ -103,13 +106,21 @@ reg game_end = 0;
 
 // Increment the positions of the containers on the move clock.
 always @(posedge i_movclk) begin
+	if (i_btn_rst) begin
+		mem_idx = 1;
+		game_end = 0;
+		perfect_score = 0;
+	end
 	if (c5 == VFP - 40) begin
 		c5_type = mem[mem_idx];
 		mem_idx = mem_idx + 1;
-		perfect_score = perfect_score + 1;
-		if (real_score != perfect_score) begin
-			game_end = 1;
+		// Only increment on a non-blank
+		if (c5_type != 4) begin
+			perfect_score = perfect_score + 1;
 		end
+//		if (real_score != perfect_score) begin
+//			game_end = 1;
+//		end
 	end
 
     c5 = (c5 < VFP - 40) ? c5 + 1 : VBP + 40;
@@ -152,7 +163,7 @@ always @ (posedge i_pixclk) begin
 				1: {o_red[2:0], o_green[2:0], o_blue[1:0]} = WHITE;
 				2: {o_red[2:0], o_green[2:0], o_blue[1:0]} = GREEN;
 				3: {o_red[2:0], o_green[2:0], o_blue[1:0]} = BLUE;
-				4: {o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK;
+				4: {o_red[2:0], o_green[2:0], o_blue[1:0]} = 8'b11101100;
 				default: {o_red[2:0], o_green[2:0], o_blue[1:0]} = RED;
 			endcase
         end
@@ -187,14 +198,55 @@ always @ (posedge i_pixclk) begin
            HBP < h_count && h_count < HBP + 25 &&
            VFP - 25 < v_count && v_count < VFP)
         begin
-            if (i_btnpress) begin
-                {o_red[2:0], o_green[2:0], o_blue[1:0]} = 8'b11111111;
-				correct = 1;
-            end
-            else begin
-                {o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK;
-				correct = 0;
-            end
+			case (c5_type)
+				0:
+				begin
+					if (i_btn_up) begin
+						{o_red[2:0], o_green[2:0], o_blue[1:0]} = WHITE;
+						correct = 1;
+					end
+					else begin
+						{o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK;
+						correct = 0;
+					end
+				end
+				
+				1:
+				begin
+					if (i_btn_right) begin
+						{o_red[2:0], o_green[2:0], o_blue[1:0]} = WHITE;
+						correct = 1;
+					end
+					else begin
+						{o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK;
+						correct = 0;
+					end
+				end
+
+				2:
+				begin
+					if (i_btn_down) begin
+						{o_red[2:0], o_green[2:0], o_blue[1:0]} = WHITE;
+						correct = 1;
+					end
+					else begin
+						{o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK;
+						correct = 0;
+					end
+				end
+				
+				3:
+				begin
+					if (i_btn_left) begin
+						{o_red[2:0], o_green[2:0], o_blue[1:0]} = WHITE;
+						correct = 1;
+					end
+					else begin
+						{o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK;
+						correct = 0;
+					end
+				end
+			endcase
         end
 
         // if (464 - 50 < h_count && h_count < 464 + 50 &&
@@ -223,7 +275,12 @@ always @ (posedge i_pixclk) begin
 end
 
 always @(posedge correct) begin
-	real_score = real_score + 1;
+	if (game_end) begin
+		real_score = 0;
+	end
+	else begin
+		real_score = real_score + 1;
+	end
 end
 
 
