@@ -26,6 +26,20 @@ localparam VFP     = 511;  // beginning of vertical front porch
 reg [9:0] h_count = 0;  // horizontal counter
 reg [9:0] v_count = 0;  // vertical counter
 
+reg [2:0] mem [9:0];
+
+integer z;
+integer k;
+initial begin
+	for (z = 0; z < 10; z = z + 1) begin
+		mem[z][2:0] = z % 5;
+	end
+
+	$readmemb("partyintheusa.code", mem);
+end
+
+integer mem_idx = 1;
+
 always @(posedge i_pixclk or posedge i_rst) begin
     // If its a reset then we should zero the counters
     if (i_rst) begin
@@ -61,6 +75,10 @@ assign on_screen = (v_count >= VBP && v_count < VFP) &&
 
 assign center = (464 - 40 < h_count && h_count < 464 + 40);
 reg [7:0] BLACK = 8'b00000000;
+reg [7:0] WHITE = 8'b11111111;
+reg [7:0] RED = 8'b11100000;
+reg [7:0] GREEN = 8'b00011100;
+reg [7:0] BLUE = 8'b00000011;
 
 // These positions refer to the vertical positions of the containers.
 // They denote the center of the container and each container is 80 pixels.
@@ -72,15 +90,28 @@ integer c1 = VBP + 40 + 80 + 80 + 80 + 80;
 integer c0 = VBP + 40 + 80 + 80 + 80 + 80 + 80;
 
 // Define the 'types' of the arrows (which symbol they should contain)
-integer c5_type = 0;
-integer c4_type = 5;
-integer c3_type = 5;
-integer c2_type = 5;
-integer c1_type = 5;
-integer c0_type = 5;
+integer c5_type = 0;  // starts up
+integer c4_type = 1;  // starts right
+integer c3_type = 2;  // starts down
+integer c2_type = 3;  // starts left
+integer c1_type = 4;  // starts blank
+integer c0_type = 4;
+
+integer perfect_score = 0;
+integer real_score = 0;
+reg game_end = 0;
 
 // Increment the positions of the containers on the move clock.
 always @(posedge i_movclk) begin
+	if (c5 == VFP - 40) begin
+		c5_type = mem[mem_idx];
+		mem_idx = mem_idx + 1;
+		perfect_score = perfect_score + 1;
+		if (real_score != perfect_score) begin
+			game_end = 1;
+		end
+	end
+
     c5 = (c5 < VFP - 40) ? c5 + 1 : VBP + 40;
 	c4 = (c4 < VFP - 40) ? c4 + 1 : VBP + 40;
 	c3 = (c3 < VFP - 40) ? c3 + 1 : VBP + 40;
@@ -89,25 +120,26 @@ always @(posedge i_movclk) begin
 	c0 = (c0 < VFP - 40) ? c0 + 1 : VBP + 40;
 end
 
-reg push_range = 0;
+reg push_range_c5 = 0;
 always @(*) begin
-	if (VFP - 40 - 20 < c5) begin
-		push_range = 1;
+	if (VFP - 40 - 25 < c5) begin
+		push_range_c5 = 1;
 	end
 	else begin
-		push_range = 0;
+		push_range_c5 = 0;
 	end
 end
 
+reg correct = 0;
 always @ (posedge i_pixclk) begin
-    if (on_screen) begin
+    if (on_screen && !game_end) begin
 
         // background color
         {o_red[2:0], o_green[2:0], o_blue[1:0]} = 8'b11101100;
 
         // draw target square
         if (
-            ((464 - 50 < h_count && h_count < 464 - 40) || (464 + 40 < h_count && h_count < 464 + 50)) &&
+            ((464 - 50 < h_count && h_count < 464 - 40) || (464 + 40 < h_count && h_count < 464 + 50)) ||
             ((VFP - 120 < v_count && v_count < VFP - 110) || (VFP - 30 < v_count && v_count < VFP - 20))
         ) begin
             {o_red[2:0], o_green[2:0], o_blue[1:0]} = 8'b11111111;
@@ -115,12 +147,14 @@ always @ (posedge i_pixclk) begin
 
 		// draw block c5
         if (center && c5 - 40 < v_count && v_count < c5 + 40) begin
-            if (c5_type == 0) begin
-                {o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK; 
-            end
-            else begin
-                {o_red[2:0], o_green[2:0], o_blue[1:0]} = 8'b11111111;
-            end
+			case (c5_type)
+				0: {o_red[2:0], o_green[2:0], o_blue[1:0]} = RED; 
+				1: {o_red[2:0], o_green[2:0], o_blue[1:0]} = WHITE;
+				2: {o_red[2:0], o_green[2:0], o_blue[1:0]} = GREEN;
+				3: {o_red[2:0], o_green[2:0], o_blue[1:0]} = BLUE;
+				4: {o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK;
+				default: {o_red[2:0], o_green[2:0], o_blue[1:0]} = RED;
+			endcase
         end
 
         // // draw block c4
@@ -128,36 +162,38 @@ always @ (posedge i_pixclk) begin
         //    {o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK; 
         // end
 		
-		// draw block c3
-		if (center && c3 - 40 < v_count && v_count < c3 + 40) begin
-           {o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK; 
-        end
-
-        // draw block c2
-        if (center && c2 - 40 < v_count && v_count < c2 + 40) begin
-           {o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK; 
-        end
-		
-		// draw block c1
-		if (center && c1 - 40 < v_count && v_count < c1 + 40) begin
-           {o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK; 
-        end
-		
-        // draw block c0
-        if (center && c0 - 40 < v_count && v_count < c0 + 40) begin
-           {o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK; 
-        end
+//		// draw block c3
+//		if (center && c3 - 40 < v_count && v_count < c3 + 40) begin
+//           {o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK; 
+//        end
+//
+//        // draw block c2
+//        if (center && c2 - 40 < v_count && v_count < c2 + 40) begin
+//           {o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK; 
+//        end
+//		
+//		// draw block c1
+//		if (center && c1 - 40 < v_count && v_count < c1 + 40) begin
+//           {o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK; 
+//        end
+//		
+//        // draw block c0
+//        if (center && c0 - 40 < v_count && v_count < c0 + 40) begin
+//           {o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK; 
+//        end
 
 		// draw the push_range indicator
-        if (push_range && 
+        if (push_range_c5 && 
            HBP < h_count && h_count < HBP + 25 &&
            VFP - 25 < v_count && v_count < VFP)
         begin
             if (i_btnpress) begin
                 {o_red[2:0], o_green[2:0], o_blue[1:0]} = 8'b11111111;
+				correct = 1;
             end
             else begin
                 {o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK;
+				correct = 0;
             end
         end
 
@@ -185,5 +221,10 @@ always @ (posedge i_pixclk) begin
         o_blue = 0;
     end
 end
+
+always @(posedge correct) begin
+	real_score = real_score + 1;
+end
+
 
 endmodule

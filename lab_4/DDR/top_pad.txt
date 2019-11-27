@@ -1,7 +1,7 @@
-Release 14.6 - par P.68d (nt)
+Release 14.6 - par P.68d (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-Wed Nov 27 10:28:19 2019
+Wed Nov 27 13:41:45 2019
 
 
 INFO: The IO information is provided in three file formats as part of the Place and Route (PAR) process.  These formats are:
@@ -334,14 +334,14 @@ Pinout by Pin Number:
 |V6        |o_vga_g<2> |IOB      |IO_L45N_2                    |OUTPUT   |LVCMOS33   |2             |12        |SLOW     |           |         |         |LOCATED   |NO         |NONE            |
 |V7        |o_vga_r<1> |IOB      |IO_L43N_2                    |OUTPUT   |LVCMOS33   |2             |12        |SLOW     |           |         |         |LOCATED   |NO         |NONE            |
 |V8        |           |IOBS     |IO_L41N_VREF_2               |UNUSED   |           |2             |          |         |           |         |         |          |           |                |
-|V9        |           |IOBS     |IO_L32N_GCLK28_2             |UNUSED   |           |2             |          |         |           |         |         |          |           |                |
+|V9        |rst        |IOB      |IO_L32N_GCLK28_2             |INPUT    |LVCMOS25*  |2             |          |         |           |NONE     |         |UNLOCATED |NO         |NONE            |
 |V10       |clk        |IOB      |IO_L30N_GCLK0_USERCCLK_2     |INPUT    |LVCMOS33   |2             |          |         |           |NONE     |         |LOCATED   |NO         |NONE            |
 |V11       |           |IOBS     |IO_L23N_2                    |UNUSED   |           |2             |          |         |           |         |         |          |           |                |
 |V12       |           |IOBS     |IO_L19N_2                    |UNUSED   |           |2             |          |         |           |         |         |          |           |                |
 |V13       |           |IOBS     |IO_L14N_D12_2                |UNUSED   |           |2             |          |         |           |         |         |          |           |                |
 |V14       |           |IOBS     |IO_L12N_D2_MISO3_2           |UNUSED   |           |2             |          |         |           |         |         |          |           |                |
 |V15       |           |IOBS     |IO_L5N_2                     |UNUSED   |           |2             |          |         |           |         |         |          |           |                |
-|V16       |rst        |IOB      |IO_L2N_CMPMOSI_2             |INPUT    |LVCMOS25*  |2             |          |         |           |NONE     |         |UNLOCATED |NO         |NONE            |
+|V16       |           |IOBS     |IO_L2N_CMPMOSI_2             |UNUSED   |           |2             |          |         |           |         |         |          |           |                |
 |V17       |           |         |DONE_2                       |         |           |              |          |         |           |         |         |          |           |                |
 |V18       |           |         |GND                          |         |           |              |          |         |           |         |         |          |           |                |
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
