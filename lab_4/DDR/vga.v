@@ -2,6 +2,7 @@ module vga(
     input wire i_pixclk,        // pixel clock (25 MHz)
     input wire i_rst,           // reset/clear
 	input wire i_btnpress,		// indicated button press
+    input wire i_movclk,
 
     output wire o_hsync,        // horizontal sync
     output wire o_vsync,        // vertical sync
@@ -57,25 +58,54 @@ assign o_vsync = (v_count < VPULSE) ? 0 : 1;
 assign on_screen = (v_count >= VBP && v_count < VFP) &&
                     (h_count >= HBP && h_count < HFP);
 
+assign center = (464 - 80 < h_count && h_count < 464 + 80);
+
+// These positions refer to the vertical positions of the containers.
+// They denote the center of the container and each container is 80 pixels.
+integer c5 = 40;
+integer c4 = 40 + 80;
+integer c3 = 40 + 80 + 80;
+integer c2 = 40 + 80 + 80 + 80;
+integer c1 = 40 + 80 + 80 + 80 + 80;
+integer c0 = 40 + 80 + 80 + 80 + 80 + 80; 
+
+// Increment the positions of the containers on the move clock.
+always @(posedge i_movclk) begin
+    c5 = c5 + 1;
+    c4 = c4 + 1;
+    c3 = c3 + 1;
+    c2 = c2 + 1;
+    c1 = c1 + 1;
+    c0 = c0 + 1;
+end
+
 always @ (posedge i_pixclk) begin
     if (on_screen) begin
-		if (464 - 50 < h_count && h_count < 464 + 50 &&
-			271 - 50 < v_count && v_count < 271 + 50) begin
-			{o_red[2:0], o_green[2:0], o_blue[1:0]} = 8'b00000000;
-		end
-		else begin
-			{o_red[2:0], o_green[2:0], o_blue[1:0]} = 8'b11101100;
-		end
+
+        // background color
+        {o_red[2:0], o_green[2:0], o_blue[1:0]} = 8'b11101100;
+
+        if (center && c5 - 40 < v_count && v_count < c5 + 40) begin
+           {o_red[2:0], o_green[2:0], o_blue[1:0]} = 8'b00000000; 
+        end
+
+        // if (464 - 50 < h_count && h_count < 464 + 50 &&
+        //     271 - 50 < v_count && v_count < 271 + 50) begin
+        //     {o_red[2:0], o_green[2:0], o_blue[1:0]} = 8'b00000000;
+        // end
+        // else begin
+        //     {o_red[2:0], o_green[2:0], o_blue[1:0]} = 8'b11101100;
+        // end
 		
-		if (HBP + 50 < h_count && h_count < HFP - 50 && VFP - 50 < v_count) begin
-			{o_red[2:0], o_green[2:0], o_blue[1:0]} = 8'b00000000;
-		end
+		// if (HBP + 50 < h_count && h_count < HFP - 50 && VFP - 50 < v_count) begin
+		// 	{o_red[2:0], o_green[2:0], o_blue[1:0]} = 8'b00000000;
+		// end
 		
-		if (i_btnpress && 
-			464 - 30 < h_count && h_count < 464 + 30 &&
-			271 - 30 < v_count && v_count < 271 + 30) begin
-			{o_red[2:0], o_green[2:0], o_blue[1:0]} = 8'b11111111;
-		end
+		// if (i_btnpress && 
+		// 	464 - 30 < h_count && h_count < 464 + 30 &&
+		// 	271 - 30 < v_count && v_count < 271 + 30) begin
+		// 	{o_red[2:0], o_green[2:0], o_blue[1:0]} = 8'b11111111;
+		// end
     end
     else begin
         o_red = 0;

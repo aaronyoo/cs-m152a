@@ -2,7 +2,8 @@ module clockdiv(
     input wire i_clk,
 
     output wire o_pixclk,   // pixel clock (25 MHz)
-	output wire o_onehzclk
+	output wire o_onehzclk, // a onehz clock (1Hz)
+	output wire o_movclk,   // clock to control arrow movement
 );
 
 reg clk_25mhz = 0;
@@ -30,5 +31,18 @@ always @(posedge i_clk) begin
 	end
 end
 assign o_onehzclk = clk_1hz;
+
+reg clk_mov = 0;
+integer cnt_mov = 0;
+always @(posedge i_clk) begin
+	if (cnt_mov >= 625000) begin  // right now its 80 Hz
+		cnt_mov = 0;
+		clk_mov = ~clk_mov;
+	end
+	else begin
+		cnt_mov = cnt_mov + 1;
+	end
+end
+assign o_movclk = clk_mov;
 
 endmodule

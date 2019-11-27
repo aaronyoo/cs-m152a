@@ -10,13 +10,14 @@ module top(
 );
 
     wire pixclk;
+    wire movclk;
 
     clockdiv clock_controller(
-        clk, pixclk
+        clk, pixclk, movclk
     );
 
     vga vga_controller(
-        pixclk, rst, btn_up, o_vga_hsync, o_vga_vsync, o_vga_r, o_vga_g, o_vga_b
+        pixclk, rst, btn_up, movclk, o_vga_hsync, o_vga_vsync, o_vga_r, o_vga_g, o_vga_b
     );
 
 endmodule
