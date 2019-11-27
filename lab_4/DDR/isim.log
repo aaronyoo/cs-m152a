@@ -13,21 +13,3 @@ Time resolution is 1 ps
 # run 1000 ns
 Simulator is doing circuit initialization process.
 Finished circuit initialization process.
-# restart
-# run 1.00us
-Simulator is doing circuit initialization process.
-Finished circuit initialization process.
-# restart
-# run 1.00us
-Simulator is doing circuit initialization process.
-Finished circuit initialization process.
-# run 10.00us
-# restart
-# run 10.00us
-Simulator is doing circuit initialization process.
-Finished circuit initialization process.
-# restart
-# run all
-Simulator is doing circuit initialization process.
-Finished circuit initialization process.
-Stopped at time : 338733700 ns : File "C:/Users/152/Desktop/cs-m152a/lab_4/DDR/vga.v" Line 29

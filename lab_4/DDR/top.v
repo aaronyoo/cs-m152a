@@ -11,9 +11,10 @@ module top(
 
     wire pixclk;
     wire movclk;
+	wire onehzclk;
 
     clockdiv clock_controller(
-        clk, pixclk, movclk
+        clk, pixclk, onehzclk, movclk
     );
 
     vga vga_controller(
