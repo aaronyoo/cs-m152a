@@ -18,11 +18,26 @@ module top(
 	wire onehzclk;
 
     clockdiv clock_controller(
-        clk, pixclk, onehzclk, movclk
+        .i_clk(clk),
+        .o_pixclk(pixclk),
+        .o_onehzclk(onehzclk),
+        .o_movclk(movclk)
     );
 
     vga vga_controller(
-        pixclk, rst, btn_up, btn_right, btn_down, btn_left, btn_rst, movclk, o_vga_hsync, o_vga_vsync, o_vga_r, o_vga_g, o_vga_b
+        .i_pixclk(pixclk),
+        .i_rst(rst),
+        .i_btn_up(btn_up),
+        .i_btn_right(btn_right),
+        .i_btn_down(btn_down),
+        .i_btn_left(btn_left),
+        .i_btn_rst(btn_left),
+        .i_movclk(movclk),
+        .o_hsync(o_vga_hsync),
+        .o_vsync(o_vga_vsync),
+        .o_red(o_vga_r),
+        .o_green(o_vga_g),
+        .o_blue(o_vga_b)
     );
 
 endmodule

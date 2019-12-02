@@ -11,10 +11,9 @@ module vga(
     output wire o_vsync,        // vertical sync
     output reg [2:0] o_red,     // red vga output
     output reg [2:0] o_green,   // green vga output
-    output reg [1:0] o_blue,    // blue vga output
+    output reg [1:0] o_blue    // blue vga output
 
     // TODO: need to add the games state to this interface
-    output reg o_point          // high when player scores a point
 );
 
 localparam HPIXELS = 800;  // horizontal pixels per line
