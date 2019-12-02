@@ -1,81 +1,48 @@
 module clockdiv(
     input wire i_clk,
 
-    output wire o_pixclk   // pixel clock (25 MHz)
+    output wire o_pixclk,   // pixel clock (25 MHz)
+	output wire o_onehzclk, // a onehz clock (1Hz)
+	output wire o_movclk   // clock to control arrow movement
 );
 
-endmodule
-
-module clock(
-    input clk, rst,
-    output reg twohz_clk, onehz_clk, fast_clk, blink_clk, twentyfivehz_clk
-);
-
-integer onehz_idx;
-integer twohz_idx;
-integer fast_idx;
-integer blink_idx;
-integer cnt = 0;
-
-initial begin
-    onehz_clk = 0;
-    twohz_clk = 0;
-    fast_clk = 0;
-    blink_clk = 0;
-end
-
-// This line is for simulation
-//always@ (posedge clk or rst)
-always@ (posedge clk)
-    begin
-        if (rst) begin
-            onehz_idx = 0;
-            twohz_idx = 0;
-            fast_idx = 0;
-            blink_idx = 0;
-		end
-		else begin
-				onehz_idx = onehz_idx + 1;
-				twohz_idx = twohz_idx + 1;
-				fast_idx = fast_idx + 1;
-				blink_idx = blink_idx + 1;
-
-			// One hertz clock
-			// if (onehz_idx == 50000000) begin // Too slow for simulator
-			if (onehz_idx == 50000000) begin
-				$display("IDX: %d, OneCLK: %d", onehz_idx, onehz_clk);
-				onehz_idx = 0;
-				onehz_clk = ~onehz_clk;
-			end
-
-			// Two hertz clock
-			if (twohz_idx == 25000000) begin
-				$display("IDX: %d, TwoCLK: %d", twohz_idx, twohz_clk);
-				twohz_idx = 0;
-				twohz_clk = ~twohz_clk;
-			end
-
-			// Fast clock
-			if (fast_idx == 50000) begin
-				// $display("IDX: %d, FastCLK: %d", fast_idx, fast_clk);
-				fast_idx = 0;
-				fast_clk = ~fast_clk;
-			end
-
-			// Blink Clock
-			if (blink_idx == 25000000) begin
-				// $display("IDX: %d, SlowCLK: %d", blink_idx, blink_clk);
-				blink_idx = 0;
-				blink_clk = ~blink_clk;
-			end
-            // 25 Mhz Clock
-            if (cnt >= 1) begin
-                cnt = 0;
-                twentyfivehz_clk = ~twentyfivehz_clk;
-            end
-            else begin
-                cnt = cnt + 1;
-            end
-		end
+reg clk_25mhz = 0;
+integer cnt_25mhz = 0;
+always @(posedge i_clk) begin
+    if (cnt_25mhz >= 1) begin
+        cnt_25mhz = 0;
+        clk_25mhz = ~clk_25mhz;
     end
+	else begin
+		cnt_25mhz = cnt_25mhz + 1;
+	end
+end
+assign o_pixclk = clk_25mhz;
+
+reg clk_1hz = 0;
+integer cnt_1hz = 0;
+always @(posedge i_clk) begin
+	if (cnt_1hz >= 50000000) begin
+		cnt_1hz = 0;
+		clk_1hz = ~clk_1hz;
+	end
+	else begin
+		cnt_1hz = cnt_1hz + 1;
+	end
+end
+assign o_onehzclk = clk_1hz;
+
+reg clk_mov = 0;
+integer cnt_mov = 0;
+always @(posedge i_clk) begin
+	if (cnt_mov >= 312500) begin  // right now its 160 Hz
+		cnt_mov = 0;
+		clk_mov = ~clk_mov;
+	end
+	else begin
+		cnt_mov = cnt_mov + 1;
+	end
+end
+assign o_movclk = clk_mov;
+
 endmodule

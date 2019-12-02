@@ -1,0 +1,3 @@
+verilog work "vga.v"
+verilog work "clockdiv.v"
+verilog work "top.v"

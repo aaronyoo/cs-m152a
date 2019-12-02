@@ -5,5 +5,11 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
+<msg type="warning" file="HDLCompiler" num="1016" delta="unknown" >"C:/Users/152/Desktop/cs-m152a/lab_4/DDR/top-tb.v" Line 39: Port <arg fmt="%s" index="1">btn_up</arg> is not connected to this instance
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="1016" delta="unknown" >"C:/Users/152/Desktop/cs-m152a/lab_4/DDR/top.v" Line 15: Port <arg fmt="%s" index="1">o_movclk</arg> is not connected to this instance
+</msg>
+
 </messages>
 
