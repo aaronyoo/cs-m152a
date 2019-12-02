@@ -182,8 +182,8 @@ always @ (posedge i_pixclk) begin
 		// draw block c5
         if (center && c5 - 40 < v_count && v_count < c5 + 40) begin
 			case (c5_type)
-				0: {o_red[2:0], o_green[2:0], o_blue[1:0]} = RED; 
-				1: 
+				0: {o_red[2:0], o_green[2:0], o_blue[1:0]} = RED;
+				1:
 				begin
 					if (c5_right) begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = WHITE;
@@ -198,31 +198,31 @@ always @ (posedge i_pixclk) begin
 
         // // draw block c4
         // if (center && c4 - 40 < v_count && v_count < c4 + 40) begin
-        //    {o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK; 
+        //    {o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK;
         // end
-		
+
 //		// draw block c3
 //		if (center && c3 - 40 < v_count && v_count < c3 + 40) begin
-//           {o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK; 
+//           {o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK;
 //        end
 //
 //        // draw block c2
 //        if (center && c2 - 40 < v_count && v_count < c2 + 40) begin
-//           {o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK; 
+//           {o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK;
 //        end
-//		
+//
 //		// draw block c1
 //		if (center && c1 - 40 < v_count && v_count < c1 + 40) begin
-//           {o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK; 
+//           {o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK;
 //        end
-//		
+//
 //        // draw block c0
 //        if (center && c0 - 40 < v_count && v_count < c0 + 40) begin
-//           {o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK; 
+//           {o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK;
 //        end
 
 		// draw the push_range indicator
-        if (push_range_c5 && 
+        if (push_range_c5 &&
            HBP < h_count && h_count < HBP + 25 &&
            VFP - 25 < v_count && v_count < VFP)
         begin
@@ -238,7 +238,7 @@ always @ (posedge i_pixclk) begin
 						correct = 0;
 					end
 				end
-				
+
 				1:
 				begin
 					if (i_btn_right) begin
@@ -262,7 +262,7 @@ always @ (posedge i_pixclk) begin
 						correct = 0;
 					end
 				end
-				
+
 				3:
 				begin
 					if (i_btn_left) begin
@@ -284,12 +284,12 @@ always @ (posedge i_pixclk) begin
         // else begin
         //     {o_red[2:0], o_green[2:0], o_blue[1:0]} = 8'b11101100;
         // end
-		
+
 		// if (HBP + 50 < h_count && h_count < HFP - 50 && VFP - 50 < v_count) begin
 		// 	{o_red[2:0], o_green[2:0], o_blue[1:0]} = 8'b00000000;
 		// end
-		
-		// if (i_btnpress && 
+
+		// if (i_btnpress &&
 		// 	464 - 30 < h_count && h_count < 464 + 30 &&
 		// 	271 - 30 < v_count && v_count < 271 + 30) begin
 		// 	{o_red[2:0], o_green[2:0], o_blue[1:0]} = 8'b11111111;

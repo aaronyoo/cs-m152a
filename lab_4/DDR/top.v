@@ -11,6 +11,8 @@ module top(
     output wire [2:0] o_vga_r,
     output wire [2:0] o_vga_g,
     output wire [1:0] o_vga_b
+    output reg[7:0] seg,
+    output reg[3:0] an
 );
 
     wire pixclk;
@@ -46,5 +48,10 @@ module top(
         .o_score(score)
     );
 
-endmodule
+    score score_display(
+        .o_score(score),
+        .seg(seg),
+        .an(an)
+    );
 
+endmodule
