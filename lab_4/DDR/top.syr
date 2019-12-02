@@ -1,16 +1,16 @@
-Release 14.6 - xst P.68d (nt64)
+Release 14.6 - xst P.68d (nt)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 --> Parameter TMPDIR set to xst/projnav.tmp
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.12 secs
+Total CPU time to Xst completion: 0.15 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.13 secs
+Total CPU time to Xst completion: 0.15 secs
  
 --> Reading design: top.prj
 
@@ -115,12 +115,12 @@ Parsing module <top>.
 =========================================================================
 *                            HDL Elaboration                            *
 =========================================================================
-WARNING:HDLCompiler:1016 - "C:\Users\152\Desktop\cs-m152a\lab_4\DDR\top.v" Line 24: Port o_point is not connected to this instance
+WARNING:HDLCompiler:1016 - "C:\Users\152\Desktop\cs-m152a\lab_4\DDR\top.v" Line 32: Port diff is not connected to this instance
 
 Elaborating module <top>.
 
 Elaborating module <clockdiv>.
-WARNING:HDLCompiler:1127 - "C:\Users\152\Desktop\cs-m152a\lab_4\DDR\top.v" Line 21: Assignment to onehzclk ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\152\Desktop\cs-m152a\lab_4\DDR\top.v" Line 28: Assignment to onehzclk ignored, since the identifier is never used
 
 Elaborating module <vga>.
 WARNING:HDLCompiler:413 - "C:\Users\152\Desktop\cs-m152a\lab_4\DDR\vga.v" Line 38: Result of 4-bit expression is truncated to fit in 3-bit target.
@@ -130,10 +130,13 @@ WARNING:HDLCompiler:872 - "C:\Users\152\Desktop\cs-m152a\lab_4\DDR\vga.v" Line 8
 WARNING:HDLCompiler:872 - "C:\Users\152\Desktop\cs-m152a\lab_4\DDR\vga.v" Line 82: Using initial value of RED since it is never assigned
 WARNING:HDLCompiler:872 - "C:\Users\152\Desktop\cs-m152a\lab_4\DDR\vga.v" Line 83: Using initial value of GREEN since it is never assigned
 WARNING:HDLCompiler:872 - "C:\Users\152\Desktop\cs-m152a\lab_4\DDR\vga.v" Line 84: Using initial value of BLUE since it is never assigned
+WARNING:HDLCompiler:872 - "C:\Users\152\Desktop\cs-m152a\lab_4\DDR\vga.v" Line 113: Using initial value of real_score since it is never assigned
 WARNING:HDLCompiler:413 - "C:\Users\152\Desktop\cs-m152a\lab_4\DDR\vga.v" Line 55: Result of 11-bit expression is truncated to fit in 10-bit target.
 WARNING:HDLCompiler:413 - "C:\Users\152\Desktop\cs-m152a\lab_4\DDR\vga.v" Line 61: Result of 11-bit expression is truncated to fit in 10-bit target.
 WARNING:HDLCompiler:413 - "C:\Users\152\Desktop\cs-m152a\lab_4\DDR\vga.v" Line 73: Result of 32-bit expression is truncated to fit in 1-bit target.
 WARNING:HDLCompiler:413 - "C:\Users\152\Desktop\cs-m152a\lab_4\DDR\vga.v" Line 74: Result of 32-bit expression is truncated to fit in 1-bit target.
+WARNING:HDLCompiler:1127 - "C:\Users\152\Desktop\cs-m152a\lab_4\DDR\vga.v" Line 114: Assignment to score ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\152\Desktop\cs-m152a\lab_4\DDR\top.v" Line 46: Assignment to score ignored, since the identifier is never used
 
 =========================================================================
 *                           HDL Synthesis                               *
@@ -141,8 +144,9 @@ WARNING:HDLCompiler:413 - "C:\Users\152\Desktop\cs-m152a\lab_4\DDR\vga.v" Line 7
 
 Synthesizing Unit <top>.
     Related source file is "C:\Users\152\Desktop\cs-m152a\lab_4\DDR\top.v".
-INFO:Xst:3210 - "C:\Users\152\Desktop\cs-m152a\lab_4\DDR\top.v" line 20: Output port <o_onehzclk> of the instance <clock_controller> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "C:\Users\152\Desktop\cs-m152a\lab_4\DDR\top.v" line 24: Output port <o_point> of the instance <vga_controller> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:\Users\152\Desktop\cs-m152a\lab_4\DDR\top.v" line 25: Output port <o_onehzclk> of the instance <clock_controller> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:\Users\152\Desktop\cs-m152a\lab_4\DDR\top.v" line 32: Output port <o_score> of the instance <vga_controller> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:\Users\152\Desktop\cs-m152a\lab_4\DDR\top.v" line 32: Output port <diff> of the instance <vga_controller> is unconnected or connected to loadless signal.
     Summary:
 	no macro.
 Unit <top> synthesized.
@@ -169,29 +173,90 @@ Unit <clockdiv> synthesized.
 
 Synthesizing Unit <vga>.
     Related source file is "C:\Users\152\Desktop\cs-m152a\lab_4\DDR\vga.v".
-WARNING:Xst:653 - Signal <o_point> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+WARNING:Xst:653 - Signal <o_score> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+WARNING:Xst:653 - Signal <diff> is used but never assigned. This sourceless signal will be automatically connected to value GND.
 WARNING:Xst:2999 - Signal 'mem', unconnected in block 'vga', is tied to its initial value.
-WARNING:Xst:3035 - Index value(s) does not match array range for signal <mem>, simulation mismatch.
-    Found 10x3-bit single-port Read Only RAM <Mram_mem> for signal <mem>.
     Found 10-bit register for signal <v_count>.
     Found 10-bit register for signal <h_count>.
-    Found 32-bit register for signal <mem_idx>.
-    Found 1-bit register for signal <game_end>.
-    Found 32-bit register for signal <c5_type>.
     Found 32-bit register for signal <c5>.
+    Found 32-bit register for signal <c4>.
+    Found 32-bit register for signal <c3>.
+    Found 32-bit register for signal <c2>.
+    Found 32-bit register for signal <c1>.
+    Found 32-bit register for signal <c0>.
+    Found 32-bit register for signal <mem_idx>.
+    Found 1-bit register for signal <reset_me>.
+    Found 32-bit register for signal <c5_type>.
+    Found 32-bit register for signal <c4_type>.
+    Found 32-bit register for signal <c3_type>.
+    Found 32-bit register for signal <c2_type>.
+    Found 32-bit register for signal <c1_type>.
+    Found 32-bit register for signal <c0_type>.
     Found 2-bit register for signal <o_blue>.
     Found 3-bit register for signal <o_green>.
     Found 3-bit register for signal <o_red>.
-    Found 32-bit subtractor for signal <c5[31]_GND_3_o_sub_71_OUT> created at line 160.
+    Found 1-bit register for signal <game_alive>.
+    Found 32-bit subtractor for signal <c5[31]_GND_3_o_sub_20_OUT> created at line 104.
+    Found 32-bit subtractor for signal <c4[31]_GND_3_o_sub_24_OUT> created at line 105.
+    Found 32-bit subtractor for signal <c3[31]_GND_3_o_sub_28_OUT> created at line 106.
+    Found 32-bit subtractor for signal <c2[31]_GND_3_o_sub_32_OUT> created at line 107.
+    Found 32-bit subtractor for signal <c1[31]_GND_3_o_sub_36_OUT> created at line 108.
+    Found 32-bit subtractor for signal <c0[31]_GND_3_o_sub_40_OUT> created at line 109.
     Found 10-bit adder for signal <h_count[9]_GND_3_o_add_1_OUT> created at line 55.
     Found 10-bit adder for signal <v_count[9]_GND_3_o_add_3_OUT> created at line 61.
-    Found 32-bit adder for signal <mem_idx[31]_GND_3_o_add_24_OUT> created at line 116.
-    Found 32-bit adder for signal <c5[31]_GND_3_o_add_32_OUT> created at line 126.
-    Found 32-bit adder for signal <c5[31]_GND_3_o_add_72_OUT> created at line 160.
-    Found 8x3-bit Read Only RAM for signal <_n0193>
-    Found 2-bit 4-to-1 multiplexer for signal <_n0205> created at line 201.
-    Found 3-bit 4-to-1 multiplexer for signal <_n0215> created at line 201.
-    Found 3-bit 4-to-1 multiplexer for signal <_n0225> created at line 201.
+    Found 32-bit adder for signal <c5[31]_GND_3_o_add_21_OUT> created at line 104.
+    Found 32-bit adder for signal <c4[31]_GND_3_o_add_25_OUT> created at line 105.
+    Found 32-bit adder for signal <c3[31]_GND_3_o_add_29_OUT> created at line 106.
+    Found 32-bit adder for signal <c2[31]_GND_3_o_add_33_OUT> created at line 107.
+    Found 32-bit adder for signal <c1[31]_GND_3_o_add_37_OUT> created at line 108.
+    Found 32-bit adder for signal <c0[31]_GND_3_o_add_41_OUT> created at line 109.
+    Found 32-bit adder for signal <mem_idx[31]_GND_3_o_add_47_OUT> created at line 138.
+    Found 32-bit adder for signal <mem_idx[31]_GND_3_o_add_52_OUT> created at line 143.
+    Found 32-bit adder for signal <mem_idx[31]_GND_3_o_add_57_OUT> created at line 148.
+    Found 32-bit adder for signal <mem_idx[31]_GND_3_o_add_62_OUT> created at line 153.
+    Found 32-bit adder for signal <mem_idx[31]_GND_3_o_add_67_OUT> created at line 158.
+    Found 32-bit adder for signal <mem_idx[31]_GND_3_o_add_72_OUT> created at line 163.
+    Found 32-bit adder for signal <c5[31]_GND_3_o_add_76_OUT> created at line 166.
+    Found 32-bit adder for signal <c4[31]_GND_3_o_add_79_OUT> created at line 167.
+    Found 32-bit adder for signal <c3[31]_GND_3_o_add_82_OUT> created at line 168.
+    Found 32-bit adder for signal <c2[31]_GND_3_o_add_85_OUT> created at line 169.
+    Found 32-bit adder for signal <c1[31]_GND_3_o_add_88_OUT> created at line 170.
+    Found 32-bit adder for signal <c0[31]_GND_3_o_add_91_OUT> created at line 171.
+WARNING:Xst:3035 - Index value(s) does not match array range for signal <mem>, simulation mismatch.
+    Found 201x3-bit dual-port Read Only RAM <Mram_mem> for signal <mem>.
+    Found 4x8-bit Read Only RAM for signal <_n1182>
+    Found 4x8-bit Read Only RAM for signal <_n1188>
+    Found 4x8-bit Read Only RAM for signal <_n1194>
+    Found 4x5-bit Read Only RAM for signal <_n1199>
+    Found 4x8-bit Read Only RAM for signal <_n1204>
+    Found 4x8-bit Read Only RAM for signal <_n1209>
+    Found 1-bit 4-to-1 multiplexer for signal <_n0661> created at line 381.
+    Found 2-bit 4-to-1 multiplexer for signal <_n0671> created at line 493.
+    Found 3-bit 4-to-1 multiplexer for signal <_n0701> created at line 381.
+    Found 3-bit 4-to-1 multiplexer for signal <_n0711> created at line 437.
+    Found 3-bit 4-to-1 multiplexer for signal <_n0721> created at line 493.
+    Found 3-bit 4-to-1 multiplexer for signal <_n0731> created at line 325.
+    Found 3-bit 4-to-1 multiplexer for signal <_n0741> created at line 381.
+    Found 2-bit 4-to-1 multiplexer for signal <_n0751> created at line 661.
+    Found 3-bit 4-to-1 multiplexer for signal <_n0761> created at line 661.
+    Found 3-bit 4-to-1 multiplexer for signal <_n0771> created at line 661.
+    Found 1-bit 4-to-1 multiplexer for signal <_n0781> created at line 661.
+    Found 3-bit 4-to-1 multiplexer for signal <_n0801> created at line 493.
+    Found 1-bit 4-to-1 multiplexer for signal <_n0811> created at line 493.
+    Found 2-bit 4-to-1 multiplexer for signal <_n0821> created at line 549.
+    Found 3-bit 4-to-1 multiplexer for signal <_n0831> created at line 549.
+    Found 3-bit 4-to-1 multiplexer for signal <_n0841> created at line 549.
+    Found 2-bit 4-to-1 multiplexer for signal <_n0871> created at line 605.
+    Found 3-bit 4-to-1 multiplexer for signal <_n0881> created at line 605.
+    Found 3-bit 4-to-1 multiplexer for signal <_n0891> created at line 605.
+    Found 1-bit 4-to-1 multiplexer for signal <_n0901> created at line 605.
+    Found 3-bit 4-to-1 multiplexer for signal <_n0933> created at line 325.
+    Found 1-bit 4-to-1 multiplexer for signal <_n0943> created at line 325.
+    Found 2-bit 4-to-1 multiplexer for signal <_n1013> created at line 325.
+    Found 2-bit 4-to-1 multiplexer for signal <_n1023> created at line 381.
+    Found 2-bit 4-to-1 multiplexer for signal <_n1043> created at line 437.
+    Found 3-bit 4-to-1 multiplexer for signal <_n1053> created at line 437.
+    Found 1-bit 4-to-1 multiplexer for signal <_n1063> created at line 437.
     Found 10-bit comparator greater for signal <h_count[9]_PWR_3_o_LessThan_1_o> created at line 54
     Found 10-bit comparator greater for signal <v_count[9]_PWR_3_o_LessThan_3_o> created at line 60
     Found 10-bit comparator greater for signal <h_count[9]_GND_3_o_LessThan_10_o> created at line 73
@@ -201,67 +266,100 @@ WARNING:Xst:3035 - Index value(s) does not match array range for signal <mem>, s
     Found 10-bit comparator greater for signal <h_count[9]_PWR_3_o_LessThan_17_o> created at line 77
     Found 10-bit comparator greater for signal <GND_3_o_h_count[9]_LessThan_18_o> created at line 79
     Found 10-bit comparator greater for signal <h_count[9]_GND_3_o_LessThan_19_o> created at line 79
-    Found 32-bit comparator greater for signal <GND_3_o_c5[31]_LessThan_32_o> created at line 126
-    Found 32-bit comparator greater for signal <push_range_c5> created at line 136
-    Found 10-bit comparator greater for signal <GND_3_o_h_count[9]_LessThan_61_o> created at line 153
-    Found 10-bit comparator greater for signal <h_count[9]_GND_3_o_LessThan_62_o> created at line 153
-    Found 10-bit comparator greater for signal <GND_3_o_h_count[9]_LessThan_63_o> created at line 153
-    Found 10-bit comparator greater for signal <h_count[9]_PWR_3_o_LessThan_64_o> created at line 153
-    Found 10-bit comparator greater for signal <GND_3_o_v_count[9]_LessThan_65_o> created at line 154
-    Found 10-bit comparator greater for signal <v_count[9]_GND_3_o_LessThan_66_o> created at line 154
-    Found 10-bit comparator greater for signal <GND_3_o_v_count[9]_LessThan_67_o> created at line 154
-    Found 10-bit comparator greater for signal <v_count[9]_GND_3_o_LessThan_68_o> created at line 154
-    Found 32-bit comparator greater for signal <c5[31]_GND_3_o_LessThan_72_o> created at line 160
-    Found 32-bit comparator greater for signal <GND_3_o_c5[31]_LessThan_74_o> created at line 160
-    Found 10-bit comparator greater for signal <GND_3_o_h_count[9]_LessThan_87_o> created at line 198
-    Found 10-bit comparator greater for signal <h_count[9]_GND_3_o_LessThan_88_o> created at line 198
-    Found 10-bit comparator greater for signal <GND_3_o_v_count[9]_LessThan_89_o> created at line 199
-    Found 10-bit comparator greater for signal <v_count[9]_GND_3_o_LessThan_90_o> created at line 199
+    Found 32-bit comparator greater for signal <c5[31]_GND_3_o_LessThan_21_o> created at line 104
+    Found 32-bit comparator greater for signal <GND_3_o_c5[31]_LessThan_23_o> created at line 104
+    Found 32-bit comparator greater for signal <c4[31]_GND_3_o_LessThan_25_o> created at line 105
+    Found 32-bit comparator greater for signal <GND_3_o_c4[31]_LessThan_27_o> created at line 105
+    Found 32-bit comparator greater for signal <c3[31]_GND_3_o_LessThan_29_o> created at line 106
+    Found 32-bit comparator greater for signal <GND_3_o_c3[31]_LessThan_31_o> created at line 106
+    Found 32-bit comparator greater for signal <c2[31]_GND_3_o_LessThan_33_o> created at line 107
+    Found 32-bit comparator greater for signal <GND_3_o_c2[31]_LessThan_35_o> created at line 107
+    Found 32-bit comparator greater for signal <c1[31]_GND_3_o_LessThan_37_o> created at line 108
+    Found 32-bit comparator greater for signal <GND_3_o_c1[31]_LessThan_39_o> created at line 108
+    Found 32-bit comparator greater for signal <c0[31]_GND_3_o_LessThan_41_o> created at line 109
+    Found 32-bit comparator greater for signal <GND_3_o_c0[31]_LessThan_43_o> created at line 109
+    Found 32-bit comparator greater for signal <GND_3_o_c5[31]_LessThan_76_o> created at line 166
+    Found 32-bit comparator greater for signal <GND_3_o_c4[31]_LessThan_79_o> created at line 167
+    Found 32-bit comparator greater for signal <GND_3_o_c3[31]_LessThan_82_o> created at line 168
+    Found 32-bit comparator greater for signal <GND_3_o_c2[31]_LessThan_85_o> created at line 169
+    Found 32-bit comparator greater for signal <GND_3_o_c1[31]_LessThan_88_o> created at line 170
+    Found 32-bit comparator greater for signal <GND_3_o_c0[31]_LessThan_91_o> created at line 171
+    Found 32-bit comparator greater for signal <push_range_c5> created at line 181
+    Found 32-bit comparator greater for signal <push_range_c4> created at line 191
+    Found 32-bit comparator greater for signal <push_range_c3> created at line 201
+    Found 32-bit comparator greater for signal <push_range_c2> created at line 211
+    Found 32-bit comparator greater for signal <push_range_c1> created at line 221
+    Found 32-bit comparator greater for signal <push_range_c0> created at line 231
+    Found 10-bit comparator greater for signal <GND_3_o_h_count[9]_LessThan_127_o> created at line 251
+    Found 10-bit comparator greater for signal <h_count[9]_GND_3_o_LessThan_128_o> created at line 251
+    Found 10-bit comparator greater for signal <GND_3_o_h_count[9]_LessThan_129_o> created at line 251
+    Found 10-bit comparator greater for signal <h_count[9]_PWR_3_o_LessThan_130_o> created at line 251
+    Found 10-bit comparator greater for signal <GND_3_o_v_count[9]_LessThan_131_o> created at line 252
+    Found 10-bit comparator greater for signal <v_count[9]_GND_3_o_LessThan_132_o> created at line 252
+    Found 10-bit comparator greater for signal <GND_3_o_v_count[9]_LessThan_133_o> created at line 252
+    Found 10-bit comparator greater for signal <v_count[9]_GND_3_o_LessThan_134_o> created at line 252
+    Found 10-bit comparator greater for signal <GND_3_o_h_count[9]_LessThan_207_o> created at line 322
+    Found 10-bit comparator greater for signal <h_count[9]_GND_3_o_LessThan_208_o> created at line 322
+    Found 10-bit comparator greater for signal <GND_3_o_v_count[9]_LessThan_209_o> created at line 323
+    Found 10-bit comparator greater for signal <v_count[9]_GND_3_o_LessThan_210_o> created at line 323
     Summary:
-	inferred   2 RAM(s).
-	inferred   6 Adder/Subtractor(s).
-	inferred 125 D-type flip-flop(s).
-	inferred  25 Comparator(s).
-	inferred  17 Multiplexer(s).
+	inferred   9 RAM(s).
+	inferred  26 Adder/Subtractor(s).
+	inferred 446 D-type flip-flop(s).
+	inferred  45 Comparator(s).
+	inferred 125 Multiplexer(s).
 Unit <vga> synthesized.
 
 =========================================================================
 HDL Synthesis Report
 
 Macro Statistics
-# RAMs                                                 : 2
- 10x3-bit single-port Read Only RAM                    : 1
- 8x3-bit single-port Read Only RAM                     : 1
-# Adders/Subtractors                                   : 9
+# RAMs                                                 : 9
+ 201x3-bit dual-port Read Only RAM                     : 3
+ 4x5-bit single-port Read Only RAM                     : 1
+ 4x8-bit single-port Read Only RAM                     : 5
+# Adders/Subtractors                                   : 29
  10-bit adder                                          : 2
- 32-bit adder                                          : 6
- 32-bit subtractor                                     : 1
-# Registers                                            : 15
- 1-bit register                                        : 4
+ 32-bit adder                                          : 21
+ 32-bit subtractor                                     : 6
+# Registers                                            : 26
+ 1-bit register                                        : 5
  10-bit register                                       : 2
  2-bit register                                        : 1
  3-bit register                                        : 2
- 32-bit register                                       : 6
-# Comparators                                          : 28
+ 32-bit register                                       : 16
+# Comparators                                          : 48
  10-bit comparator greater                             : 19
  10-bit comparator lessequal                           : 2
- 32-bit comparator greater                             : 7
-# Multiplexers                                         : 17
+ 32-bit comparator greater                             : 27
+# Multiplexers                                         : 125
+ 1-bit 2-to-1 multiplexer                              : 7
+ 1-bit 4-to-1 multiplexer                              : 6
  10-bit 2-to-1 multiplexer                             : 2
- 2-bit 2-to-1 multiplexer                              : 3
- 2-bit 4-to-1 multiplexer                              : 1
- 3-bit 2-to-1 multiplexer                              : 7
- 3-bit 4-to-1 multiplexer                              : 2
- 32-bit 2-to-1 multiplexer                             : 2
+ 2-bit 2-to-1 multiplexer                              : 26
+ 2-bit 4-to-1 multiplexer                              : 7
+ 3-bit 2-to-1 multiplexer                              : 51
+ 3-bit 4-to-1 multiplexer                              : 14
+ 32-bit 2-to-1 multiplexer                             : 12
 
 =========================================================================
+INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
 
 =========================================================================
 *                       Advanced HDL Synthesis                          *
 =========================================================================
 
+INFO:Xst:2261 - The FF/Latch <c1_type_3> in Unit <vga_controller> is equivalent to the following 28 FFs/Latches, which will be removed : <c1_type_4> <c1_type_5> <c1_type_6> <c1_type_7> <c1_type_8> <c1_type_9> <c1_type_10> <c1_type_11> <c1_type_12> <c1_type_13> <c1_type_14> <c1_type_15> <c1_type_16> <c1_type_17> <c1_type_18> <c1_type_19> <c1_type_20> <c1_type_21> <c1_type_22> <c1_type_23> <c1_type_24> <c1_type_25> <c1_type_26> <c1_type_27> <c1_type_28> <c1_type_29> <c1_type_30> <c1_type_31> 
+INFO:Xst:2261 - The FF/Latch <c4_type_3> in Unit <vga_controller> is equivalent to the following 28 FFs/Latches, which will be removed : <c4_type_4> <c4_type_5> <c4_type_6> <c4_type_7> <c4_type_8> <c4_type_9> <c4_type_10> <c4_type_11> <c4_type_12> <c4_type_13> <c4_type_14> <c4_type_15> <c4_type_16> <c4_type_17> <c4_type_18> <c4_type_19> <c4_type_20> <c4_type_21> <c4_type_22> <c4_type_23> <c4_type_24> <c4_type_25> <c4_type_26> <c4_type_27> <c4_type_28> <c4_type_29> <c4_type_30> <c4_type_31> 
 INFO:Xst:2261 - The FF/Latch <c5_type_3> in Unit <vga_controller> is equivalent to the following 28 FFs/Latches, which will be removed : <c5_type_4> <c5_type_5> <c5_type_6> <c5_type_7> <c5_type_8> <c5_type_9> <c5_type_10> <c5_type_11> <c5_type_12> <c5_type_13> <c5_type_14> <c5_type_15> <c5_type_16> <c5_type_17> <c5_type_18> <c5_type_19> <c5_type_20> <c5_type_21> <c5_type_22> <c5_type_23> <c5_type_24> <c5_type_25> <c5_type_26> <c5_type_27> <c5_type_28> <c5_type_29> <c5_type_30> <c5_type_31> 
-WARNING:Xst:1293 - FF/Latch <game_end> has a constant value of 0 in block <vga_controller>. This FF/Latch will be trimmed during the optimization process.
+INFO:Xst:2261 - The FF/Latch <c0_type_3> in Unit <vga_controller> is equivalent to the following 28 FFs/Latches, which will be removed : <c0_type_4> <c0_type_5> <c0_type_6> <c0_type_7> <c0_type_8> <c0_type_9> <c0_type_10> <c0_type_11> <c0_type_12> <c0_type_13> <c0_type_14> <c0_type_15> <c0_type_16> <c0_type_17> <c0_type_18> <c0_type_19> <c0_type_20> <c0_type_21> <c0_type_22> <c0_type_23> <c0_type_24> <c0_type_25> <c0_type_26> <c0_type_27> <c0_type_28> <c0_type_29> <c0_type_30> <c0_type_31> 
+INFO:Xst:2261 - The FF/Latch <c2_type_3> in Unit <vga_controller> is equivalent to the following 28 FFs/Latches, which will be removed : <c2_type_4> <c2_type_5> <c2_type_6> <c2_type_7> <c2_type_8> <c2_type_9> <c2_type_10> <c2_type_11> <c2_type_12> <c2_type_13> <c2_type_14> <c2_type_15> <c2_type_16> <c2_type_17> <c2_type_18> <c2_type_19> <c2_type_20> <c2_type_21> <c2_type_22> <c2_type_23> <c2_type_24> <c2_type_25> <c2_type_26> <c2_type_27> <c2_type_28> <c2_type_29> <c2_type_30> <c2_type_31> 
+INFO:Xst:2261 - The FF/Latch <c3_type_3> in Unit <vga_controller> is equivalent to the following 28 FFs/Latches, which will be removed : <c3_type_4> <c3_type_5> <c3_type_6> <c3_type_7> <c3_type_8> <c3_type_9> <c3_type_10> <c3_type_11> <c3_type_12> <c3_type_13> <c3_type_14> <c3_type_15> <c3_type_16> <c3_type_17> <c3_type_18> <c3_type_19> <c3_type_20> <c3_type_21> <c3_type_22> <c3_type_23> <c3_type_24> <c3_type_25> <c3_type_26> <c3_type_27> <c3_type_28> <c3_type_29> <c3_type_30> <c3_type_31> 
+WARNING:Xst:1293 - FF/Latch <c4_type_3> has a constant value of 0 in block <vga_controller>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <c3_type_3> has a constant value of 0 in block <vga_controller>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <c2_type_3> has a constant value of 0 in block <vga_controller>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <c1_type_3> has a constant value of 0 in block <vga_controller>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <c0_type_3> has a constant value of 0 in block <vga_controller>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <c5_type_3> has a constant value of 0 in block <vga_controller>. This FF/Latch will be trimmed during the optimization process.
 
 Synthesizing (advanced) Unit <clockdiv>.
@@ -274,16 +372,124 @@ Synthesizing (advanced) Unit <vga>.
 The following registers are absorbed into counter <h_count>: 1 register on signal <h_count>.
 The following registers are absorbed into counter <v_count>: 1 register on signal <v_count>.
 The following registers are absorbed into counter <c5>: 1 register on signal <c5>.
-INFO:Xst:3231 - The small RAM <Mram__n0193> will be implemented on LUTs in order to maximize performance and save block RAM resources. If you want to force its implementation on block, use option/constraint ram_style.
+The following registers are absorbed into counter <c4>: 1 register on signal <c4>.
+The following registers are absorbed into counter <c3>: 1 register on signal <c3>.
+The following registers are absorbed into counter <c2>: 1 register on signal <c2>.
+The following registers are absorbed into counter <c1>: 1 register on signal <c1>.
+The following registers are absorbed into counter <c0>: 1 register on signal <c0>.
+INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram__n1199> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
     -----------------------------------------------------------------------
     | ram_type           | Distributed                         |          |
     -----------------------------------------------------------------------
     | Port A                                                              |
-    |     aspect ratio   | 8-word x 3-bit                      |          |
+    |     aspect ratio   | 4-word x 5-bit                      |          |
     |     weA            | connected to signal <GND>           | high     |
-    |     addrA          | connected to signal <c5_type<2:0>>  |          |
+    |     addrA          | connected to signal <c5_type<1:0>>  |          |
     |     diA            | connected to signal <GND>           |          |
     |     doA            | connected to internal node          |          |
+    -----------------------------------------------------------------------
+INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram__n1182> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 4-word x 8-bit                      |          |
+    |     weA            | connected to signal <GND>           | high     |
+    |     addrA          | connected to signal <c4_type<1:0>>  |          |
+    |     diA            | connected to signal <GND>           |          |
+    |     doA            | connected to internal node          |          |
+    -----------------------------------------------------------------------
+INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram__n1188> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 4-word x 8-bit                      |          |
+    |     weA            | connected to signal <GND>           | high     |
+    |     addrA          | connected to signal <c3_type<1:0>>  |          |
+    |     diA            | connected to signal <GND>           |          |
+    |     doA            | connected to internal node          |          |
+    -----------------------------------------------------------------------
+INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram__n1204> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 4-word x 8-bit                      |          |
+    |     weA            | connected to signal <GND>           | high     |
+    |     addrA          | connected to signal <c2_type<1:0>>  |          |
+    |     diA            | connected to signal <GND>           |          |
+    |     doA            | connected to internal node          |          |
+    -----------------------------------------------------------------------
+INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram__n1194> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 4-word x 8-bit                      |          |
+    |     weA            | connected to signal <GND>           | high     |
+    |     addrA          | connected to signal <c1_type<1:0>>  |          |
+    |     diA            | connected to signal <GND>           |          |
+    |     doA            | connected to internal node          |          |
+    -----------------------------------------------------------------------
+INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram__n1209> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 4-word x 8-bit                      |          |
+    |     weA            | connected to signal <GND>           | high     |
+    |     addrA          | connected to signal <c0_type<1:0>>  |          |
+    |     diA            | connected to signal <GND>           |          |
+    |     doA            | connected to internal node          |          |
+    -----------------------------------------------------------------------
+INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram_mem> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 201-word x 3-bit                    |          |
+    |     weA            | connected to signal <GND>           | high     |
+    |     addrA          | connected to signal <mem_idx<7:0>>  |          |
+    |     diA            | connected to signal <GND>           |          |
+    |     doA            | connected to internal node          |          |
+    -----------------------------------------------------------------------
+    | Port B                                                              |
+    |     aspect ratio   | 201-word x 3-bit                    |          |
+    |     addrB          | connected to signal <n0587<7:0>>    |          |
+    |     doB            | connected to internal node          |          |
+    -----------------------------------------------------------------------
+INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram_mem1> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 201-word x 3-bit                    |          |
+    |     weA            | connected to signal <GND>           | high     |
+    |     addrA          | connected to signal <n0589<7:0>>    |          |
+    |     diA            | connected to signal <GND>           |          |
+    |     doA            | connected to internal node          |          |
+    -----------------------------------------------------------------------
+    | Port B                                                              |
+    |     aspect ratio   | 201-word x 3-bit                    |          |
+    |     addrB          | connected to signal <n0591<7:0>>    |          |
+    |     doB            | connected to internal node          |          |
+    -----------------------------------------------------------------------
+INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram_mem2> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 201-word x 3-bit                    |          |
+    |     weA            | connected to signal <GND>           | high     |
+    |     addrA          | connected to signal <n0593<7:0>>    |          |
+    |     diA            | connected to signal <GND>           |          |
+    |     doA            | connected to internal node          |          |
+    -----------------------------------------------------------------------
+    | Port B                                                              |
+    |     aspect ratio   | 201-word x 3-bit                    |          |
+    |     addrB          | connected to signal <n0595<7:0>>    |          |
+    |     doB            | connected to internal node          |          |
     -----------------------------------------------------------------------
 Unit <vga> synthesized (advanced).
 
@@ -291,67 +497,210 @@ Unit <vga> synthesized (advanced).
 Advanced HDL Synthesis Report
 
 Macro Statistics
-# RAMs                                                 : 2
- 10x3-bit single-port distributed Read Only RAM        : 1
- 8x3-bit single-port distributed Read Only RAM         : 1
-# Adders/Subtractors                                   : 3
- 32-bit adder                                          : 2
- 32-bit subtractor                                     : 1
-# Counters                                             : 6
+# RAMs                                                 : 9
+ 201x3-bit dual-port distributed Read Only RAM         : 3
+ 4x5-bit single-port distributed Read Only RAM         : 1
+ 4x8-bit single-port distributed Read Only RAM         : 5
+# Adders/Subtractors                                   : 18
+ 32-bit adder                                          : 12
+ 32-bit subtractor                                     : 6
+# Counters                                             : 11
  10-bit up counter                                     : 2
- 32-bit up counter                                     : 4
-# Registers                                            : 76
- Flip-Flops                                            : 76
-# Comparators                                          : 28
+ 32-bit up counter                                     : 9
+# Registers                                            : 237
+ Flip-Flops                                            : 237
+# Comparators                                          : 48
  10-bit comparator greater                             : 19
  10-bit comparator lessequal                           : 2
- 32-bit comparator greater                             : 7
-# Multiplexers                                         : 15
- 2-bit 2-to-1 multiplexer                              : 3
- 2-bit 4-to-1 multiplexer                              : 1
- 3-bit 2-to-1 multiplexer                              : 7
- 3-bit 4-to-1 multiplexer                              : 2
- 32-bit 2-to-1 multiplexer                             : 2
+ 32-bit comparator greater                             : 27
+# Multiplexers                                         : 117
+ 1-bit 2-to-1 multiplexer                              : 7
+ 1-bit 4-to-1 multiplexer                              : 6
+ 2-bit 2-to-1 multiplexer                              : 26
+ 2-bit 4-to-1 multiplexer                              : 7
+ 3-bit 2-to-1 multiplexer                              : 51
+ 3-bit 4-to-1 multiplexer                              : 14
+ 32-bit 2-to-1 multiplexer                             : 6
 
 =========================================================================
 
 =========================================================================
 *                         Low Level Synthesis                           *
 =========================================================================
-WARNING:Xst:1293 - FF/Latch <c5_type_31> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_30> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_29> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_28> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_27> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_26> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_25> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_24> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_23> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_22> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_21> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_20> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_19> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_18> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_17> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_16> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_15> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_14> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_13> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_12> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_11> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <c1_type_25> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c1_type_26> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c1_type_27> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c1_type_28> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c1_type_29> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c1_type_30> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c1_type_31> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c0_type_3> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c0_type_4> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c0_type_5> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c0_type_6> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c0_type_7> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c0_type_8> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c0_type_9> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c0_type_10> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c0_type_11> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c0_type_12> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c0_type_13> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c0_type_14> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c0_type_15> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c0_type_16> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c1_type_3> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c1_type_4> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c1_type_5> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c1_type_6> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c1_type_7> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c1_type_8> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c1_type_9> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c1_type_10> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c1_type_11> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c1_type_12> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c1_type_13> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c1_type_14> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c1_type_15> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c1_type_16> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c1_type_17> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c1_type_18> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c1_type_19> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c1_type_20> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c1_type_21> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c1_type_22> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c1_type_23> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c1_type_24> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_10> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_9> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_8> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_7> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_6> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_5> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_4> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_11> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_12> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_13> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_14> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_15> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_16> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_17> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_18> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_19> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_20> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_21> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_22> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_23> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_24> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_25> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_26> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_27> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_28> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_29> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_30> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_31> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c0_type_17> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c0_type_18> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c0_type_19> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c0_type_20> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c0_type_21> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c0_type_22> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c0_type_23> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c0_type_24> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c0_type_25> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c0_type_26> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c0_type_27> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c0_type_28> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c0_type_29> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c0_type_30> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c0_type_31> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_3> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <game_end> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:2677 - Node <mem_idx_4> of sequential type is unconnected in block <vga>.
-WARNING:Xst:2677 - Node <mem_idx_5> of sequential type is unconnected in block <vga>.
-WARNING:Xst:2677 - Node <mem_idx_6> of sequential type is unconnected in block <vga>.
-WARNING:Xst:2677 - Node <mem_idx_7> of sequential type is unconnected in block <vga>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_4> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_5> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_6> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_7> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_8> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c5_type_9> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c4_type_25> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c4_type_26> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c4_type_27> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c4_type_28> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c4_type_29> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c4_type_30> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c4_type_31> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c3_type_3> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c3_type_4> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c3_type_5> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c3_type_6> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c3_type_7> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c3_type_8> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c3_type_9> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c3_type_10> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c3_type_11> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c3_type_12> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c3_type_13> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c3_type_14> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c3_type_15> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c3_type_16> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c4_type_3> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c4_type_4> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c4_type_5> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c4_type_6> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c4_type_7> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c4_type_8> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c4_type_9> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c4_type_10> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c4_type_11> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c4_type_12> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c4_type_13> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c4_type_14> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c4_type_15> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c4_type_16> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c4_type_17> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c4_type_18> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c4_type_19> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c4_type_20> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c4_type_21> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c4_type_22> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c4_type_23> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c4_type_24> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c2_type_10> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c2_type_11> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c2_type_12> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c2_type_13> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c2_type_14> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c2_type_15> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c2_type_16> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c2_type_17> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c2_type_18> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c2_type_19> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c2_type_20> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c2_type_21> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c2_type_22> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c2_type_23> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c2_type_24> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c2_type_25> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c2_type_26> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c2_type_27> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c2_type_28> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c2_type_29> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c2_type_30> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c2_type_31> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c3_type_17> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c3_type_18> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c3_type_19> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c3_type_20> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c3_type_21> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c3_type_22> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c3_type_23> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c3_type_24> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c3_type_25> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c3_type_26> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c3_type_27> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c3_type_28> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c3_type_29> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c3_type_30> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c3_type_31> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c2_type_3> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c2_type_4> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c2_type_5> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c2_type_6> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c2_type_7> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c2_type_8> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <c2_type_9> has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:2677 - Node <mem_idx_8> of sequential type is unconnected in block <vga>.
 WARNING:Xst:2677 - Node <mem_idx_9> of sequential type is unconnected in block <vga>.
 WARNING:Xst:2677 - Node <mem_idx_10> of sequential type is unconnected in block <vga>.
@@ -376,15 +725,18 @@ WARNING:Xst:2677 - Node <mem_idx_28> of sequential type is unconnected in block 
 WARNING:Xst:2677 - Node <mem_idx_29> of sequential type is unconnected in block <vga>.
 WARNING:Xst:2677 - Node <mem_idx_30> of sequential type is unconnected in block <vga>.
 WARNING:Xst:2677 - Node <mem_idx_31> of sequential type is unconnected in block <vga>.
-INFO:Xst:2261 - The FF/Latch <o_blue_0> in Unit <vga> is equivalent to the following FF/Latch, which will be removed : <o_blue_1> 
-INFO:Xst:2261 - The FF/Latch <o_green_0> in Unit <vga> is equivalent to the following FF/Latch, which will be removed : <o_green_1> 
-INFO:Xst:2261 - The FF/Latch <o_red_0> in Unit <vga> is equivalent to the following 2 FFs/Latches, which will be removed : <o_red_1> <o_red_2> 
 
 Optimizing unit <top> ...
 
 Optimizing unit <clockdiv> ...
 
 Optimizing unit <vga> ...
+INFO:Xst:2261 - The FF/Latch <o_blue_0> in Unit <vga> is equivalent to the following FF/Latch, which will be removed : <o_blue_1> 
+INFO:Xst:2261 - The FF/Latch <o_red_0> in Unit <vga> is equivalent to the following 2 FFs/Latches, which will be removed : <o_red_1> <o_red_2> 
+INFO:Xst:2261 - The FF/Latch <o_green_0> in Unit <vga> is equivalent to the following FF/Latch, which will be removed : <o_green_1> 
+INFO:Xst:2261 - The FF/Latch <o_red_0> in Unit <vga> is equivalent to the following 2 FFs/Latches, which will be removed : <o_red_1> <o_red_2> 
+INFO:Xst:2261 - The FF/Latch <o_green_0> in Unit <vga> is equivalent to the following FF/Latch, which will be removed : <o_green_1> 
+INFO:Xst:2261 - The FF/Latch <o_blue_0> in Unit <vga> is equivalent to the following FF/Latch, which will be removed : <o_blue_1> 
 WARNING:Xst:2677 - Node <clock_controller/cnt_1hz_31> of sequential type is unconnected in block <top>.
 WARNING:Xst:2677 - Node <clock_controller/cnt_1hz_30> of sequential type is unconnected in block <top>.
 WARNING:Xst:2677 - Node <clock_controller/cnt_1hz_29> of sequential type is unconnected in block <top>.
@@ -418,33 +770,158 @@ WARNING:Xst:2677 - Node <clock_controller/cnt_1hz_2> of sequential type is uncon
 WARNING:Xst:2677 - Node <clock_controller/cnt_1hz_1> of sequential type is unconnected in block <top>.
 WARNING:Xst:2677 - Node <clock_controller/cnt_1hz_0> of sequential type is unconnected in block <top>.
 WARNING:Xst:2677 - Node <clock_controller/clk_1hz> of sequential type is unconnected in block <top>.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c4_13> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c4_15> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c4_11> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c4_10> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c4_12> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c4_9> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c5_31> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c5_30> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c5_28> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c5_27> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c5_29> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c5_25> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c5_24> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c5_26> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c5_22> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c5_21> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c5_23> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c4_31> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c4_29> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c4_28> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c4_30> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c4_26> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c4_25> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c4_27> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c4_23> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c4_22> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c4_24> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c4_20> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c4_19> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c4_21> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c4_17> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c4_16> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c4_18> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c4_14> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c3_24> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c3_26> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c3_22> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c3_21> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c3_23> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c3_19> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c3_18> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c3_20> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c3_16> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c3_15> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c3_17> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c3_13> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c3_12> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c3_14> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c3_10> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c3_9> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c3_11> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c5_20> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c5_19> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c5_17> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c5_16> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c5_18> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c5_14> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c5_13> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c5_15> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <vga_controller/c5_11> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <vga_controller/c5_9> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <vga_controller/c5_10> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <vga_controller/c5_12> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <vga_controller/c5_13> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <vga_controller/c5_16> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <vga_controller/c5_14> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <vga_controller/c5_15> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <vga_controller/c5_17> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <vga_controller/c5_18> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <vga_controller/c5_21> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <vga_controller/c5_19> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <vga_controller/c5_20> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <vga_controller/c5_22> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <vga_controller/c5_23> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <vga_controller/c5_26> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <vga_controller/c5_24> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <vga_controller/c5_25> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <vga_controller/c5_27> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <vga_controller/c5_28> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <vga_controller/c5_29> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <vga_controller/c5_30> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <vga_controller/c5_31> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c5_9> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c3_31> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c3_30> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c3_28> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c3_27> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c3_29> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c3_25> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c1_13> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c1_15> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c1_11> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c1_10> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c1_12> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c1_9> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c2_31> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c2_29> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c2_28> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c2_30> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c2_26> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c2_25> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c2_27> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c2_23> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c2_22> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c2_24> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c2_20> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c1_31> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c1_29> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c1_28> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c1_30> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c1_26> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c1_25> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c1_27> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c1_23> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c1_22> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c1_24> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c1_20> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c1_19> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c1_21> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c1_17> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c1_16> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c1_18> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c1_14> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c0_27> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c0_23> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c0_22> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c0_24> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c0_20> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c0_19> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c0_21> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c0_17> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c0_16> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c0_18> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c0_14> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c0_13> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c0_15> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c0_11> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c0_10> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c0_12> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c0_9> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c2_19> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c2_21> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c2_18> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c2_17> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c2_15> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c2_14> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c2_16> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c2_12> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c2_11> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c2_13> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c2_9> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c2_10> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c0_31> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c0_29> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c0_28> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c0_30> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c0_26> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_controller/c0_25> has a constant value of 0 in block <top>. This FF/Latch will be trimmed during the optimization process.
 
 Mapping all equations...
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 5) on block top, actual ratio is 3.
+Found area constraint ratio of 100 (+ 5) on block top, actual ratio is 15.
+FlipFlop vga_controller/v_count_0 has been replicated 2 time(s)
+FlipFlop vga_controller/v_count_1 has been replicated 1 time(s)
+FlipFlop vga_controller/v_count_2 has been replicated 2 time(s)
+FlipFlop vga_controller/v_count_3 has been replicated 2 time(s)
+FlipFlop vga_controller/v_count_4 has been replicated 2 time(s)
+FlipFlop vga_controller/v_count_5 has been replicated 3 time(s)
+FlipFlop vga_controller/v_count_6 has been replicated 3 time(s)
+FlipFlop vga_controller/v_count_7 has been replicated 3 time(s)
+FlipFlop vga_controller/v_count_8 has been replicated 3 time(s)
+FlipFlop vga_controller/v_count_9 has been replicated 2 time(s)
 
 Final Macro Processing ...
 
@@ -452,8 +929,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 106
- Flip-Flops                                            : 106
+# Registers                                            : 195
+ Flip-Flops                                            : 195
 
 =========================================================================
 
@@ -476,28 +953,31 @@ Top Level Output File Name         : top.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 597
+# BELS                             : 1996
 #      GND                         : 1
-#      INV                         : 13
-#      LUT1                        : 76
-#      LUT2                        : 42
-#      LUT3                        : 12
-#      LUT4                        : 63
-#      LUT5                        : 55
-#      LUT6                        : 30
-#      MUXCY                       : 170
-#      MUXF7                       : 1
+#      INV                         : 54
+#      LUT1                        : 111
+#      LUT2                        : 36
+#      LUT3                        : 137
+#      LUT4                        : 145
+#      LUT5                        : 248
+#      LUT6                        : 265
+#      MUXCY                       : 589
+#      MUXF7                       : 7
 #      VCC                         : 1
-#      XORCY                       : 133
-# FlipFlops/Latches                : 106
-#      FD                          : 69
+#      XORCY                       : 402
+# FlipFlops/Latches                : 195
 #      FDC                         : 10
-#      FDCE                        : 10
-#      FDE                         : 5
-#      FDR                         : 8
-#      FDS                         : 4
-# Clock Buffers                    : 2
-#      BUFG                        : 1
+#      FDCE                        : 33
+#      FDE                         : 20
+#      FDR                         : 90
+#      FDRE                        : 7
+#      FDS                         : 33
+#      FDSE                        : 2
+# RAMS                             : 18
+#      RAM128X1D                   : 18
+# Clock Buffers                    : 3
+#      BUFG                        : 2
 #      BUFGP                       : 1
 # IO Buffers                       : 16
 #      IBUF                        : 6
@@ -510,23 +990,25 @@ Selected Device : 6slx16csg324-3
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:             106  out of  18224     0%  
- Number of Slice LUTs:                  291  out of   9112     3%  
-    Number used as Logic:               291  out of   9112     3%  
+ Number of Slice Registers:             195  out of  18224     1%  
+ Number of Slice LUTs:                 1068  out of   9112    11%  
+    Number used as Logic:               996  out of   9112    10%  
+    Number used as Memory:               72  out of   2176     3%  
+       Number used as RAM:               72
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:    292
-   Number with an unused Flip Flop:     186  out of    292    63%  
-   Number with an unused LUT:             1  out of    292     0%  
-   Number of fully used LUT-FF pairs:   105  out of    292    35%  
-   Number of unique control sets:        10
+ Number of LUT Flip Flop pairs used:   1098
+   Number with an unused Flip Flop:     903  out of   1098    82%  
+   Number with an unused LUT:            30  out of   1098     2%  
+   Number of fully used LUT-FF pairs:   165  out of   1098    15%  
+   Number of unique control sets:        17
 
 IO Utilization: 
  Number of IOs:                          17
  Number of bonded IOBs:                  17  out of    232     7%  
 
 Specific Feature Utilization:
- Number of BUFG/BUFGCTRLs:                2  out of     16    12%  
+ Number of BUFG/BUFGCTRLs:                3  out of     16    18%  
 
 ---------------------------
 Partition Resource Summary:
@@ -546,13 +1028,14 @@ NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
 
 Clock Information:
 ------------------
------------------------------------+--------------------------+-------+
-Clock Signal                       | Clock buffer(FF name)    | Load  |
------------------------------------+--------------------------+-------+
-clk                                | BUFGP                    | 66    |
-clock_controller/clk_mov           | NONE(vga_controller/c5_0)| 16    |
-clock_controller/clk_25mhz         | BUFG                     | 24    |
------------------------------------+--------------------------+-------+
+----------------------------------------------------------+--------------------------------+-------+
+Clock Signal                                              | Clock buffer(FF name)          | Load  |
+----------------------------------------------------------+--------------------------------+-------+
+clk                                                       | BUFGP                          | 66    |
+clock_controller/clk_25mhz                                | BUFG                           | 48    |
+clock_controller/clk_mov                                  | BUFG                           | 81    |
+vga_controller/Mcompar_GND_3_o_c0[31]_LessThan_43_o_lut<5>| NONE(vga_controller_Mram_mem15)| 18    |
+----------------------------------------------------------+--------------------------------+-------+
 INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
 
 Asynchronous Control Signals Information:
@@ -563,9 +1046,9 @@ Timing Summary:
 ---------------
 Speed Grade: -3
 
-   Minimum period: 4.610ns (Maximum Frequency: 216.908MHz)
-   Minimum input arrival time before clock: 4.369ns
-   Maximum output required time after clock: 5.992ns
+   Minimum period: 10.436ns (Maximum Frequency: 95.820MHz)
+   Minimum input arrival time before clock: 9.675ns
+   Maximum output required time after clock: 5.949ns
    Maximum combinational path delay: No path found
 
 Timing Details:
@@ -574,153 +1057,174 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk'
-  Clock period: 4.278ns (frequency: 233.738MHz)
-  Total number of paths / destination ports: 4821 / 68
+  Clock period: 4.626ns (frequency: 216.146MHz)
+  Total number of paths / destination ports: 4820 / 132
 -------------------------------------------------------------------------
-Delay:               4.278ns (Levels of Logic = 8)
-  Source:            clock_controller/cnt_mov_3 (FF)
-  Destination:       clock_controller/cnt_mov_31 (FF)
+Delay:               4.626ns (Levels of Logic = 8)
+  Source:            clock_controller/cnt_25mhz_1 (FF)
+  Destination:       clock_controller/cnt_25mhz_31 (FF)
   Source Clock:      clk rising
   Destination Clock: clk rising
 
-  Data Path: clock_controller/cnt_mov_3 to clock_controller/cnt_mov_31
+  Data Path: clock_controller/cnt_25mhz_1 to clock_controller/cnt_25mhz_31
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FD:C->Q               3   0.447   0.995  clock_controller/cnt_mov_3 (clock_controller/cnt_mov_3)
-     LUT5:I0->O            1   0.203   0.000  clock_controller/Mcompar_n0018_lut<0> (clock_controller/Mcompar_n0018_lut<0>)
-     MUXCY:S->O            1   0.172   0.000  clock_controller/Mcompar_n0018_cy<0> (clock_controller/Mcompar_n0018_cy<0>)
-     MUXCY:CI->O           1   0.019   0.000  clock_controller/Mcompar_n0018_cy<1> (clock_controller/Mcompar_n0018_cy<1>)
-     MUXCY:CI->O           1   0.019   0.000  clock_controller/Mcompar_n0018_cy<2> (clock_controller/Mcompar_n0018_cy<2>)
-     MUXCY:CI->O           1   0.019   0.000  clock_controller/Mcompar_n0018_cy<3> (clock_controller/Mcompar_n0018_cy<3>)
-     MUXCY:CI->O           3   0.213   0.651  clock_controller/Mcompar_n0018_cy<4> (clock_controller/Mcompar_n0018_cy<4>)
-     LUT6:I5->O           17   0.205   1.028  clock_controller/Mcompar_n0018_cy<5> (clock_controller/Mcompar_n0018_cy<5>)
-     LUT2:I1->O            1   0.205   0.000  clock_controller/cnt_mov_31_rstpot (clock_controller/cnt_mov_31_rstpot)
-     FD:D                      0.102          clock_controller/cnt_mov_31
+     FDR:C->Q              3   0.447   0.995  clock_controller/cnt_25mhz_1 (clock_controller/cnt_25mhz_1)
+     LUT5:I0->O            1   0.203   0.000  clock_controller/Mcompar_n0000_lut<0> (clock_controller/Mcompar_n0000_lut<0>)
+     MUXCY:S->O            1   0.172   0.000  clock_controller/Mcompar_n0000_cy<0> (clock_controller/Mcompar_n0000_cy<0>)
+     MUXCY:CI->O           1   0.019   0.000  clock_controller/Mcompar_n0000_cy<1> (clock_controller/Mcompar_n0000_cy<1>)
+     MUXCY:CI->O           1   0.019   0.000  clock_controller/Mcompar_n0000_cy<2> (clock_controller/Mcompar_n0000_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  clock_controller/Mcompar_n0000_cy<3> (clock_controller/Mcompar_n0000_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  clock_controller/Mcompar_n0000_cy<4> (clock_controller/Mcompar_n0000_cy<4>)
+     MUXCY:CI->O           1   0.213   0.580  clock_controller/Mcompar_n0000_cy<5> (clock_controller/Mcompar_n0000_cy<5>)
+     LUT3:I2->O           33   0.205   1.305  clock_controller/Mcompar_n0000_cy<6> (clock_controller/Mcompar_n0000_cy<6>)
+     FDR:R                     0.430          clock_controller/cnt_25mhz_0
     ----------------------------------------
-    Total                      4.278ns (1.604ns logic, 2.674ns route)
-                                       (37.5% logic, 62.5% route)
-
-=========================================================================
-Timing constraint: Default period analysis for Clock 'clock_controller/clk_mov'
-  Clock period: 3.580ns (frequency: 279.306MHz)
-  Total number of paths / destination ports: 269 / 28
--------------------------------------------------------------------------
-Delay:               3.580ns (Levels of Logic = 8)
-  Source:            vga_controller/c5_3 (FF)
-  Destination:       vga_controller/c5_0 (FF)
-  Source Clock:      clock_controller/clk_mov rising
-  Destination Clock: clock_controller/clk_mov rising
-
-  Data Path: vga_controller/c5_3 to vga_controller/c5_0
-                                Gate     Net
-    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
-    ----------------------------------------  ------------
-     FDR:C->Q              8   0.447   1.147  vga_controller/c5_3 (vga_controller/c5_3)
-     LUT5:I0->O            1   0.203   0.000  vga_controller/Mcompar_GND_3_o_c5[31]_LessThan_32_o_lut<0> (vga_controller/Mcompar_GND_3_o_c5[31]_LessThan_32_o_lut<0>)
-     MUXCY:S->O            1   0.172   0.000  vga_controller/Mcompar_GND_3_o_c5[31]_LessThan_32_o_cy<0> (vga_controller/Mcompar_GND_3_o_c5[31]_LessThan_32_o_cy<0>)
-     MUXCY:CI->O           1   0.019   0.000  vga_controller/Mcompar_GND_3_o_c5[31]_LessThan_32_o_cy<1> (vga_controller/Mcompar_GND_3_o_c5[31]_LessThan_32_o_cy<1>)
-     MUXCY:CI->O           1   0.019   0.000  vga_controller/Mcompar_GND_3_o_c5[31]_LessThan_32_o_cy<2> (vga_controller/Mcompar_GND_3_o_c5[31]_LessThan_32_o_cy<2>)
-     MUXCY:CI->O           1   0.019   0.000  vga_controller/Mcompar_GND_3_o_c5[31]_LessThan_32_o_cy<3> (vga_controller/Mcompar_GND_3_o_c5[31]_LessThan_32_o_cy<3>)
-     MUXCY:CI->O           1   0.019   0.000  vga_controller/Mcompar_GND_3_o_c5[31]_LessThan_32_o_cy<4> (vga_controller/Mcompar_GND_3_o_c5[31]_LessThan_32_o_cy<4>)
-     MUXCY:CI->O           1   0.019   0.000  vga_controller/Mcompar_GND_3_o_c5[31]_LessThan_32_o_cy<5> (vga_controller/Mcompar_GND_3_o_c5[31]_LessThan_32_o_cy<5>)
-     MUXCY:CI->O           9   0.258   0.829  vga_controller/Mcompar_GND_3_o_c5[31]_LessThan_32_o_cy<6> (vga_controller/GND_3_o_c5[31]_LessThan_32_o_inv)
-     FDS:S                     0.430          vga_controller/c5_1
-    ----------------------------------------
-    Total                      3.580ns (1.605ns logic, 1.975ns route)
-                                       (44.8% logic, 55.2% route)
+    Total                      4.626ns (1.746ns logic, 2.880ns route)
+                                       (37.7% logic, 62.3% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clock_controller/clk_25mhz'
-  Clock period: 4.610ns (frequency: 216.908MHz)
-  Total number of paths / destination ports: 1822 / 37
+  Clock period: 10.436ns (frequency: 95.820MHz)
+  Total number of paths / destination ports: 48602 / 87
 -------------------------------------------------------------------------
-Delay:               4.610ns (Levels of Logic = 3)
-  Source:            vga_controller/v_count_8 (FF)
+Delay:               10.436ns (Levels of Logic = 10)
+  Source:            vga_controller/h_count_7 (FF)
   Destination:       vga_controller/o_green_2 (FF)
   Source Clock:      clock_controller/clk_25mhz rising
   Destination Clock: clock_controller/clk_25mhz rising
 
-  Data Path: vga_controller/v_count_8 to vga_controller/o_green_2
+  Data Path: vga_controller/h_count_7 to vga_controller/o_green_2
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDCE:C->Q            19   0.447   1.176  vga_controller/v_count_8 (vga_controller/v_count_8)
-     LUT4:I2->O            1   0.203   0.580  vga_controller/on_screen_game_end_AND_5_o_inv1 (vga_controller/on_screen_game_end_AND_5_o_inv1)
-     LUT6:I5->O            1   0.205   0.684  vga_controller/on_screen_game_end_AND_5_o_inv2 (vga_controller/on_screen_game_end_AND_5_o_inv2)
-     LUT5:I3->O            4   0.203   0.683  vga_controller/on_screen_game_end_AND_5_o_inv7 (vga_controller/on_screen_game_end_AND_5_o_inv)
-     FDR:R                     0.430          vga_controller/o_blue_0
+     FDC:C->Q             13   0.447   1.161  vga_controller/h_count_7 (vga_controller/h_count_7)
+     LUT3:I0->O            5   0.205   0.715  vga_controller/GND_3_o_GND_3_o_AND_25_o221 (vga_controller/GND_3_o_GND_3_o_AND_25_o22)
+     LUT6:I5->O            1   0.205   0.827  vga_controller/GND_3_o_GND_3_o_AND_25_o5 (vga_controller/GND_3_o_GND_3_o_AND_25_o5)
+     LUT6:I2->O           19   0.203   1.072  vga_controller/GND_3_o_GND_3_o_AND_25_o10 (vga_controller/GND_3_o_GND_3_o_AND_25_o)
+     LUT6:I5->O           10   0.205   0.857  vga_controller/c5_block211 (vga_controller/c5_block_mmx_out21)
+     LUT5:I4->O            4   0.205   0.684  vga_controller/push_range_c1_v_count[9]_AND_54_o410121 (vga_controller/push_range_c1_v_count[9]_AND_54_o41012)
+     LUT6:I5->O            1   0.205   0.684  vga_controller/Mmux_GND_3_o_c0_type[31]_mux_400_OUT1828_SW1 (N49)
+     LUT4:I2->O            1   0.203   0.684  vga_controller/Mmux_GND_3_o_c0_type[31]_mux_400_OUT1828 (vga_controller/Mmux_GND_3_o_c0_type[31]_mux_400_OUT1827)
+     LUT6:I4->O            1   0.203   0.580  vga_controller/Mmux_GND_3_o_c0_type[31]_mux_400_OUT1829 (vga_controller/Mmux_GND_3_o_c0_type[31]_mux_400_OUT1828)
+     LUT6:I5->O            1   0.205   0.580  vga_controller/Mmux_GND_3_o_c0_type[31]_mux_400_OUT1830 (vga_controller/Mmux_GND_3_o_c0_type[31]_mux_400_OUT1829)
+     LUT6:I5->O            1   0.205   0.000  vga_controller/Mmux_GND_3_o_c0_type[31]_mux_400_OUT1839 (vga_controller/GND_3_o_c0_type[31]_mux_400_OUT<2>)
+     FDR:D                     0.102          vga_controller/o_green_2
     ----------------------------------------
-    Total                      4.610ns (1.488ns logic, 3.122ns route)
-                                       (32.3% logic, 67.7% route)
+    Total                     10.436ns (2.593ns logic, 7.843ns route)
+                                       (24.8% logic, 75.2% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clock_controller/clk_mov'
+  Clock period: 9.949ns (frequency: 100.510MHz)
+  Total number of paths / destination ports: 227875 / 99
+-------------------------------------------------------------------------
+Delay:               9.949ns (Levels of Logic = 21)
+  Source:            vga_controller/c5_0 (FF)
+  Destination:       vga_controller/mem_idx_7 (FF)
+  Source Clock:      clock_controller/clk_mov rising
+  Destination Clock: clock_controller/clk_mov rising
+
+  Data Path: vga_controller/c5_0 to vga_controller/mem_idx_7
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDS:C->Q              8   0.447   1.050  vga_controller/c5_0 (vga_controller/c5_0)
+     LUT4:I0->O            2   0.203   0.617  vga_controller/_n1145_inv1_SW0 (N4)
+     LUT6:I5->O            1   0.205   0.000  vga_controller/Mmux_n0587_rs_lut<0> (vga_controller/Mmux_n0587_rs_lut<0>)
+     MUXCY:S->O            1   0.172   0.000  vga_controller/Mmux_n0587_rs_cy<0> (vga_controller/Mmux_n0587_rs_cy<0>)
+     MUXCY:CI->O           1   0.019   0.000  vga_controller/Mmux_n0587_rs_cy<1> (vga_controller/Mmux_n0587_rs_cy<1>)
+     XORCY:CI->O           5   0.180   0.715  vga_controller/Mmux_n0587_rs_xor<2> (vga_controller/n0587<2>)
+     LUT1:I0->O            1   0.205   0.000  vga_controller/Madd_mem_idx[31]_GND_3_o_add_52_OUT_cy<2>_rt (vga_controller/Madd_mem_idx[31]_GND_3_o_add_52_OUT_cy<2>_rt)
+     MUXCY:S->O            1   0.172   0.000  vga_controller/Madd_mem_idx[31]_GND_3_o_add_52_OUT_cy<2> (vga_controller/Madd_mem_idx[31]_GND_3_o_add_52_OUT_cy<2>)
+     XORCY:CI->O           4   0.180   0.684  vga_controller/Madd_mem_idx[31]_GND_3_o_add_52_OUT_xor<3> (vga_controller/mem_idx[31]_GND_3_o_add_52_OUT<3>)
+     LUT3:I2->O            1   0.205   0.000  vga_controller/Mmux_n05892611 (vga_controller/Mmux_n0589261)
+     MUXCY:S->O            1   0.172   0.000  vga_controller/Madd_mem_idx[31]_GND_3_o_add_57_OUT_cy<3> (vga_controller/Madd_mem_idx[31]_GND_3_o_add_57_OUT_cy<3>)
+     XORCY:CI->O           4   0.180   0.684  vga_controller/Madd_mem_idx[31]_GND_3_o_add_57_OUT_xor<4> (vga_controller/mem_idx[31]_GND_3_o_add_57_OUT<4>)
+     LUT5:I4->O            1   0.205   0.000  vga_controller/Mmux_n05912711 (vga_controller/Mmux_n0591271)
+     MUXCY:S->O            1   0.172   0.000  vga_controller/Madd_mem_idx[31]_GND_3_o_add_62_OUT_cy<4> (vga_controller/Madd_mem_idx[31]_GND_3_o_add_62_OUT_cy<4>)
+     XORCY:CI->O           3   0.180   0.651  vga_controller/Madd_mem_idx[31]_GND_3_o_add_62_OUT_xor<5> (vga_controller/mem_idx[31]_GND_3_o_add_62_OUT<5>)
+     LUT5:I4->O            1   0.205   0.000  vga_controller/Mmux_n05932811 (vga_controller/Mmux_n0593281)
+     MUXCY:S->O            1   0.172   0.000  vga_controller/Madd_mem_idx[31]_GND_3_o_add_67_OUT_cy<5> (vga_controller/Madd_mem_idx[31]_GND_3_o_add_67_OUT_cy<5>)
+     XORCY:CI->O           3   0.180   0.651  vga_controller/Madd_mem_idx[31]_GND_3_o_add_67_OUT_xor<6> (vga_controller/mem_idx[31]_GND_3_o_add_67_OUT<6>)
+     LUT5:I4->O            1   0.205   0.000  vga_controller/Mmux_n05952911 (vga_controller/Mmux_n0595291)
+     MUXCY:S->O            0   0.172   0.000  vga_controller/Madd_mem_idx[31]_GND_3_o_add_72_OUT_cy<6> (vga_controller/Madd_mem_idx[31]_GND_3_o_add_72_OUT_cy<6>)
+     XORCY:CI->O           1   0.180   0.580  vga_controller/Madd_mem_idx[31]_GND_3_o_add_72_OUT_xor<7> (vga_controller/mem_idx[31]_GND_3_o_add_72_OUT<7>)
+     LUT5:I4->O            1   0.205   0.000  vga_controller/Mmux_mem_idx[31]_mem_idx[31]_mux_74_OUT301 (vga_controller/mem_idx[31]_mem_idx[31]_mux_74_OUT<7>)
+     FDRE:D                    0.102          vga_controller/mem_idx_7
+    ----------------------------------------
+    Total                      9.949ns (4.318ns logic, 5.631ns route)
+                                       (43.4% logic, 56.6% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clock_controller/clk_25mhz'
-  Total number of paths / destination ports: 36 / 24
+  Total number of paths / destination ports: 591 / 48
 -------------------------------------------------------------------------
-Offset:              4.369ns (Levels of Logic = 4)
-  Source:            btn_right (PAD)
-  Destination:       vga_controller/o_red_0 (FF)
+Offset:              9.675ns (Levels of Logic = 10)
+  Source:            btn_down (PAD)
+  Destination:       vga_controller/o_blue_0 (FF)
   Destination Clock: clock_controller/clk_25mhz rising
 
-  Data Path: btn_right to vga_controller/o_red_0
+  Data Path: btn_down to vga_controller/o_blue_0
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O             1   1.222   0.827  btn_right_IBUF (btn_right_IBUF)
-     LUT6:I2->O            4   0.203   1.028  vga_controller/GND_3_o_c5_type[31]_mux_111_OUT<0>21 (vga_controller/GND_3_o_c5_type[31]_mux_111_OUT<0>21)
-     LUT6:I1->O            1   0.203   0.580  vga_controller/PWR_3_o_c5_type[31]_mux_113_OUT<0>1 (vga_controller/PWR_3_o_c5_type[31]_mux_113_OUT<0>)
-     LUT2:I1->O            1   0.205   0.000  vga_controller/o_red_0_rstpot (vga_controller/o_red_0_rstpot)
-     FD:D                      0.102          vga_controller/o_red_0
+     IBUF:I->O             6   1.222   0.849  btn_down_IBUF (btn_down_IBUF)
+     LUT3:I1->O            3   0.203   0.651  vga_controller/push_range_c5_v_count[9]_AND_34_o2111 (vga_controller/push_range_c5_v_count[9]_AND_34_o211)
+     LUT5:I4->O            9   0.205   1.077  vga_controller/c5_type<1>_mmx_out2 (vga_controller/c5_type<1>_mmx_out)
+     LUT6:I2->O           14   0.203   0.958  vga_controller/push_range_c1_v_count[9]_AND_54_o41041 (vga_controller/push_range_c1_v_count[9]_AND_54_o4104)
+     LUT5:I4->O            7   0.205   0.774  vga_controller/Mmux_PWR_3_o_c0_type[31]_mux_401_OUT10121 (vga_controller/Mmux_PWR_3_o_c0_type[31]_mux_401_OUT1012)
+     LUT6:I5->O            3   0.205   0.651  vga_controller/Mmux_GND_3_o_c0_type[31]_mux_399_OUT739 (vga_controller/Mmux_GND_3_o_c0_type[31]_mux_399_OUT738)
+     LUT6:I5->O            1   0.205   0.000  vga_controller/Mmux_GND_3_o_c0_type[31]_mux_399_OUT742_SW1_G (N103)
+     MUXF7:I1->O           1   0.140   0.808  vga_controller/Mmux_GND_3_o_c0_type[31]_mux_399_OUT742_SW1 (N33)
+     LUT6:I3->O            1   0.205   0.808  vga_controller/Mmux_GND_3_o_c0_type[31]_mux_399_OUT743 (vga_controller/Mmux_GND_3_o_c0_type[31]_mux_399_OUT742)
+     LUT6:I3->O            1   0.205   0.000  vga_controller/Mmux_GND_3_o_c0_type[31]_mux_399_OUT744 (vga_controller/GND_3_o_c0_type[31]_mux_399_OUT<0>)
+     FDR:D                     0.102          vga_controller/o_blue_0
     ----------------------------------------
-    Total                      4.369ns (1.935ns logic, 2.434ns route)
-                                       (44.3% logic, 55.7% route)
+    Total                      9.675ns (3.100ns logic, 6.575ns route)
+                                       (32.0% logic, 68.0% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clock_controller/clk_mov'
-  Total number of paths / destination ports: 17 / 7
+  Total number of paths / destination ports: 9 / 9
 -------------------------------------------------------------------------
-Offset:              3.791ns (Levels of Logic = 7)
+Offset:              3.276ns (Levels of Logic = 2)
   Source:            btn_rst (PAD)
-  Destination:       vga_controller/mem_idx_3 (FF)
+  Destination:       vga_controller/mem_idx_7 (FF)
   Destination Clock: clock_controller/clk_mov rising
 
-  Data Path: btn_rst to vga_controller/mem_idx_3
+  Data Path: btn_rst to vga_controller/mem_idx_7
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            11   1.222   0.987  btn_rst_IBUF (btn_rst_IBUF)
-     LUT2:I0->O            1   0.203   0.000  vga_controller/Madd_mem_idx[31]_GND_3_o_add_24_OUT_lut<0> (vga_controller/Madd_mem_idx[31]_GND_3_o_add_24_OUT_lut<0>)
-     MUXCY:S->O            1   0.172   0.000  vga_controller/Madd_mem_idx[31]_GND_3_o_add_24_OUT_cy<0> (vga_controller/Madd_mem_idx[31]_GND_3_o_add_24_OUT_cy<0>)
-     MUXCY:CI->O           1   0.019   0.000  vga_controller/Madd_mem_idx[31]_GND_3_o_add_24_OUT_cy<1> (vga_controller/Madd_mem_idx[31]_GND_3_o_add_24_OUT_cy<1>)
-     MUXCY:CI->O           0   0.019   0.000  vga_controller/Madd_mem_idx[31]_GND_3_o_add_24_OUT_cy<2> (vga_controller/Madd_mem_idx[31]_GND_3_o_add_24_OUT_cy<2>)
-     XORCY:CI->O           1   0.180   0.684  vga_controller/Madd_mem_idx[31]_GND_3_o_add_24_OUT_xor<3> (vga_controller/mem_idx[31]_GND_3_o_add_24_OUT<3>)
-     LUT4:I2->O            1   0.203   0.000  vga_controller/Mmux_mem_idx[31]_mem_idx[31]_mux_29_OUT261 (vga_controller/mem_idx[31]_mem_idx[31]_mux_29_OUT<3>)
-     FD:D                      0.102          vga_controller/mem_idx_3
+     IBUF:I->O             2   1.222   0.617  btn_rst_IBUF (btn_rst_IBUF)
+     LUT2:I1->O            8   0.205   0.802  vga_controller/_n11401 (vga_controller/_n1140)
+     FDSE:S                    0.430          vga_controller/mem_idx_0
     ----------------------------------------
-    Total                      3.791ns (2.120ns logic, 1.671ns route)
-                                       (55.9% logic, 44.1% route)
+    Total                      3.276ns (1.857ns logic, 1.419ns route)
+                                       (56.7% logic, 43.3% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clock_controller/clk_25mhz'
   Total number of paths / destination ports: 22 / 10
 -------------------------------------------------------------------------
-Offset:              5.992ns (Levels of Logic = 3)
-  Source:            vga_controller/v_count_3 (FF)
+Offset:              5.949ns (Levels of Logic = 3)
+  Source:            vga_controller/v_count_4 (FF)
   Destination:       o_vga_vsync (PAD)
   Source Clock:      clock_controller/clk_25mhz rising
 
-  Data Path: vga_controller/v_count_3 to o_vga_vsync
+  Data Path: vga_controller/v_count_4 to o_vga_vsync
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDCE:C->Q            11   0.447   1.130  vga_controller/v_count_3 (vga_controller/v_count_3)
-     LUT4:I0->O           10   0.203   0.857  vga_controller/_n036831 (vga_controller/_n0368_bdd2)
-     LUT6:I5->O            1   0.205   0.579  vga_controller/_n036811 (o_vga_vsync_OBUF)
+     FDCE:C->Q            22   0.447   1.362  vga_controller/v_count_4 (vga_controller/v_count_4)
+     LUT4:I1->O            1   0.205   0.580  vga_controller/_n1434_SW0 (N20)
+     LUT6:I5->O            1   0.205   0.579  vga_controller/_n1434 (o_vga_vsync_OBUF)
      OBUF:I->O                 2.571          o_vga_vsync_OBUF (o_vga_vsync)
     ----------------------------------------
-    Total                      5.992ns (3.426ns logic, 2.566ns route)
-                                       (57.2% logic, 42.8% route)
+    Total                      5.949ns (3.428ns logic, 2.521ns route)
+                                       (57.6% logic, 42.4% route)
 
 =========================================================================
 
@@ -732,7 +1236,7 @@ Clock to Setup on destination clock clk
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-clk            |    4.278|         |         |         |
+clk            |    4.626|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 Clock to Setup on destination clock clock_controller/clk_25mhz
@@ -740,29 +1244,38 @@ Clock to Setup on destination clock clock_controller/clk_25mhz
                           | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock              |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 --------------------------+---------+---------+---------+---------+
-clock_controller/clk_25mhz|    4.610|         |         |         |
-clock_controller/clk_mov  |    6.086|         |         |         |
+clock_controller/clk_25mhz|   10.436|         |         |         |
+clock_controller/clk_mov  |   11.482|         |         |         |
 --------------------------+---------+---------+---------+---------+
 
 Clock to Setup on destination clock clock_controller/clk_mov
+--------------------------+---------+---------+---------+---------+
+                          | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock              |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+--------------------------+---------+---------+---------+---------+
+clock_controller/clk_25mhz|    3.727|         |         |         |
+clock_controller/clk_mov  |    9.949|         |         |         |
+--------------------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock vga_controller/Mcompar_GND_3_o_c0[31]_LessThan_43_o_lut<5>
 ------------------------+---------+---------+---------+---------+
                         | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock            |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ------------------------+---------+---------+---------+---------+
-clock_controller/clk_mov|    3.580|         |         |         |
+clock_controller/clk_mov|    8.323|         |         |         |
 ------------------------+---------+---------+---------+---------+
 
 =========================================================================
 
 
-Total REAL time to Xst completion: 9.00 secs
-Total CPU time to Xst completion: 9.15 secs
+Total REAL time to Xst completion: 24.00 secs
+Total CPU time to Xst completion: 23.81 secs
  
 --> 
 
-Total memory usage is 259360 kilobytes
+Total memory usage is 220036 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :  131 (   0 filtered)
-Number of infos    :    8 (   0 filtered)
+Number of warnings :  394 (   0 filtered)
+Number of infos    :   26 (   0 filtered)
 

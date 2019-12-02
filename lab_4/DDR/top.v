@@ -36,7 +36,7 @@ module top(
         .i_btn_right(btn_right),
         .i_btn_down(btn_down),
         .i_btn_left(btn_left),
-        .i_btn_rst(btn_left),
+        .i_btn_rst(btn_rst),
         .i_movclk(movclk),
         .o_hsync(o_vga_hsync),
         .o_vsync(o_vga_vsync),
