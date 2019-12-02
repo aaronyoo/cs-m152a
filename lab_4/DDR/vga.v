@@ -11,9 +11,9 @@ module vga(
     output wire o_vsync,        // vertical sync
     output reg [2:0] o_red,     // red vga output
     output reg [2:0] o_green,   // green vga output
-    output reg [1:0] o_blue    // blue vga output
+    output reg [1:0] o_blue,    // blue vga output
 
-    // TODO: need to add the games state to this interface
+    output wire integer o_score
 );
 
 localparam HPIXELS = 800;  // horizontal pixels per line
@@ -99,35 +99,57 @@ integer c2_type = 3;  // starts left
 integer c1_type = 4;  // starts blank
 integer c0_type = 4;
 
+// Define the drawing regions for each symbol and each type
+assign c5_block = (center && c5 - 40 < v_count && v_count < c5 + 40);
+assign c5_right = c5_block &&
+				(v_count - 10 < c5 && v_count + 10 > c5) || // --
+				(h_count > v_count && h_count < v_count + 10) || // /
+				(h_count < v_count && h_count > v_count - 10); // \
+
 integer perfect_score = 0;
 integer real_score = 0;
 reg game_end = 0;
+assign score = real_score;
 
 // Increment the positions of the containers on the move clock.
 always @(posedge i_movclk) begin
-	if (i_btn_rst) begin
-		mem_idx = 1;
-		game_end = 0;
-		perfect_score = 0;
+	// If the game has ended then we need to reset the containers
+	// to their original position.
+	if (game_end) begin
+		c5 = VBP + 40;
+		c4 = VBP + 40 + 80;
+		c3 = VBP + 40 + 80 + 80;
+		c2 = VBP + 40 + 80 + 80 + 80;
+		c1 = VBP + 40 + 80 + 80 + 80 + 80;
+		c0 = VBP + 40 + 80 + 80 + 80 + 80 + 80;
 	end
-	if (c5 == VFP - 40) begin
-		c5_type = mem[mem_idx];
-		mem_idx = mem_idx + 1;
-		// Only increment on a non-blank
-		if (c5_type != 4) begin
-			perfect_score = perfect_score + 1;
+	else begin
+		if (i_btn_rst) begin
+			mem_idx = 1;
+			game_end = 0;
+			perfect_score = 0;
 		end
-//		if (real_score != perfect_score) begin
-//			game_end = 1;
-//		end
-	end
+		if (c5 == VFP - 40) begin
+			c5_type = mem[mem_idx];
+			mem_idx = mem_idx + 1;
+			// Only increment on a non-blank
+			if (c5_type != 4) begin
+				perfect_score = perfect_score + 1;
+			end
+			// Allow a 5 miss margin for the players
+			// Before the game ends
+			if (real_score < perfect_score - 5) begin
+				game_end = 1;
+			end
+		end
 
-    c5 = (c5 < VFP - 40) ? c5 + 1 : VBP + 40;
-	c4 = (c4 < VFP - 40) ? c4 + 1 : VBP + 40;
-	c3 = (c3 < VFP - 40) ? c3 + 1 : VBP + 40;
-	c2 = (c2 < VFP - 40) ? c2 + 1 : VBP + 40;
-	c1 = (c1 < VFP - 40) ? c1 + 1 : VBP + 40;
-	c0 = (c0 < VFP - 40) ? c0 + 1 : VBP + 40;
+	    c5 = (c5 < VFP - 40) ? c5 + 1 : VBP + 40;
+		c4 = (c4 < VFP - 40) ? c4 + 1 : VBP + 40;
+		c3 = (c3 < VFP - 40) ? c3 + 1 : VBP + 40;
+		c2 = (c2 < VFP - 40) ? c2 + 1 : VBP + 40;
+		c1 = (c1 < VFP - 40) ? c1 + 1 : VBP + 40;
+		c0 = (c0 < VFP - 40) ? c0 + 1 : VBP + 40;
+	end
 end
 
 reg push_range_c5 = 0;
@@ -149,8 +171,10 @@ always @ (posedge i_pixclk) begin
 
         // draw target square
         if (
-            ((464 - 50 < h_count && h_count < 464 - 40) || (464 + 40 < h_count && h_count < 464 + 50)) ||
-            ((VFP - 120 < v_count && v_count < VFP - 110) || (VFP - 30 < v_count && v_count < VFP - 20))
+            (((464 - 50 < h_count && h_count < 464 - 40) || (464 + 40 < h_count && h_count < 464 + 50)) ||
+            ((VFP - 120 < v_count && v_count < VFP - 110) || (VFP - 30 < v_count && v_count < VFP - 20)))
+            && (464 - 60 < h_count && 464 + 50 < h_count)
+            && (VFP - 120 < v_count && v_count < VFP - 20)
         ) begin
             {o_red[2:0], o_green[2:0], o_blue[1:0]} = 8'b11111111;
         end
@@ -159,7 +183,12 @@ always @ (posedge i_pixclk) begin
         if (center && c5 - 40 < v_count && v_count < c5 + 40) begin
 			case (c5_type)
 				0: {o_red[2:0], o_green[2:0], o_blue[1:0]} = RED; 
-				1: {o_red[2:0], o_green[2:0], o_blue[1:0]} = WHITE;
+				1: 
+				begin
+					if (c5_right) begin
+						{o_red[2:0], o_green[2:0], o_blue[1:0]} = WHITE;
+					end
+				end
 				2: {o_red[2:0], o_green[2:0], o_blue[1:0]} = GREEN;
 				3: {o_red[2:0], o_green[2:0], o_blue[1:0]} = BLUE;
 				4: {o_red[2:0], o_green[2:0], o_blue[1:0]} = 8'b11101100;
