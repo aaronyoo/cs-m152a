@@ -129,7 +129,14 @@ always @(posedge i_movclk) begin
 		if (i_btn_rst) begin
 			mem_idx = 1;
 			reset_me = 1;
-			// TODO: reset all of the ctypes to all blank
+
+			// reset all the ctypes to blank
+			c5_type = 4;
+			c4_type = 4;
+			c3_type = 4;
+			c2_type = 4;
+			c1_type = 4;
+			c0_type = 4;
 		end
 	end
 	else begin
