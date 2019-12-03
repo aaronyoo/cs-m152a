@@ -19,6 +19,7 @@ module top(
     wire movclk;
 	wire onehzclk;
     wire integer score;
+    wire integer diff;
     // TODO: connect the score to the segment display.
     // - edit the ucf file to allow this
     // - to do the individual digits we just need to do % 10, % 100, % 1000 etc.
@@ -45,11 +46,13 @@ module top(
         .o_red(o_vga_r),
         .o_green(o_vga_g),
         .o_blue(o_vga_b),
-        .o_score(score)
+        .o_score(score),
+        .diff(diff)
     );
 
     score score_display(
         .o_score(score),
+        .o_diff(diff),
         .seg(seg),
         .an(an)
     );
