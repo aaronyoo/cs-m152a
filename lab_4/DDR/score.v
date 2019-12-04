@@ -6,20 +6,15 @@ module score (
     output reg [3:0] an
 );
 
-    wire [7:0] ones_segment;
-    // wire [7:0] tens_segment;
     wire [7:0] hundreds_segment;
     wire [7:0] thousands_segment;
 
-    wire [3:0] diff_digit;
     wire [3:0] score_ones_digit;
     wire [3:0] score_tens_digit;
 
-    reg [3:0] diff_digit_out;
     reg [3:0] score_ones_digit_out;
     reg [3:0] score_tens_digit_out;
 
-    assign diff_digit = diff_digit_out;
     assign score_ones_digit = score_ones_digit_out;
     assign score_tens_digit = score_tens_digit_out;
 
@@ -31,14 +26,7 @@ module score (
         temp_score = temp_score / 10;
         score_tens_digit_out <= temp_score % 10;
         temp_score = temp_score / 10;
-
-        diff_digit_out = i_diff;
     end
-
-    segment_display ones_display (
-        .digit(diff_digit),
-        .seg(ones_segment)
-    );
 
     segment_display hundreds_display (
         .digit(score_ones_digit),
@@ -60,11 +48,6 @@ module score (
         else if(count == 1) begin
             an <= 4'b1011;
             seg <= hundreds_segment;
-        end
-        else begin
-            // Always check if diff changes
-            an <= 4'b1110;
-            seg <= ones_segment;
         end
 
         count <= count+1;

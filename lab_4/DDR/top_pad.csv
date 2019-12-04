@@ -1,7 +1,7 @@
 #Release 14.6 - par P.68d (nt64)
 #Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-#Tue Dec 03 17:47:32 2019
+#Tue Dec 03 18:58:39 2019
 
 #
 ## NOTE: This file is designed to be imported into a spreadsheet program
@@ -163,12 +163,12 @@ H15,,IOBM,IO_L37P_A7_M1A0_1,UNUSED,,1,,,,,,,,,
 H16,,IOBS,IO_L37N_A6_M1A1_1,UNUSED,,1,,,,,,,,,
 H17,,IOBM,IO_L43P_GCLK5_M1DQ4_1,UNUSED,,1,,,,,,,,,
 H18,,IOBS,IO_L43N_GCLK4_M1DQ5_1,UNUSED,,1,,,,,,,,,
-J1,,IOBS,IO_L40N_M3DQ7_3,UNUSED,,3,,,,,,,,,
+J1,rst,IOB,IO_L40N_M3DQ7_3,INPUT,LVCMOS25*,3,,,,NONE,,UNLOCATED,NO,NONE,
 J2,,,VCCO_3,,,3,,,,,any******,,,,
 J3,,IOBM,IO_L40P_M3DQ6_3,UNUSED,,3,,,,,,,,,
 J4,,,GND,,,,,,,,,,,,
 J5,,,VCCO_3,,,3,,,,,any******,,,,
-J6,rst,IOB,IO_L47N_M3A1_3,INPUT,LVCMOS25*,3,,,,NONE,,UNLOCATED,NO,NONE,
+J6,,IOBS,IO_L47N_M3A1_3,UNUSED,,3,,,,,,,,,
 J7,,IOBM,IO_L47P_M3A0_3,UNUSED,,3,,,,,,,,,
 J8,,,VCCINT,,,,,,,,1.2,,,,
 J9,,,GND,,,,,,,,,,,,
