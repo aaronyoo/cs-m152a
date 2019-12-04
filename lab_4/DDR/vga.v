@@ -113,12 +113,13 @@ integer perfect_score = 0;
 integer real_score = 0;
 assign score = real_score;
 reg reset_me = 0;
+reg game_end = 0;
 
 // Increment the positions of the containers on the move clock.
 always @(posedge i_movclk) begin
 	// If the game has ended then we need to reset the containers
 	// to their original position.
-	if (!game_alive) begin
+	if (game_end) begin
 		c5 = VBP + 40;
 		c4 = VBP + 40 + 80;
 		c3 = VBP + 40 + 80 + 80;
@@ -144,31 +145,37 @@ always @(posedge i_movclk) begin
 		if (c5 == VFP - 40) begin
 			c5_type = mem[mem_idx];
 			mem_idx = mem_idx + 1;
+			real_score = real_score + 1;
 		end
 		
 		if (c4 == VFP - 40) begin
 			c4_type = mem[mem_idx];
 			mem_idx = mem_idx + 1;
+			real_score = real_score + 1;
 		end
 		
 		if (c3 == VFP - 40) begin
 			c3_type = mem[mem_idx];
 			mem_idx = mem_idx + 1;
+			real_score = real_score + 1;
 		end
 		
 		if (c2 == VFP - 40) begin
 			c2_type = mem[mem_idx];
 			mem_idx = mem_idx + 1;
+			real_score = real_score + 1;
 		end
 		
 		if (c1 == VFP - 40) begin
 			c1_type = mem[mem_idx];
 			mem_idx = mem_idx + 1;
+			real_score = real_score + 1;
 		end
 
 		if (c0 == VFP - 40) begin
 			c0_type = mem[mem_idx];
 			mem_idx = mem_idx + 1;
+			real_score = real_score + 1;
 		end
 		
 	    c5 = (c5 < VFP - 40) ? c5 + 1 : VBP + 40;
@@ -247,9 +254,9 @@ end
 
 
 
-reg game_alive = 1;
+reg correct = 1;
 always @ (posedge i_pixclk) begin
-    if (on_screen && game_alive) begin
+    if (on_screen && !game_end) begin
 
         // background color
         {o_red[2:0], o_green[2:0], o_blue[1:0]} = 8'b11101100;
@@ -335,11 +342,11 @@ always @ (posedge i_pixclk) begin
 				begin
 					if (i_btn_up) begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = WHITE;
-						game_alive = 1;
+						correct = 1;
 					end
 					else begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK;
-						game_alive = 0;
+						correct = 0;
 					end
 				end
 				
@@ -347,11 +354,11 @@ always @ (posedge i_pixclk) begin
 				begin
 					if (i_btn_right) begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = WHITE;
-						game_alive = 1;
+						correct = 1;
 					end
 					else begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK;
-						game_alive = 0;
+						correct = 0;
 					end
 				end
 
@@ -359,11 +366,11 @@ always @ (posedge i_pixclk) begin
 				begin
 					if (i_btn_down) begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = WHITE;
-						game_alive = 1;
+						correct = 1;
 					end
 					else begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK;
-						game_alive = 0;
+						correct = 0;
 					end
 				end
 				
@@ -371,14 +378,14 @@ always @ (posedge i_pixclk) begin
 				begin
 					if (i_btn_left) begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = WHITE;
-						game_alive = 1;
+						correct = 1;
 					end
 					else begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK;
-						game_alive = 0;
+						correct = 0;
 					end
 				end
-				default: game_alive = 1;
+				default: correct = 1;
 			endcase
         end
 		
@@ -391,11 +398,11 @@ always @ (posedge i_pixclk) begin
 				begin
 					if (i_btn_up) begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = WHITE;
-						game_alive = 1;
+						correct = 1;
 					end
 					else begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK;
-						game_alive = 0;
+						correct = 0;
 					end
 				end
 				
@@ -403,11 +410,11 @@ always @ (posedge i_pixclk) begin
 				begin
 					if (i_btn_right) begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = WHITE;
-						game_alive = 1;
+						correct = 1;
 					end
 					else begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK;
-						game_alive = 0;
+						correct = 0;
 					end
 				end
 
@@ -415,11 +422,11 @@ always @ (posedge i_pixclk) begin
 				begin
 					if (i_btn_down) begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = WHITE;
-						game_alive = 1;
+						correct = 1;
 					end
 					else begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK;
-						game_alive = 0;
+						correct = 0;
 					end
 				end
 				
@@ -427,14 +434,14 @@ always @ (posedge i_pixclk) begin
 				begin
 					if (i_btn_left) begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = WHITE;
-						game_alive = 1;
+						correct = 1;
 					end
 					else begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK;
-						game_alive = 0;
+						correct = 0;
 					end
 				end
-				default: game_alive = 1;
+				default: correct = 1;
 			endcase
         end
 		
@@ -447,11 +454,11 @@ always @ (posedge i_pixclk) begin
 				begin
 					if (i_btn_up) begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = WHITE;
-						game_alive = 1;
+						correct = 1;
 					end
 					else begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK;
-						game_alive = 0;
+						correct = 0;
 					end
 				end
 				
@@ -459,11 +466,11 @@ always @ (posedge i_pixclk) begin
 				begin
 					if (i_btn_right) begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = WHITE;
-						game_alive = 1;
+						correct = 1;
 					end
 					else begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK;
-						game_alive = 0;
+						correct = 0;
 					end
 				end
 
@@ -471,11 +478,11 @@ always @ (posedge i_pixclk) begin
 				begin
 					if (i_btn_down) begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = WHITE;
-						game_alive = 1;
+						correct = 1;
 					end
 					else begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK;
-						game_alive = 0;
+						correct = 0;
 					end
 				end
 				
@@ -483,14 +490,14 @@ always @ (posedge i_pixclk) begin
 				begin
 					if (i_btn_left) begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = WHITE;
-						game_alive = 1;
+						correct = 1;
 					end
 					else begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK;
-						game_alive = 0;
+						correct = 0;
 					end
 				end
-				default: game_alive = 1;
+				default: correct = 1;
 			endcase
         end
 
@@ -503,11 +510,11 @@ always @ (posedge i_pixclk) begin
 				begin
 					if (i_btn_up) begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = WHITE;
-						game_alive = 1;
+						correct = 1;
 					end
 					else begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK;
-						game_alive = 0;
+						correct = 0;
 					end
 				end
 				
@@ -515,11 +522,11 @@ always @ (posedge i_pixclk) begin
 				begin
 					if (i_btn_right) begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = WHITE;
-						game_alive = 1;
+						correct = 1;
 					end
 					else begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK;
-						game_alive = 0;
+						correct = 0;
 					end
 				end
 
@@ -527,11 +534,11 @@ always @ (posedge i_pixclk) begin
 				begin
 					if (i_btn_down) begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = WHITE;
-						game_alive = 1;
+						correct = 1;
 					end
 					else begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK;
-						game_alive = 0;
+						correct = 0;
 					end
 				end
 				
@@ -539,14 +546,14 @@ always @ (posedge i_pixclk) begin
 				begin
 					if (i_btn_left) begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = WHITE;
-						game_alive = 1;
+						correct = 1;
 					end
 					else begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK;
-						game_alive = 0;
+						correct = 0;
 					end
 				end
-				default: game_alive = 1;
+				default: correct = 1;
 			endcase
         end
 
@@ -559,11 +566,11 @@ always @ (posedge i_pixclk) begin
 				begin
 					if (i_btn_up) begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = WHITE;
-						game_alive = 1;
+						correct = 1;
 					end
 					else begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK;
-						game_alive = 0;
+						correct = 0;
 					end
 				end
 				
@@ -571,11 +578,11 @@ always @ (posedge i_pixclk) begin
 				begin
 					if (i_btn_right) begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = WHITE;
-						game_alive = 1;
+						correct = 1;
 					end
 					else begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK;
-						game_alive = 0;
+						correct = 0;
 					end
 				end
 
@@ -583,11 +590,11 @@ always @ (posedge i_pixclk) begin
 				begin
 					if (i_btn_down) begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = WHITE;
-						game_alive = 1;
+						correct = 1;
 					end
 					else begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK;
-						game_alive = 0;
+						correct = 0;
 					end
 				end
 				
@@ -595,14 +602,14 @@ always @ (posedge i_pixclk) begin
 				begin
 					if (i_btn_left) begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = WHITE;
-						game_alive = 1;
+						correct = 1;
 					end
 					else begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK;
-						game_alive = 0;
+						correct = 0;
 					end
 				end
-				default: game_alive = 1;
+				default: correct = 1;
 			endcase
         end
 
@@ -615,11 +622,11 @@ always @ (posedge i_pixclk) begin
 				begin
 					if (i_btn_up) begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = WHITE;
-						game_alive = 1;
+						correct = 1;
 					end
 					else begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK;
-						game_alive = 0;
+						correct = 0;
 					end
 				end
 				
@@ -627,11 +634,11 @@ always @ (posedge i_pixclk) begin
 				begin
 					if (i_btn_right) begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = WHITE;
-						game_alive = 1;
+						correct = 1;
 					end
 					else begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK;
-						game_alive = 0;
+						correct = 0;
 					end
 				end
 
@@ -639,11 +646,11 @@ always @ (posedge i_pixclk) begin
 				begin
 					if (i_btn_down) begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = WHITE;
-						game_alive = 1;
+						correct = 1;
 					end
 					else begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK;
-						game_alive = 0;
+						correct = 0;
 					end
 				end
 				
@@ -651,14 +658,14 @@ always @ (posedge i_pixclk) begin
 				begin
 					if (i_btn_left) begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = WHITE;
-						game_alive = 1;
+						correct = 1;
 					end
 					else begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK;
-						game_alive = 0;
+						correct = 0;
 					end
 				end
-				default: game_alive = 1;
+				default: correct = 1;
 			endcase
         end
 
@@ -671,11 +678,11 @@ always @ (posedge i_pixclk) begin
 				begin
 					if (i_btn_up) begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = WHITE;
-						game_alive = 1;
+						correct = 1;
 					end
 					else begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK;
-						game_alive = 0;
+						correct = 0;
 					end
 				end
 				
@@ -683,11 +690,11 @@ always @ (posedge i_pixclk) begin
 				begin
 					if (i_btn_right) begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = WHITE;
-						game_alive = 1;
+						correct = 1;
 					end
 					else begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK;
-						game_alive = 0;
+						correct = 0;
 					end
 				end
 
@@ -695,11 +702,11 @@ always @ (posedge i_pixclk) begin
 				begin
 					if (i_btn_down) begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = WHITE;
-						game_alive = 1;
+						correct = 1;
 					end
 					else begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK;
-						game_alive = 0;
+						correct = 0;
 					end
 				end
 				
@@ -707,44 +714,33 @@ always @ (posedge i_pixclk) begin
 				begin
 					if (i_btn_left) begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = WHITE;
-						game_alive = 1;
+						correct = 1;
 					end
 					else begin
 						{o_red[2:0], o_green[2:0], o_blue[1:0]} = BLACK;
-						game_alive = 0;
+						correct = 0;
 					end
 				end
-				default: game_alive = 1;
+				default: correct = 1;
 			endcase
         end
-
-
-        // if (464 - 50 < h_count && h_count < 464 + 50 &&
-        //     271 - 50 < v_count && v_count < 271 + 50) begin
-        //     {o_red[2:0], o_green[2:0], o_blue[1:0]} = 8'b00000000;
-        // end
-        // else begin
-        //     {o_red[2:0], o_green[2:0], o_blue[1:0]} = 8'b11101100;
-        // end
-		
-		// if (HBP + 50 < h_count && h_count < HFP - 50 && VFP - 50 < v_count) begin
-		// 	{o_red[2:0], o_green[2:0], o_blue[1:0]} = 8'b00000000;
-		// end
-		
-		// if (i_btnpress && 
-		// 	464 - 30 < h_count && h_count < 464 + 30 &&
-		// 	271 - 30 < v_count && v_count < 271 + 30) begin
-		// 	{o_red[2:0], o_green[2:0], o_blue[1:0]} = 8'b11111111;
-		// end
     end
     else begin
         o_red = 0;
         o_green = 0;
         o_blue = 0;
-		if (reset_me == 1) begin
-			game_alive = 1;
-		end
     end
+end
+
+always @(negedge correct or posedge reset_me) begin
+	if (reset_me == 1) begin
+		game_end = 0;
+	end
+	else begin
+		if (correct == 0) begin
+			game_end = 1;
+		end
+	end
 end
 
 
