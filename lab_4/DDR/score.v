@@ -1,63 +1,55 @@
 module score (
     input wire signed [31:0] o_score,
+    input wire signed [31:0] o_diff,    // difference between perfect and actual scores
     output reg [7:0] seg,
     output reg [3:0] an
 );
 
     wire [7:0] ones_segment;
-    wire [7:0] tens_segment;
+    // wire [7:0] tens_segment;
     wire [7:0] hundreds_segment;
     wire [7:0] thousands_segment;
 
-    // Combining 4 digits of the segment display into one array
-    // Each digit is 4-bit long.
-    // wire [15:0] digits;
-    // wire [3:0] ones_digit;
-    // wire [3:0] tens_digit;
-    wire [3:0] hundreds_digit;
-    wire [3:0] thousands_digit;
+    wire [3:0] diff_digit;
+    wire [3:0] score_ones_digit;
+    wire [3:0] score_tens_digit;
 
-    // reg [3:0] tmp_ones_digit;
-    // reg [3:0] tmp_tens_digit;
-    reg [3:0] tmp_hundreds_digit;
-    reg [3:0] tmp_thousands_digit;
+    reg [3:0] diff_digit_out;
+    reg [3:0] score_ones_digit_out;
+    reg [3:0] score_tens_digit_out;
 
-    // assign ones_digit = tmp_ones_digit;
-    // assign tens_digit = tmp_tens_digit;
-    assign hundreds_digit = tmp_hundreds_digit;
-    assign thousands_digit = tmp_thousands_digit;
+    assign diff_digit = diff_digit_out;
+    assign score_ones_digit = score_ones_digit_out;
+    assign score_tens_digit = score_tens_digit_out;
 
     integer temp_score;
 
     always @(*) begin
         temp_score = o_score;
-        tmp_hundreds_digit <= temp_score % 10;
+        score_ones_digit_out <= temp_score % 10;
         temp_score = temp_score / 10;
-        tmp_thousands_digit <= temp_score % 10;
+        score_tens_digit_out <= temp_score % 10;
         temp_score = temp_score / 10;
+
+        diff_digit_out = o_diff;
     end
 
-    // segment_display ones_display (
-    //     .digit(ones_digit),
-    //     .seg(ones_segment)
-    // );
-    //
-    // segment_display tens_display (
-    //     .digit(tens_digit),
-    //     .seg(tens_segment)
-    // );
+    segment_display ones_display (
+        .digit(diff_digit_out),
+        .seg(ones_segment)
+    );
 
     segment_display hundreds_display (
-        .digit(tmp_hundreds_digit),
+        .digit(score_ones_digit_out),
         .seg(hundreds_segment)
     );
 
     segment_display thousands_display (
-        .digit(tmp_thousands_digit),
+        .digit(score_tens_digit_out),
         .seg(thousands_segment)
     );
 
-    reg [1:0] count = 2'b00;
+    reg count = 1'b0;
 
     always @(*) begin
         if(count == 0) begin
@@ -68,14 +60,10 @@ module score (
             an <= 4'b1011;
             seg <= hundreds_segment;
         end
-        // else if(count == 2) begin
-        //     an <= 4'b1101;
-        //     seg <= tens_segment;
-        // end
-        // else if(count == 3) begin
-        //     an <= 4'b1110;
-        //     seg <= ones_segment;
-        // end
+        // Always check if diff changes
+        an <= 4'b1110;
+        seg <= ones_segment;
+
         count <= count+1;
     end
 endmodule
