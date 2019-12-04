@@ -14,7 +14,7 @@ module vga(
     output reg [1:0] o_blue,    // blue vga output
 
     output wire integer o_score,
-	output wire integer diff
+	output wire integer o_diff
 );
 
 localparam HPIXELS = 800;  // horizontal pixels per line
@@ -125,7 +125,7 @@ always @(posedge i_movclk) begin
 		c2 = VBP + 40 + 80 + 80 + 80;
 		c1 = VBP + 40 + 80 + 80 + 80 + 80;
 		c0 = VBP + 40 + 80 + 80 + 80 + 80 + 80;
-		
+
 		if (i_btn_rst) begin
 			mem_idx = 1;
 			reset_me = 1;
@@ -145,22 +145,22 @@ always @(posedge i_movclk) begin
 			c5_type = mem[mem_idx];
 			mem_idx = mem_idx + 1;
 		end
-		
+
 		if (c4 == VFP - 40) begin
 			c4_type = mem[mem_idx];
 			mem_idx = mem_idx + 1;
 		end
-		
+
 		if (c3 == VFP - 40) begin
 			c3_type = mem[mem_idx];
 			mem_idx = mem_idx + 1;
 		end
-		
+
 		if (c2 == VFP - 40) begin
 			c2_type = mem[mem_idx];
 			mem_idx = mem_idx + 1;
 		end
-		
+
 		if (c1 == VFP - 40) begin
 			c1_type = mem[mem_idx];
 			mem_idx = mem_idx + 1;
@@ -170,7 +170,7 @@ always @(posedge i_movclk) begin
 			c0_type = mem[mem_idx];
 			mem_idx = mem_idx + 1;
 		end
-		
+
 	    c5 = (c5 < VFP - 40) ? c5 + 1 : VBP + 40;
 		c4 = (c4 < VFP - 40) ? c4 + 1 : VBP + 40;
 		c3 = (c3 < VFP - 40) ? c3 + 1 : VBP + 40;
@@ -267,7 +267,7 @@ always @ (posedge i_pixclk) begin
 		// draw block c5
         if (c5_block) begin
 			case (c5_type)
-				0: {o_red[2:0], o_green[2:0], o_blue[1:0]} = RED; 
+				0: {o_red[2:0], o_green[2:0], o_blue[1:0]} = RED;
 				1: {o_red[2:0], o_green[2:0], o_blue[1:0]} = WHITE;
 				2: {o_red[2:0], o_green[2:0], o_blue[1:0]} = GREEN;
 				3: {o_red[2:0], o_green[2:0], o_blue[1:0]} = BLUE;
@@ -277,17 +277,17 @@ always @ (posedge i_pixclk) begin
          // draw block c4
         if (c4_block) begin
 			case (c4_type)
-				0: {o_red[2:0], o_green[2:0], o_blue[1:0]} = RED; 
+				0: {o_red[2:0], o_green[2:0], o_blue[1:0]} = RED;
 				1: {o_red[2:0], o_green[2:0], o_blue[1:0]} = WHITE;
 				2: {o_red[2:0], o_green[2:0], o_blue[1:0]} = GREEN;
 				3: {o_red[2:0], o_green[2:0], o_blue[1:0]} = BLUE;
 			endcase
         end
-		
+
 		// draw block c3
         if (c3_block) begin
 			case (c3_type)
-				0: {o_red[2:0], o_green[2:0], o_blue[1:0]} = RED; 
+				0: {o_red[2:0], o_green[2:0], o_blue[1:0]} = RED;
 				1: {o_red[2:0], o_green[2:0], o_blue[1:0]} = WHITE;
 				2: {o_red[2:0], o_green[2:0], o_blue[1:0]} = GREEN;
 				3: {o_red[2:0], o_green[2:0], o_blue[1:0]} = BLUE;
@@ -297,36 +297,36 @@ always @ (posedge i_pixclk) begin
 		// draw block c2
         if (c2_block) begin
 			case (c2_type)
-				0: {o_red[2:0], o_green[2:0], o_blue[1:0]} = RED; 
+				0: {o_red[2:0], o_green[2:0], o_blue[1:0]} = RED;
 				1: {o_red[2:0], o_green[2:0], o_blue[1:0]} = WHITE;
 				2: {o_red[2:0], o_green[2:0], o_blue[1:0]} = GREEN;
 				3: {o_red[2:0], o_green[2:0], o_blue[1:0]} = BLUE;
 			endcase
         end
-		
+
 		// draw block c1
         if (c1_block) begin
 			case (c1_type)
-				0: {o_red[2:0], o_green[2:0], o_blue[1:0]} = RED; 
+				0: {o_red[2:0], o_green[2:0], o_blue[1:0]} = RED;
 				1: {o_red[2:0], o_green[2:0], o_blue[1:0]} = WHITE;
 				2: {o_red[2:0], o_green[2:0], o_blue[1:0]} = GREEN;
 				3: {o_red[2:0], o_green[2:0], o_blue[1:0]} = BLUE;
 			endcase
         end
-		
+
 		// draw block c0
         if (c0_block) begin
 			case (c0_type)
-				0: {o_red[2:0], o_green[2:0], o_blue[1:0]} = RED; 
+				0: {o_red[2:0], o_green[2:0], o_blue[1:0]} = RED;
 				1: {o_red[2:0], o_green[2:0], o_blue[1:0]} = WHITE;
 				2: {o_red[2:0], o_green[2:0], o_blue[1:0]} = GREEN;
 				3: {o_red[2:0], o_green[2:0], o_blue[1:0]} = BLUE;
 			endcase
         end
-		
+
 
 		// draw the push_range indicator
-        if (push_range_c5 && 
+        if (push_range_c5 &&
            HBP < h_count && h_count < HBP + 25 &&
            VFP - 25 < v_count && v_count < VFP)
         begin
@@ -342,7 +342,7 @@ always @ (posedge i_pixclk) begin
 						game_alive = 0;
 					end
 				end
-				
+
 				1:
 				begin
 					if (i_btn_right) begin
@@ -366,7 +366,7 @@ always @ (posedge i_pixclk) begin
 						game_alive = 0;
 					end
 				end
-				
+
 				3:
 				begin
 					if (i_btn_left) begin
@@ -381,8 +381,8 @@ always @ (posedge i_pixclk) begin
 				default: game_alive = 1;
 			endcase
         end
-		
-		if (push_range_c4 && 
+
+		if (push_range_c4 &&
            HBP < h_count && h_count < HBP + 25 &&
            VFP - 25 < v_count && v_count < VFP)
         begin
@@ -398,7 +398,7 @@ always @ (posedge i_pixclk) begin
 						game_alive = 0;
 					end
 				end
-				
+
 				1:
 				begin
 					if (i_btn_right) begin
@@ -422,7 +422,7 @@ always @ (posedge i_pixclk) begin
 						game_alive = 0;
 					end
 				end
-				
+
 				3:
 				begin
 					if (i_btn_left) begin
@@ -437,8 +437,8 @@ always @ (posedge i_pixclk) begin
 				default: game_alive = 1;
 			endcase
         end
-		
-		if (push_range_c3 && 
+
+		if (push_range_c3 &&
            HBP < h_count && h_count < HBP + 25 &&
            VFP - 25 < v_count && v_count < VFP)
         begin
@@ -454,7 +454,7 @@ always @ (posedge i_pixclk) begin
 						game_alive = 0;
 					end
 				end
-				
+
 				1:
 				begin
 					if (i_btn_right) begin
@@ -478,7 +478,7 @@ always @ (posedge i_pixclk) begin
 						game_alive = 0;
 					end
 				end
-				
+
 				3:
 				begin
 					if (i_btn_left) begin
@@ -494,7 +494,7 @@ always @ (posedge i_pixclk) begin
 			endcase
         end
 
-		if (push_range_c2 && 
+		if (push_range_c2 &&
            HBP < h_count && h_count < HBP + 25 &&
            VFP - 25 < v_count && v_count < VFP)
         begin
@@ -510,7 +510,7 @@ always @ (posedge i_pixclk) begin
 						game_alive = 0;
 					end
 				end
-				
+
 				1:
 				begin
 					if (i_btn_right) begin
@@ -534,7 +534,7 @@ always @ (posedge i_pixclk) begin
 						game_alive = 0;
 					end
 				end
-				
+
 				3:
 				begin
 					if (i_btn_left) begin
@@ -550,7 +550,7 @@ always @ (posedge i_pixclk) begin
 			endcase
         end
 
-		if (push_range_c2 && 
+		if (push_range_c2 &&
            HBP < h_count && h_count < HBP + 25 &&
            VFP - 25 < v_count && v_count < VFP)
         begin
@@ -566,7 +566,7 @@ always @ (posedge i_pixclk) begin
 						game_alive = 0;
 					end
 				end
-				
+
 				1:
 				begin
 					if (i_btn_right) begin
@@ -590,7 +590,7 @@ always @ (posedge i_pixclk) begin
 						game_alive = 0;
 					end
 				end
-				
+
 				3:
 				begin
 					if (i_btn_left) begin
@@ -606,7 +606,7 @@ always @ (posedge i_pixclk) begin
 			endcase
         end
 
-		if (push_range_c1 && 
+		if (push_range_c1 &&
            HBP < h_count && h_count < HBP + 25 &&
            VFP - 25 < v_count && v_count < VFP)
         begin
@@ -622,7 +622,7 @@ always @ (posedge i_pixclk) begin
 						game_alive = 0;
 					end
 				end
-				
+
 				1:
 				begin
 					if (i_btn_right) begin
@@ -646,7 +646,7 @@ always @ (posedge i_pixclk) begin
 						game_alive = 0;
 					end
 				end
-				
+
 				3:
 				begin
 					if (i_btn_left) begin
@@ -662,7 +662,7 @@ always @ (posedge i_pixclk) begin
 			endcase
         end
 
-		if (push_range_c0 && 
+		if (push_range_c0 &&
            HBP < h_count && h_count < HBP + 25 &&
            VFP - 25 < v_count && v_count < VFP)
         begin
@@ -678,7 +678,7 @@ always @ (posedge i_pixclk) begin
 						game_alive = 0;
 					end
 				end
-				
+
 				1:
 				begin
 					if (i_btn_right) begin
@@ -702,7 +702,7 @@ always @ (posedge i_pixclk) begin
 						game_alive = 0;
 					end
 				end
-				
+
 				3:
 				begin
 					if (i_btn_left) begin
@@ -726,12 +726,12 @@ always @ (posedge i_pixclk) begin
         // else begin
         //     {o_red[2:0], o_green[2:0], o_blue[1:0]} = 8'b11101100;
         // end
-		
+
 		// if (HBP + 50 < h_count && h_count < HFP - 50 && VFP - 50 < v_count) begin
 		// 	{o_red[2:0], o_green[2:0], o_blue[1:0]} = 8'b00000000;
 		// end
-		
-		// if (i_btnpress && 
+
+		// if (i_btnpress &&
 		// 	464 - 30 < h_count && h_count < 464 + 30 &&
 		// 	271 - 30 < v_count && v_count < 271 + 30) begin
 		// 	{o_red[2:0], o_green[2:0], o_blue[1:0]} = 8'b11111111;

@@ -18,6 +18,7 @@ module top(
     wire pixclk;
     wire movclk;
 	wire onehzclk;
+    wire fastclk;
     wire integer score;
     wire integer diff;
     // TODO: connect the score to the segment display.
@@ -29,7 +30,8 @@ module top(
         .i_clk(clk),
         .o_pixclk(pixclk),
         .o_onehzclk(onehzclk),
-        .o_movclk(movclk)
+        .o_movclk(movclk),
+        .o_fastclk(fastclk)
     );
 
     vga vga_controller(
@@ -47,12 +49,13 @@ module top(
         .o_green(o_vga_g),
         .o_blue(o_vga_b),
         .o_score(score),
-        .diff(diff)
+        .o_diff(diff)
     );
 
     score score_display(
-        .o_score(score),
-        .o_diff(diff),
+        .i_clk(fastclk),
+        .i_score(score),
+        .i_diff(diff),
         .seg(seg),
         .an(an)
     );
