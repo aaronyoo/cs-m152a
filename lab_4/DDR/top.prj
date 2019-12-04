@@ -1,3 +1,5 @@
+verilog work "segment_display.v"
 verilog work "vga.v"
+verilog work "score.v"
 verilog work "clockdiv.v"
 verilog work "top.v"

@@ -14,7 +14,7 @@ module vga(
     output reg [1:0] o_blue,    // blue vga output
 
     output wire integer o_score,
-	output wire integer diff
+	output wire integer o_diff
 );
 
 localparam HPIXELS = 800;  // horizontal pixels per line
@@ -101,17 +101,18 @@ integer c1_type = 4;
 integer c0_type = 4;
 
 // Define the drawing regions for each symbol and each type
-assign c5_block = (center && c5 - 40 < v_count && v_count < c5 + 40);
-assign c4_block = (center && c4 - 40 < v_count && v_count < c4 + 40);
-assign c3_block = (center && c3 - 40 < v_count && v_count < c3 + 40);
-assign c2_block = (center && c2 - 40 < v_count && v_count < c2 + 40);
-assign c1_block = (center && c1 - 40 < v_count && v_count < c1 + 40);
-assign c0_block = (center && c0 - 40 < v_count && v_count < c0 + 40);
+assign c5_block = (center && c5 - 30 < v_count && v_count < c5 + 30);
+assign c4_block = (center && c4 - 30 < v_count && v_count < c4 + 30);
+assign c3_block = (center && c3 - 30 < v_count && v_count < c3 + 30);
+assign c2_block = (center && c2 - 30 < v_count && v_count < c2 + 30);
+assign c1_block = (center && c1 - 30 < v_count && v_count < c1 + 30);
+assign c0_block = (center && c0 - 30 < v_count && v_count < c0 + 30);
 
 
 integer perfect_score = 0;
 integer real_score = 0;
-assign score = real_score;
+assign o_score = real_score;
+assign o_diff = real_score;
 reg reset_me = 0;
 reg game_end = 0;
 
@@ -145,37 +146,49 @@ always @(posedge i_movclk) begin
 		if (c5 == VFP - 40) begin
 			c5_type = mem[mem_idx];
 			mem_idx = mem_idx + 1;
-			real_score = real_score + 1;
+            if (c5_type != 4) begin
+                perfect_score = perfect_score + 1;
+            end
 		end
 		
 		if (c4 == VFP - 40) begin
 			c4_type = mem[mem_idx];
 			mem_idx = mem_idx + 1;
-			real_score = real_score + 1;
+            if (c4_type != 4) begin
+                perfect_score = perfect_score + 1;
+            end
 		end
 		
 		if (c3 == VFP - 40) begin
 			c3_type = mem[mem_idx];
 			mem_idx = mem_idx + 1;
-			real_score = real_score + 1;
+            if (c3_type != 4) begin
+                perfect_score = perfect_score + 1;
+            end
 		end
 		
 		if (c2 == VFP - 40) begin
 			c2_type = mem[mem_idx];
 			mem_idx = mem_idx + 1;
-			real_score = real_score + 1;
+            if (c2_type != 4) begin
+                perfect_score = perfect_score + 1;
+            end
 		end
 		
 		if (c1 == VFP - 40) begin
 			c1_type = mem[mem_idx];
 			mem_idx = mem_idx + 1;
-			real_score = real_score + 1;
+            if (c1_type != 4) begin
+                perfect_score = perfect_score + 1;
+            end
 		end
 
 		if (c0 == VFP - 40) begin
 			c0_type = mem[mem_idx];
 			mem_idx = mem_idx + 1;
-			real_score = real_score + 1;
+            if (c0_type != 4) begin
+                perfect_score = perfect_score + 1;
+            end
 		end
 		
 	    c5 = (c5 < VFP - 40) ? c5 + 1 : VBP + 40;
@@ -193,7 +206,7 @@ end
 
 reg push_range_c5 = 0;
 always @(*) begin
-	if (VFP - 40 - 25 < c5) begin
+	if (VFP - 40 - 25 - 10 < c5) begin
 		push_range_c5 = 1;
 	end
 	else begin
@@ -203,7 +216,7 @@ end
 
 reg push_range_c4 = 0;
 always @(*) begin
-	if (VFP - 40 - 25 < c4) begin
+	if (VFP - 40 - 25 - 10 < c4) begin
 		push_range_c4 = 1;
 	end
 	else begin
@@ -213,7 +226,7 @@ end
 
 reg push_range_c3 = 0;
 always @(*) begin
-	if (VFP - 40 - 25 < c3) begin
+	if (VFP - 40 - 25 - 10 < c3) begin
 		push_range_c3 = 1;
 	end
 	else begin
@@ -223,7 +236,7 @@ end
 
 reg push_range_c2 = 0;
 always @(*) begin
-	if (VFP - 40 - 25 < c2) begin
+	if (VFP - 40 - 25 - 10 < c2) begin
 		push_range_c2 = 1;
 	end
 	else begin
@@ -233,7 +246,7 @@ end
 
 reg push_range_c1 = 0;
 always @(*) begin
-	if (VFP - 40 - 25 < c1) begin
+	if (VFP - 40 - 25 - 10 < c1) begin
 		push_range_c1 = 1;
 	end
 	else begin
@@ -243,7 +256,7 @@ end
 
 reg push_range_c0 = 0;
 always @(*) begin
-	if (VFP - 40 - 25 < c0) begin
+	if (VFP - 40 - 25 - 10 < c0) begin
 		push_range_c0 = 1;
 	end
 	else begin
@@ -254,7 +267,7 @@ end
 
 
 
-reg correct = 1;
+reg correct = 0;
 always @ (posedge i_pixclk) begin
     if (on_screen && !game_end) begin
 
@@ -385,7 +398,7 @@ always @ (posedge i_pixclk) begin
 						correct = 0;
 					end
 				end
-				default: correct = 1;
+				default: correct = 0;
 			endcase
         end
 		
@@ -441,7 +454,7 @@ always @ (posedge i_pixclk) begin
 						correct = 0;
 					end
 				end
-				default: correct = 1;
+				default: correct = 0;
 			endcase
         end
 		
@@ -497,7 +510,7 @@ always @ (posedge i_pixclk) begin
 						correct = 0;
 					end
 				end
-				default: correct = 1;
+				default: correct = 0;
 			endcase
         end
 
@@ -553,7 +566,7 @@ always @ (posedge i_pixclk) begin
 						correct = 0;
 					end
 				end
-				default: correct = 1;
+				default: correct = 0;
 			endcase
         end
 
@@ -609,7 +622,7 @@ always @ (posedge i_pixclk) begin
 						correct = 0;
 					end
 				end
-				default: correct = 1;
+				default: correct = 0;
 			endcase
         end
 
@@ -665,7 +678,7 @@ always @ (posedge i_pixclk) begin
 						correct = 0;
 					end
 				end
-				default: correct = 1;
+				default: correct = 0;
 			endcase
         end
 
@@ -721,7 +734,7 @@ always @ (posedge i_pixclk) begin
 						correct = 0;
 					end
 				end
-				default: correct = 1;
+				default: correct = 0;
 			endcase
         end
     end
@@ -732,14 +745,16 @@ always @ (posedge i_pixclk) begin
     end
 end
 
-always @(negedge correct or posedge reset_me) begin
+always @(posedge correct or posedge reset_me) begin
 	if (reset_me == 1) begin
 		game_end = 0;
+        real_score = 0;
 	end
 	else begin
-		if (correct == 0) begin
-			game_end = 1;
-		end
+		real_score = real_score + 1;
+        if (real_score >= 10) begin
+            game_end = 1;
+        end
 	end
 end
 

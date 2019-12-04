@@ -47,7 +47,7 @@ module top(
         .o_green(o_vga_g),
         .o_blue(o_vga_b),
         .o_score(score),
-        .diff(diff)
+        .o_diff(diff)
     );
 
     score score_display(
