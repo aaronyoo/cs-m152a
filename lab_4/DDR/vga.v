@@ -755,7 +755,7 @@ always @(posedge correct or posedge reset_me) begin
 	end
 	else begin
 		real_score = real_score + 1;
-        if (real_score >= 25) begin
+        if (real_score >= 20) begin
             game_end = 1;
         end
 	end

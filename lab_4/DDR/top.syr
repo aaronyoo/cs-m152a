@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.11 secs
+Total CPU time to Xst completion: 0.12 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.11 secs
+Total CPU time to Xst completion: 0.12 secs
  
 --> Reading design: top.prj
 
@@ -1252,19 +1252,19 @@ Top Level Output File Name         : top.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 9429
+# BELS                             : 9424
 #      GND                         : 1
 #      INV                         : 137
 #      LUT1                        : 217
 #      LUT2                        : 49
-#      LUT3                        : 960
+#      LUT3                        : 959
 #      LUT4                        : 454
-#      LUT5                        : 2162
-#      LUT6                        : 1053
-#      MUXCY                       : 2384
+#      LUT5                        : 2160
+#      LUT6                        : 1054
+#      MUXCY                       : 2383
 #      MUXF7                       : 14
 #      VCC                         : 1
-#      XORCY                       : 1997
+#      XORCY                       : 1995
 # FlipFlops/Latches                : 278
 #      FD                          : 10
 #      FDC                         : 42
@@ -1291,16 +1291,16 @@ Selected Device : 6slx16csg324-3
 
 Slice Logic Utilization: 
  Number of Slice Registers:             278  out of  18224     1%  
- Number of Slice LUTs:                 5104  out of   9112    56%  
-    Number used as Logic:              5032  out of   9112    55%  
+ Number of Slice LUTs:                 5102  out of   9112    55%  
+    Number used as Logic:              5030  out of   9112    55%  
     Number used as Memory:               72  out of   2176     3%  
        Number used as RAM:               72
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:   5152
-   Number with an unused Flip Flop:    4874  out of   5152    94%  
-   Number with an unused LUT:            48  out of   5152     0%  
-   Number of fully used LUT-FF pairs:   230  out of   5152     4%  
+ Number of LUT Flip Flop pairs used:   5149
+   Number with an unused Flip Flop:    4871  out of   5149    94%  
+   Number with an unused LUT:            47  out of   5149     0%  
+   Number of fully used LUT-FF pairs:   231  out of   5149     4%  
    Number of unique control sets:        24
 
 IO Utilization: 
@@ -1388,10 +1388,10 @@ Delay:               4.626ns (Levels of Logic = 8)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'vga_controller/correct'
-  Clock period: 5.626ns (frequency: 177.745MHz)
-  Total number of paths / destination ports: 1520 / 33
+  Clock period: 5.569ns (frequency: 179.564MHz)
+  Total number of paths / destination ports: 1425 / 33
 -------------------------------------------------------------------------
-Delay:               5.626ns (Levels of Logic = 31)
+Delay:               5.569ns (Levels of Logic = 28)
   Source:            vga_controller/real_score_3 (FF)
   Destination:       vga_controller/game_end (FF)
   Source Clock:      vga_controller/correct rising
@@ -1426,17 +1426,14 @@ Delay:               5.626ns (Levels of Logic = 31)
      MUXCY:CI->O           1   0.019   0.000  vga_controller/Madd_real_score[31]_GND_3_o_add_444_OUT_cy<23> (vga_controller/Madd_real_score[31]_GND_3_o_add_444_OUT_cy<23>)
      MUXCY:CI->O           1   0.019   0.000  vga_controller/Madd_real_score[31]_GND_3_o_add_444_OUT_cy<24> (vga_controller/Madd_real_score[31]_GND_3_o_add_444_OUT_cy<24>)
      MUXCY:CI->O           1   0.019   0.000  vga_controller/Madd_real_score[31]_GND_3_o_add_444_OUT_cy<25> (vga_controller/Madd_real_score[31]_GND_3_o_add_444_OUT_cy<25>)
-     MUXCY:CI->O           1   0.019   0.000  vga_controller/Madd_real_score[31]_GND_3_o_add_444_OUT_cy<26> (vga_controller/Madd_real_score[31]_GND_3_o_add_444_OUT_cy<26>)
-     MUXCY:CI->O           1   0.019   0.000  vga_controller/Madd_real_score[31]_GND_3_o_add_444_OUT_cy<27> (vga_controller/Madd_real_score[31]_GND_3_o_add_444_OUT_cy<27>)
-     MUXCY:CI->O           1   0.019   0.000  vga_controller/Madd_real_score[31]_GND_3_o_add_444_OUT_cy<28> (vga_controller/Madd_real_score[31]_GND_3_o_add_444_OUT_cy<28>)
-     XORCY:CI->O           2   0.180   0.961  vga_controller/Madd_real_score[31]_GND_3_o_add_444_OUT_xor<29> (vga_controller/real_score[31]_GND_3_o_add_444_OUT<29>)
-     LUT5:I0->O            0   0.203   0.000  vga_controller/Mcompar_n0349_lutdi5 (vga_controller/Mcompar_n0349_lutdi5)
-     MUXCY:DI->O           1   0.339   0.580  vga_controller/Mcompar_n0349_cy<5> (vga_controller/Mcompar_n0349_cy<5>)
-     LUT3:I2->O            1   0.205   0.579  vga_controller/Mcompar_n0349_cy<6> (vga_controller/Mcompar_n0349_cy<6>)
+     XORCY:CI->O           2   0.180   0.961  vga_controller/Madd_real_score[31]_GND_3_o_add_444_OUT_xor<26> (vga_controller/real_score[31]_GND_3_o_add_444_OUT<26>)
+     LUT5:I0->O            0   0.203   0.000  vga_controller/Mcompar_n0349_lutdi4 (vga_controller/Mcompar_n0349_lutdi4)
+     MUXCY:DI->O           1   0.339   0.580  vga_controller/Mcompar_n0349_cy<4> (vga_controller/Mcompar_n0349_cy<4>)
+     LUT6:I5->O            1   0.205   0.579  vga_controller/Mcompar_n0349_cy<5> (vga_controller/Mcompar_n0349_cy<5>)
      FDCE:CE                   0.322          vga_controller/game_end
     ----------------------------------------
-    Total                      5.626ns (2.548ns logic, 3.078ns route)
-                                       (45.3% logic, 54.7% route)
+    Total                      5.569ns (2.491ns logic, 3.078ns route)
+                                       (44.7% logic, 55.3% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clock_controller/clk_25mhz'
@@ -1678,18 +1675,18 @@ Clock to Setup on destination clock vga_controller/correct
 Source Clock            |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ------------------------+---------+---------+---------+---------+
 clock_controller/clk_mov|    2.197|         |         |         |
-vga_controller/correct  |    5.626|         |         |         |
+vga_controller/correct  |    5.569|         |         |         |
 ------------------------+---------+---------+---------+---------+
 
 =========================================================================
 
 
-Total REAL time to Xst completion: 61.00 secs
-Total CPU time to Xst completion: 61.54 secs
+Total REAL time to Xst completion: 68.00 secs
+Total CPU time to Xst completion: 68.65 secs
  
 --> 
 
-Total memory usage is 339680 kilobytes
+Total memory usage is 341664 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :  396 (   0 filtered)
