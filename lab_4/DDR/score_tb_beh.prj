@@ -1,0 +1,4 @@
+verilog work "segment_display.v"
+verilog work "score.v"
+verilog work "score-tb.v"
+verilog work "C:/Xilinx/14.6/ISE_DS/ISE//verilog/src/glbl.v"

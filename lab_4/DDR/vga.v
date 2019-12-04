@@ -111,8 +111,9 @@ assign c0_block = (center && c0 - 30 < v_count && v_count < c0 + 30);
 
 integer perfect_score = 0;
 integer real_score = 0;
-assign o_score = real_score;
-assign o_diff = real_score;
+assign o_score = perfect_score - real_score;
+assign diff = real_score;
+assign o_diff = diff;
 reg reset_me = 0;
 reg game_end = 0;
 
@@ -139,6 +140,8 @@ always @(posedge i_movclk) begin
 			c2_type = 4;
 			c1_type = 4;
 			c0_type = 4;
+            
+            perfect_score = 0;
 		end
 	end
 	else begin
@@ -752,7 +755,7 @@ always @(posedge correct or posedge reset_me) begin
 	end
 	else begin
 		real_score = real_score + 1;
-        if (real_score >= 10) begin
+        if (real_score >= 5) begin
             game_end = 1;
         end
 	end

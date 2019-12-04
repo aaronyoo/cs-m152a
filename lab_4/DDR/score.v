@@ -50,7 +50,7 @@ module score (
         .seg(thousands_segment)
     );
 
-    reg count = 1'b0;
+    reg [1:0] count = 2'b0;
 
     always @(posedge i_clk) begin
         if(count == 0) begin
@@ -61,9 +61,11 @@ module score (
             an <= 4'b1011;
             seg <= hundreds_segment;
         end
-        // Always check if diff changes
-        an <= 4'b1110;
-        seg <= ones_segment;
+        else begin
+            // Always check if diff changes
+            an <= 4'b1110;
+            seg <= ones_segment;
+        end
 
         count <= count+1;
     end
