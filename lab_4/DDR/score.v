@@ -1,6 +1,7 @@
 module score (
-    input wire signed [31:0] o_score,
-    input wire signed [31:0] o_diff,    // difference between perfect and actual scores
+    input i_clk,
+    input wire signed [31:0] i_score,
+    input wire signed [31:0] i_diff,    // difference between perfect and actual scores
     output reg [7:0] seg,
     output reg [3:0] an
 );
@@ -24,14 +25,14 @@ module score (
 
     integer temp_score;
 
-    always @(*) begin
-        temp_score = o_score;
+    always @(posedge i_clk) begin
+        temp_score = i_score;
         score_ones_digit_out <= temp_score % 10;
         temp_score = temp_score / 10;
         score_tens_digit_out <= temp_score % 10;
         temp_score = temp_score / 10;
 
-        diff_digit_out = o_diff;
+        diff_digit_out = i_diff;
     end
 
     segment_display ones_display (
@@ -51,7 +52,7 @@ module score (
 
     reg count = 1'b0;
 
-    always @(*) begin
+    always @(posedge i_clk) begin
         if(count == 0) begin
             an <= 4'b0111;
             seg <= thousands_segment;
