@@ -1,5 +1,5 @@
 module score (
-    input i_clk,
+    input wire i_clk,
     input wire signed [31:0] i_score,
     input wire signed [31:0] i_diff,    // difference between perfect and actual scores
     output reg [7:0] seg,
@@ -36,17 +36,17 @@ module score (
     end
 
     segment_display ones_display (
-        .digit(diff_digit_out),
+        .digit(diff_digit),
         .seg(ones_segment)
     );
 
     segment_display hundreds_display (
-        .digit(score_ones_digit_out),
+        .digit(score_ones_digit),
         .seg(hundreds_segment)
     );
 
     segment_display thousands_display (
-        .digit(score_tens_digit_out),
+        .digit(score_tens_digit),
         .seg(thousands_segment)
     );
 
