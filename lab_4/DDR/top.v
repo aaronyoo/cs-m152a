@@ -55,7 +55,6 @@ module top(
     score score_display(
         .i_clk(fastclk),
         .i_score(score),
-        .i_diff(diff),
         .seg(seg),
         .an(an)
     );
