@@ -17,19 +17,12 @@ module top(
 
     wire pixclk;
     wire movclk;
-	wire onehzclk;
     wire fastclk;
     wire integer score;
-    wire integer diff;
-    // TODO: connect the score to the segment display.
-    // - edit the ucf file to allow this
-    // - to do the individual digits we just need to do % 10, % 100, % 1000 etc.
-    // - then, pass these digits to the different segments like last time.
 
     clockdiv clock_controller(
         .i_clk(clk),
         .o_pixclk(pixclk),
-        .o_onehzclk(onehzclk),
         .o_movclk(movclk),
         .o_fastclk(fastclk)
     );
@@ -48,14 +41,12 @@ module top(
         .o_red(o_vga_r),
         .o_green(o_vga_g),
         .o_blue(o_vga_b),
-        .o_score(score),
-        .o_diff(diff)
+        .o_score(score)
     );
 
     score score_display(
         .i_clk(fastclk),
         .i_score(score),
-        .i_diff(diff),
         .seg(seg),
         .an(an)
     );

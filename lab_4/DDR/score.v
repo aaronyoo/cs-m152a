@@ -1,7 +1,6 @@
 module score (
     input wire i_clk,
     input wire signed [31:0] i_score,
-    input wire signed [31:0] i_diff,    // difference between perfect and actual scores
     output reg [7:0] seg,
     output reg [3:0] an
 );

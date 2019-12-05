@@ -13,8 +13,7 @@ module vga(
     output reg [2:0] o_green,   // green vga output
     output reg [1:0] o_blue,    // blue vga output
 
-    output wire integer o_score,
-	output wire integer o_diff
+    output wire [31:0] o_score
 );
 
 localparam HPIXELS = 800;  // horizontal pixels per line
@@ -109,11 +108,8 @@ assign c1_block = (center && c1 - 30 < v_count && v_count < c1 + 30);
 assign c0_block = (center && c0 - 30 < v_count && v_count < c0 + 30);
 
 
-integer perfect_score = 0;
 integer real_score = 0;
 assign o_score = real_score;
-assign diff = 0;
-assign o_diff = diff;
 reg reset_me = 0;
 reg game_end = 0;
 
@@ -140,8 +136,6 @@ always @(posedge i_movclk) begin
 			c2_type = 4;
 			c1_type = 4;
 			c0_type = 4;
-            
-            perfect_score = 0;
 		end
 	end
 	else begin
@@ -149,49 +143,31 @@ always @(posedge i_movclk) begin
 		if (c5 == VFP - 40) begin
 			c5_type = mem[mem_idx];
 			mem_idx = mem_idx + 1;
-            if (c5_type != 4) begin
-                perfect_score = perfect_score + 1;
-            end
 		end
 
 		if (c4 == VFP - 40) begin
 			c4_type = mem[mem_idx];
 			mem_idx = mem_idx + 1;
-            if (c4_type != 4) begin
-                perfect_score = perfect_score + 1;
-            end
 		end
 
 		if (c3 == VFP - 40) begin
 			c3_type = mem[mem_idx];
 			mem_idx = mem_idx + 1;
-            if (c3_type != 4) begin
-                perfect_score = perfect_score + 1;
-            end
 		end
 
 		if (c2 == VFP - 40) begin
 			c2_type = mem[mem_idx];
 			mem_idx = mem_idx + 1;
-            if (c2_type != 4) begin
-                perfect_score = perfect_score + 1;
-            end
 		end
 
 		if (c1 == VFP - 40) begin
 			c1_type = mem[mem_idx];
 			mem_idx = mem_idx + 1;
-            if (c1_type != 4) begin
-                perfect_score = perfect_score + 1;
-            end
 		end
 
 		if (c0 == VFP - 40) begin
 			c0_type = mem[mem_idx];
 			mem_idx = mem_idx + 1;
-            if (c0_type != 4) begin
-                perfect_score = perfect_score + 1;
-            end
 		end
 
 	    c5 = (c5 < VFP - 40) ? c5 + 1 : VBP + 40;
