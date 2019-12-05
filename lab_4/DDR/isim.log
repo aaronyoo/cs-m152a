@@ -1,6 +1,6 @@
 ISim log file
-Running: C:\Users\152\Desktop\cs-m152a\lab_4\DDR\toptb_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb C:/Users/152/Desktop/cs-m152a/lab_4/DDR/toptb_isim_beh.wdb 
-ISim P.68d (signature 0x8ef4fb42)
+Running: C:\Users\152\Desktop\cs-m152a\lab_4\DDR\score_tb_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb C:/Users/152/Desktop/cs-m152a/lab_4/DDR/score_tb_isim_beh.wdb 
+ISim P.68d (signature 0x7708f090)
 ----------------------------------------------------------------------
 WARNING:Security:42 - Your software subscription period has lapsed. Your current version of Xilinx tools will continue to function, but you no longer qualify for Xilinx software updates or new releases.
 
@@ -13,21 +13,47 @@ Time resolution is 1 ps
 # run 1000 ns
 Simulator is doing circuit initialization process.
 Finished circuit initialization process.
+Running...
 # restart
-# run 1.00us
+# run 1s
 Simulator is doing circuit initialization process.
 Finished circuit initialization process.
+Running...
+score =          22, seg = 11000000
+score =          22, seg = 11111111
+Stopped at time : 1160 ns : File "C:/Users/152/Desktop/cs-m152a/lab_4/DDR/score-tb.v" Line 37
 # restart
-# run 1.00us
+# run 1s
 Simulator is doing circuit initialization process.
 Finished circuit initialization process.
-# run 10.00us
+Running...
+score =          22, seg = 11000000
+score =          22, seg = 11111111
+Stopped at time : 1160 ns : File "C:/Users/152/Desktop/cs-m152a/lab_4/DDR/score-tb.v" Line 37
 # restart
-# run 10.00us
+# run 1s
 Simulator is doing circuit initialization process.
 Finished circuit initialization process.
-# restart
-# run all
+Running...
+score =          22, seg = 11000000
+score =          22, seg = 11111111
+Stopped at time : 1160 ns : File "C:/Users/152/Desktop/cs-m152a/lab_4/DDR/score-tb.v" Line 37
+ISim P.68d (signature 0x7708f090)
+----------------------------------------------------------------------
+WARNING:Security:42 - Your software subscription period has lapsed. Your current version of Xilinx tools will continue to function, but you no longer qualify for Xilinx software updates or new releases.
+
+
+----------------------------------------------------------------------
+This is a Full version of ISim.
+# run 1000 ns
 Simulator is doing circuit initialization process.
 Finished circuit initialization process.
-Stopped at time : 338733700 ns : File "C:/Users/152/Desktop/cs-m152a/lab_4/DDR/vga.v" Line 29
+Running...
+# restart
+# run 1s
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+Running...
+score =          22, seg = 11000000
+score =          22, seg = 10010010
+Stopped at time : 1160 ns : File "C:/Users/152/Desktop/cs-m152a/lab_4/DDR/score-tb.v" Line 40

@@ -1,0 +1,10 @@
+#-----------------------------------------------------------
+# PlanAhead v14.6 (64-bit)
+# Build 269223 by xbuild on Wed Jun  5 11:14:03 MDT 2013
+# Start of session at: Wed Nov 27 13:48:48 2019
+# Process ID: 2276
+# Log file: C:/Users/152/Desktop/cs-m152a/lab_4/DDR/planAhead_run_3/planAhead.log
+# Journal file: C:/Users/152/Desktop/cs-m152a/lab_4/DDR/planAhead_run_3/planAhead.jou
+#-----------------------------------------------------------
+start_gui
+source C:/Users/152/Desktop/cs-m152a/lab_4/DDR/pa.fromNetlist.tcl
